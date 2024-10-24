@@ -3,58 +3,74 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio - Ramapriyan</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-        }
-        h1 {
-            color: #333;
-        }
-        .container {
-            text-align: center;
-            margin-top: 50px;
-        }
-        .button {
-            background-color: #4CAF50;
-            border: none;
-            color: white;
-            padding: 15px 32px;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 16px;
-            margin: 10px;
-            cursor: pointer;
-            border-radius: 5px;
-            transition: background-color 0.3s;
-        }
-        .button:hover {
-            background-color: #45a049;
-        }
-    </style>
+    <title>Ramapriyan Varadarajan</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
-        <h1>Welcome to My Portfolio</h1>
-        <!-- Resume Button -->
-        <a href="link_to_resume.pdf" class="button" target="_blank">View My Resume</a>
+    <header>
+        <nav>
+            <div class="logo">Ramapriyan Varadarajan</div>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Experience</a></li>
+                <li><a href="#">Certifications</a></li>
+                <li><a href="#">Projects</a></li>
+            </ul>
+        </nav>
+    </header>
 
-        <!-- GitHub Repositories Buttons -->
-        <a href="https://github.com/username/project1" class="button" target="_blank">Project 1</a>
-        <a href="https://github.com/username/project2" class="button" target="_blank">Project 2</a>
+    <section class="hero">
+        <h1>Hi, I'm <span class="highlight">Ramapriyan.</span></h1>
+        <p>(You can call me CJ!)</p>
+        <p>My interests lie in <span class="highlight">data, development and design.</span></p>
+        <p>I’m pursuing a degree in Computer Science with a focus on Data Science, AI, and Machine Learning.</p>
+        <div class="buttons">
+            <a href="resume.pdf" class="button">View My Resume</a>
+            <a href="#about" class="button-outline">About Me</a>
+        </div>
+    </section>
 
-        <!-- Certifications Buttons -->
-        <a href="certification_link_1" class="button" target="_blank">Certification 1</a>
-        <a href="certification_link_2" class="button" target="_blank">Certification 2</a>
-    </div>
+    <!-- Skills Section -->
+    <section id="skills">
+        <h2>My Skills</h2>
+        <div class="skills-container">
+            <div class="skill-box">
+                <h3>Data Analysis & Visualization</h3>
+                <p>Python (Pandas, NumPy, Matplotlib), SQL, etc.</p>
+            </div>
+            <div class="skill-box">
+                <h3>Design & Development</h3>
+                <p>HTML, CSS, JavaScript, Django</p>
+            </div>
+            <div class="skill-box">
+                <h3>Machine Learning</h3>
+                <p>TensorFlow, Keras, Scikit-Learn</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications Section -->
+    <section id="certifications">
+        <h2>My Certifications</h2>
+        <div class="certifications-container">
+            <div class="cert-box">
+                <h3>IBM's Python for Data Science</h3>
+                <a href="certification-link" class="cert-link">View</a>
+            </div>
+            <div class="cert-box">
+                <h3>JavaScript, HTML, and CSS</h3>
+                <a href="certification-link" class="cert-link">View</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="social-icons">
+            <a href="https://linkedin.com"><img src="linkedin-icon.png" alt="LinkedIn"></a>
+            <a href="https://github.com"><img src="github-icon.png" alt="GitHub"></a>
+        </div>
+    </footer>
 </body>
 </html>
