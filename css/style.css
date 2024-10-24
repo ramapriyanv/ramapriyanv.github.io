@@ -406,37 +406,41 @@ section {
 }
 
 .experience-content .content {
-    position:relative;
-    padding:2.5rem;
-    color:white;
+    position: relative;
+    padding: 2.5rem;
+    color: white;
     background: linear-gradient(rgb(25, 0, 25), rgb(25, 0, 25)) padding-box, linear-gradient(to right, var(--second-color), var(--main-color)) border-box;
     border: 2px solid transparent;
-    border-radius:.6rem;
-    margin-bottom:2rem;
-
+    border-radius: .6rem;
+    margin-bottom: 2rem;
 }
 
-.experience-content .content .placetitle {
-    padding-top:1rem;
-    padding-bottom:1.5rem;
+/* This modifies the first heading (Company or University name) */
+.experience-content .content h1 {
+    font-size: 2rem; /* Adjust font size */
+    font-weight: 600;
+    line-height: 1.5; /* Increased line height to prevent overlap */
+    margin-bottom: 1rem; /* Adds spacing below the heading */
+    display: flex;
+    align-items: center; /* Aligns logo and text in the same row */
 }
 
-.experience-content .content .placetitle h1 {
-    font-size:1.8rem;
-    font-weight:600;
-
-}
-
-
-
+/* This modifies the subheading (Position or Degree) */
 .experience-content .content h2 {
-    font-size:1.6rem;
-    font-weight:400;
-    margin-left:5rem;
-    margin-top:-1.8rem;
-    margin-bottom:1.2rem;
-    
+    font-size: 1.7rem; /* Adjust font size */
+    font-weight: 400;
+    margin-left: 0; /* Removes left margin */
+    margin-top: 0.5rem; /* Adds space between h1 and h2 */
+    margin-bottom: 1rem; /* Adds spacing below the subheading */
+    line-height: 1.4; /* Adjusted line height for better spacing */
+}
 
+/* Adding logo image alignment in h1 */
+.experience-content .content h1 img {
+    vertical-align: middle;
+    margin-right: 10px; /* Adds space between logo and text */
+    width: 24px; /* Adjust logo size */
+    height: 24px;
 }
 
 .experience-content .content p {
