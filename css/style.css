@@ -13,11 +13,11 @@
 }
 
 :root {
-    --bg-color: black;
-    --second-bg-color:rgb(25, 0, 25);
-    --text-color:white;
-    --main-color:rgb(151, 0, 151);
-    --second-color:rgb(223, 59, 138);
+    --bg-color: #333333; /* Dark Grey */
+    --second-bg-color: #2c2c2c; /* Another Dark Grey */
+    --text-color: white;
+    --main-color: #007acc; /* Blue */
+    --second-color: #005f99; /* Darker Blue */
 }
 
 html {
