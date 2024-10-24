@@ -11,24 +11,31 @@
         <nav>
             <div class="logo">Ramapriyan Varadarajan</div>
             <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Experience</a></li>
-                <li><a href="#">Certifications</a></li>
-                <li><a href="#">Projects</a></li>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#certifications">Certifications</a></li>
+                <li><a href="#projects">Projects</a></li>
             </ul>
         </nav>
     </header>
 
-    <section class="hero">
-        <h1>Hi, I'm <span class="highlight">Ramapriyan</span></h1>
-        <p>(You can call me RP!)</p>
-        <p>My interests lie in <span class="highlight">data, development and design.</span></p>
-        <p>I’m pursuing a Master's degree in Computer Science with a focus on Data Science, AI, and Machine Learning.</p>
-        <div class="buttons">
-            <a href="resume.pdf" class="button">View My Resume</a>
-            <a href="#about" class="button-outline">About Me</a>
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Hi, I'm <span class="highlight">Ramapriyan.</span></h1>
+            <p>(You can call me CJ!)</p>
+            <p>My interests lie in <span class="highlight">data, development and design.</span></p>
+            <p>I’m pursuing a degree in Computer Science with a focus on Data Science, AI, and Machine Learning.</p>
+            <div class="buttons">
+                <a href="resume.pdf" class="button">View My Resume</a>
+                <a href="#about" class="button-outline">About Me</a>
+            </div>
         </div>
+    </section>
+
+    <section id="about">
+        <h2>About Me</h2>
+        <p>I'm passionate about technology, AI, and solving complex problems...</p>
     </section>
 
     <!-- Skills Section -->
@@ -37,7 +44,7 @@
         <div class="skills-container">
             <div class="skill-box">
                 <h3>Data Analysis & Visualization</h3>
-                <p>Python (Pandas, NumPy, Matplotlib), SQL, etc.</p>
+                <p>Python, Pandas, Matplotlib, SQL, etc.</p>
             </div>
             <div class="skill-box">
                 <h3>Design & Development</h3>
@@ -61,6 +68,23 @@
             <div class="cert-box">
                 <h3>JavaScript, HTML, and CSS</h3>
                 <a href="certification-link" class="cert-link">View</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <h2>My Projects</h2>
+        <div class="projects-container">
+            <div class="project-box">
+                <h3>Video Calling Web Application</h3>
+                <p>Developed for Microsoft Engage 2021.</p>
+                <a href="project-link" class="project-link">View</a>
+            </div>
+            <div class="project-box">
+                <h3>COVID-19 Geovisualization Dashboard</h3>
+                <p>Geovisualizations of confirmed COVID-19 cases.</p>
+                <a href="project-link" class="project-link">View</a>
             </div>
         </div>
     </section>
