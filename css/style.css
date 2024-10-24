@@ -13,11 +13,11 @@
 }
 
 :root {
-    --bg-color: #333333; /* Dark Grey */
-    --second-bg-color: #2c2c2c; /* Another Dark Grey */
+    --bg-color: #14213d; /* Dark Blue */
+    --second-bg-color: #000000; /* Black */
     --text-color: white;
-    --main-color: #007acc; /* Blue */
-    --second-color: #005f99; /* Darker Blue */
+    --main-color: #fca311; /* Mustard */
+    --second-color: #fca319; /* Darker Mustard */
 }
 
 html {
