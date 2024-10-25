@@ -13,12 +13,14 @@
 }
 
 :root {
-    --bg-color: #14213d; /* Dark Blue */
-    --second-bg-color: #000000; /* Black */
+    --bg-color: #001D3D; /* Dark Blue */
+    --second-bg-color: #000814; /* Even Darker Blue */
     --text-color: white;
-    --main-color: #fca311; /* Mustard */
-    --second-color: #fca319; /* Darker Mustard */
+    --main-color: #FFC300; /* Mustard Yellow */
+    --second-color: #FFD60A; /* Brighter Yellow */
 }
+
+
 
 html {
     font-size:62.5%;
@@ -27,9 +29,10 @@ html {
 }
 
 body {
-    background:var(--bg-color);
-    color:var(--text-color);
+    background: var(--bg-color);
+    color: var(--text-color);
 }
+
 
 .header {
     position:fixed;
@@ -47,8 +50,9 @@ body {
 }
 
 .header.sticky {
-    background:black;
+    background: var(--second-bg-color); /* Darker blue for header */
 }
+
 
 .logo {
     font-size:2.5rem;
@@ -160,51 +164,28 @@ section {
 }
 
 .btn-box .btn {
-    position:relative;
-    display:inline-flex;
-    justify-content:center;
-    align-items:center;
-    width:15rem;
-    height:100%;
-    color: var(--second-color);
-    background: linear-gradient(black, black) padding-box, linear-gradient(to right, var(--second-color), var(--main-color)) border-box;
-    border: 1.5px solid transparent;
-    font-size:1.8rem;
-    font-weight:400;
-    /* border:.2rem solid var(--main-color); */
-    border-radius: .4rem;
+    background: linear-gradient(var(--second-bg-color), var(--second-bg-color)) padding-box, 
+                linear-gradient(to right, var(--second-color), var(--main-color)) border-box;
 }
 
 .btn-box .btn:hover {
-    background: linear-gradient(black, black) padding-box, linear-gradient(to right, var(--main-color), var(--second-color)) border-box;
-    color:white;
-    cursor: pointer;
-    transition:0.3s;
+    background: linear-gradient(var(--second-bg-color), var(--second-bg-color)) padding-box, 
+                linear-gradient(to right, var(--main-color), var(--second-color)) border-box;
+    color: var(--text-color);
 }
 
 .btn-box .btn2 {
-    position:relative;
-    display:inline-flex;
-    justify-content:center;
-    align-items:center;
-    width:22rem;
-    height:100%;
-    color: black;
-    font-weight:600;
-    background: linear-gradient(transparent, transparent) padding-box, linear-gradient(to right, var(--second-color), var(--main-color)) border-box;
-    border: 2px solid transparent;
-    font-size:1.8rem;
-    /* border:.2rem solid var(--main-color); */
-    border-radius: .4rem;
+    background: linear-gradient(transparent, transparent) padding-box, 
+                linear-gradient(to right, var(--second-color), var(--main-color)) border-box;
 }
 
 .btn-box .btn2:hover {
-    background-color:var(--main-color);
-    color:white;
-    background: linear-gradient(transparent, transparent) padding-box, linear-gradient(to right, var(--main-color), var(--second-color)) border-box;
-    transition:0.3s;
-    cursor: pointer;
+    background-color: var(--main-color);
+    color: white;
+    background: linear-gradient(transparent, transparent) padding-box, 
+                linear-gradient(to right, var(--main-color), var(--second-color)) border-box;
 }
+
 
 .home-sci {
     position:absolute;
@@ -391,11 +372,10 @@ section {
 }
 
 .experience-column .experience-box {
-    background: linear-gradient(black,black) padding-box, linear-gradient(to bottom, var(--second-color), var(--main-color)) border-box;
-    border-left: 2px solid transparent;
-    
-    /* border-left: .2rem solid var(--second-color); */
+    background: linear-gradient(var(--second-bg-color), var(--second-bg-color)) padding-box, 
+                linear-gradient(to bottom, var(--second-color), var(--main-color)) border-box;
 }
+
 
 .experience-box .experience-content {
     position:relative;
@@ -599,7 +579,7 @@ section {
     left:0;
     width:100%;
     height:100%;
-    background:linear-gradient(rgba(0,0,0,0.1), rgba(103, 0, 86, 0.866));
+    background: linear-gradient(rgba(0,0,0,0.1), var(--main-color));
     display:flex;
     justify-content: center;
     align-items: center;
