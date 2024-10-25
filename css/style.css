@@ -375,28 +375,29 @@ section {
 }
 
 .experience-column .experience-box {
-    background: linear-gradient(#000814, #001D3D) padding-box, /* Corrected Gradient using Darker Blues */
-                linear-gradient(to bottom, #FFC300, #FFD60A) border-box; /* Highlight Yellow Borders */
+    background: linear-gradient(#FFC300, #FFD60A); /* Yellow Gradient Background */
     border-left: 2px solid transparent;
+    border-radius: .6rem; /* Add some border radius to match the styling */
 }
 
 .experience-box .experience-content {
     position: relative;
     padding-left: 2.5rem;
     padding-top: 0.1rem;
+    color: black; /* Black text to contrast with the yellow background */
 }
 
 .experience-content .content {
     position: relative;
     padding: 2.5rem;
-    color: white;
-    background: linear-gradient(#001D3D, #001D3D) padding-box, /* Dark Blue Background inside boxes */
-                linear-gradient(to right, #FFC300, #FFD60A) border-box; /* Yellow Gradient Border */
+    color: black; /* Set text color to black to ensure readability */
+    background: none; /* Remove any background color inside the boxes */
     border: 2px solid transparent;
-    border-radius: 0.6rem;
+    border-radius: .6rem;
     margin-bottom: 2rem;
 }
 
+/* First heading (Company or University name) */
 .experience-content .content h1 {
     font-size: 2rem;
     font-weight: 600;
@@ -406,6 +407,7 @@ section {
     align-items: center;
 }
 
+/* Subheading (Position or Degree) */
 .experience-content .content h2 {
     font-size: 1.7rem;
     font-weight: 400;
@@ -415,6 +417,7 @@ section {
     line-height: 1.4;
 }
 
+/* Logo image alignment */
 .experience-content .content h1 img {
     vertical-align: middle;
     margin-right: 10px;
@@ -438,9 +441,9 @@ section {
 }
 
 .experience-content .content .placetitle img {
-    float: left; 
-    width: 4rem; 
-    height: 4rem; 
+    float: left;
+    width: 4rem;
+    height: 4rem;
     margin-top: 0.3rem;
     margin-right: 1.2rem;
     border-radius: 10%;
@@ -456,7 +459,6 @@ section {
     background: #FFC300; /* Yellow dot indicator */
     border-radius: 50%;
 }
-
 
 
 
