@@ -345,7 +345,7 @@ section {
     flex-direction:column;
     min-height:auto;
     padding-bottom:5rem;
-
+    background-color: #001D3D; /* Dark Blue Background */
 }
 
 .experience .heading {
@@ -356,40 +356,35 @@ section {
     display:flex;
     flex-wrap:wrap;
     gap:5rem;
-
 }
 
 .experience-row .experience-column {
     flex: 1 1 40rem;
-
 }
 
 .experience-column .title {
     font-size:3.5rem;
     font-weight:600;
     margin: 0 0 1.5rem 2.4rem;
-
 }
 
 .experience-column .experience-box {
-    background: linear-gradient(var(--second-bg-color), var(--second-bg-color)) padding-box, 
-                linear-gradient(to bottom, var(--second-color), var(--main-color)) border-box;
+    background: linear-gradient(#000814, #003566) padding-box, /* Gradient using Darker Blues */
+                linear-gradient(to bottom, #FFC300, #FFD60A) border-box; /* Highlight Yellow Borders */
+    border-left: 2px solid transparent;
 }
-
 
 .experience-box .experience-content {
     position:relative;
     padding-left:2.5rem;
     padding-top:0.1rem;
-   
-
 }
 
 .experience-content .content {
     position: relative;
     padding: 2.5rem;
     color: white;
-    background: linear-gradient(rgb(25, 0, 25), rgb(25, 0, 25)) padding-box, linear-gradient(to right, var(--second-color), var(--main-color)) border-box;
+    background: linear-gradient(rgb(25, 0, 25), rgb(25, 0, 25)) padding-box, linear-gradient(to right, #FFC300, #FFD60A) border-box; /* Yellow Gradient Border */
     border: 2px solid transparent;
     border-radius: .6rem;
     margin-bottom: 2rem;
@@ -397,49 +392,45 @@ section {
 
 /* This modifies the first heading (Company or University name) */
 .experience-content .content h1 {
-    font-size: 2rem; /* Adjust font size */
+    font-size: 2rem;
     font-weight: 600;
-    line-height: 1.5; /* Increased line height to prevent overlap */
-    margin-bottom: 1rem; /* Adds spacing below the heading */
+    line-height: 1.5;
+    margin-bottom: 1rem;
     display: flex;
-    align-items: center; /* Aligns logo and text in the same row */
+    align-items: center;
 }
 
 /* This modifies the subheading (Position or Degree) */
 .experience-content .content h2 {
-    font-size: 1.7rem; /* Adjust font size */
+    font-size: 1.7rem;
     font-weight: 400;
-    margin-left: 0; /* Removes left margin */
-    margin-top: 0.5rem; /* Adds space between h1 and h2 */
-    margin-bottom: 1rem; /* Adds spacing below the subheading */
-    line-height: 1.4; /* Adjusted line height for better spacing */
+    margin-left: 0;
+    margin-top: 0.5rem;
+    margin-bottom: 1rem;
+    line-height: 1.4;
 }
 
 /* Adding logo image alignment in h1 */
 .experience-content .content h1 img {
     vertical-align: middle;
-    margin-right: 10px; /* Adds space between logo and text */
-    width: 24px; /* Adjust logo size */
+    margin-right: 10px;
+    width: 24px;
     height: 24px;
 }
 
 .experience-content .content p {
     font-size:1.4rem;
-   
-
 }
 
 .experience-content .content ul {
     font-size:1.4rem;
     margin-left:1.5rem;
     padding-right:0.7rem;
-   
-
 }
 
 .experience-content .content .year {
     font-size:1.5rem;
-    color:var(--second-color);
+    color:#FFC300; /* Highlighting the year in Yellow */
 }
 
 .experience-content .content .placetitle img{
@@ -458,9 +449,10 @@ section {
     left:-1.1rem;
     width:2rem;
     height:2rem;
-    background:var(--second-color);
+    background:#FFC300; /* Yellow dot indicator */
     border-radius:50%;
 }
+
 
 .skills {
     display: flex;
