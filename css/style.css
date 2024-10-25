@@ -351,67 +351,124 @@ section {
     flex-direction: column;
     min-height: auto;
     padding-bottom: 5rem;
-    background: var(--second-bg-color); /* Match the background color with the skills section */
+    background-color: #001D3D; /* Dark Blue Background */
 }
 
 .experience .heading {
-    margin-bottom: 4rem; /* Adjust the margin to be consistent */
+    margin-bottom: 8rem;
+    font-size: 3rem; /* Adjust heading size */
+    text-align: center;
 }
 
 .experience .experience-row {
     display: flex;
+    justify-content: space-between; /* Ensures equal spacing between columns */
     flex-wrap: wrap;
-    gap: 5rem;
+    gap: 2rem; /* Space between the columns */
+    width: 100%;
+    max-width: 1200px; /* Adjusts to the container's width */
 }
 
 .experience-row .experience-column {
-    flex: 1 1 20rem; /* Make it consistent with the skills section */
-    position: relative;
-    background: linear-gradient(rgba(0, 0, 0, 0.9),rgba(0, 0, 0, 0.9)) padding-box, 
-                linear-gradient(to bottom, var(--second-color), var(--main-color)) border-box;
-    border: 2px solid transparent;
-    border-radius: 1rem;
+    flex: 1 1 48%; /* Takes up approximately half the row */
+    max-width: 48%; /* Prevents shrinking */
+}
+
+.experience-column .title {
+    font-size: 3.5rem;
+    font-weight: 600;
+    margin: 0 0 1.5rem 2.4rem;
+    color: #ffffff;
+}
+
+.experience-column .experience-box {
+    background: linear-gradient(#000814, #003566) padding-box, /* Gradient using Darker Blues */
+                linear-gradient(to bottom, #FFC300, #FFD60A) border-box; /* Highlight Yellow Borders */
+    border-left: 2px solid transparent;
     padding: 2rem;
-    margin-bottom: 5rem;
+    border-radius: 1rem; /* Rounded borders */
 }
 
 .experience-box .experience-content {
     position: relative;
-    padding: 2.5rem;
-    background: var(--second-bg-color); /* Ensure background consistency */
-    border-radius: 1rem;
-    color: var(--text-color);
+    padding-left: 2.5rem;
+    padding-top: 0.1rem;
 }
 
-.experience-content .content h1,
+.experience-content .content {
+    position: relative;
+    padding: 2.5rem;
+    color: white;
+    background: linear-gradient(rgb(25, 0, 25), rgb(25, 0, 25)) padding-box, 
+                linear-gradient(to right, #FFC300, #FFD60A) border-box; /* Yellow Gradient Border */
+    border: 2px solid transparent;
+    border-radius: .6rem;
+    margin-bottom: 2rem;
+}
+
+/* This modifies the first heading (Company or University name) */
+.experience-content .content h1 {
+    font-size: 2rem;
+    font-weight: 600;
+    line-height: 1.5;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+}
+
+/* This modifies the subheading (Position or Degree) */
 .experience-content .content h2 {
     font-size: 1.7rem;
-    font-weight: 500;
-    color: var(--text-color);
-    margin-bottom: 1.5rem;
+    font-weight: 400;
+    margin-left: 0;
+    margin-top: 0.5rem;
+    margin-bottom: 1rem;
+    line-height: 1.4;
+}
+
+/* Adding logo image alignment in h1 */
+.experience-content .content h1 img {
+    vertical-align: middle;
+    margin-right: 10px;
+    width: 24px;
+    height: 24px;
 }
 
 .experience-content .content p {
     font-size: 1.4rem;
-    color: var(--text-color);
-    margin-bottom: 1.5rem;
+}
+
+.experience-content .content ul {
+    font-size: 1.4rem;
+    margin-left: 1.5rem;
+    padding-right: 0.7rem;
 }
 
 .experience-content .content .year {
     font-size: 1.5rem;
-    color: var(--main-color); /* Highlight the year in yellow */
+    color: #FFC300; /* Highlighting the year in Yellow */
+}
+
+.experience-content .content .placetitle img {
+    float: left;
+    width: 4rem;
+    height: 4rem;
+    margin-top: 0.3rem;
+    margin-right: 1.2rem;
+    border-radius: 10%;
 }
 
 .experience-box .experience-content::before {
     content: '';
     position: absolute;
     top: 0;
-    left: -1rem;
+    left: -1.1rem;
     width: 2rem;
     height: 2rem;
-    background: var(--main-color); /* Yellow dot indicator */
+    background: #FFC300; /* Yellow dot indicator */
     border-radius: 50%;
 }
+
 
 
 
