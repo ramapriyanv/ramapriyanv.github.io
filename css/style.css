@@ -356,37 +356,28 @@ section {
 
 .experience .heading {
     margin-bottom: 8rem;
-    font-size: 3rem; /* Adjust heading size */
-    text-align: center;
 }
 
 .experience .experience-row {
     display: flex;
-    justify-content: space-between; /* Ensures equal spacing between columns */
     flex-wrap: wrap;
-    gap: 2rem; /* Space between the columns */
-    width: 100%;
-    max-width: 1200px; /* Adjusts to the container's width */
+    gap: 5rem;
 }
 
 .experience-row .experience-column {
-    flex: 1 1 48%; /* Takes up approximately half the row */
-    max-width: 48%; /* Prevents shrinking */
+    flex: 1 1 40rem;
 }
 
 .experience-column .title {
     font-size: 3.5rem;
     font-weight: 600;
     margin: 0 0 1.5rem 2.4rem;
-    color: #ffffff;
 }
 
 .experience-column .experience-box {
-    background: linear-gradient(#000814, #003566) padding-box, /* Gradient using Darker Blues */
+    background: linear-gradient(#000814, #003566) padding-box, /* Corrected Gradient using Darker Blues */
                 linear-gradient(to bottom, #FFC300, #FFD60A) border-box; /* Highlight Yellow Borders */
     border-left: 2px solid transparent;
-    padding: 2rem;
-    border-radius: 1rem; /* Rounded borders */
 }
 
 .experience-box .experience-content {
@@ -399,14 +390,13 @@ section {
     position: relative;
     padding: 2.5rem;
     color: white;
-    background: linear-gradient(rgb(25, 0, 25), rgb(25, 0, 25)) padding-box, 
+    background: linear-gradient(#001D3D, #001D3D) padding-box, /* Dark Blue Background inside boxes */
                 linear-gradient(to right, #FFC300, #FFD60A) border-box; /* Yellow Gradient Border */
     border: 2px solid transparent;
-    border-radius: .6rem;
+    border-radius: 0.6rem;
     margin-bottom: 2rem;
 }
 
-/* This modifies the first heading (Company or University name) */
 .experience-content .content h1 {
     font-size: 2rem;
     font-weight: 600;
@@ -416,7 +406,6 @@ section {
     align-items: center;
 }
 
-/* This modifies the subheading (Position or Degree) */
 .experience-content .content h2 {
     font-size: 1.7rem;
     font-weight: 400;
@@ -426,7 +415,6 @@ section {
     line-height: 1.4;
 }
 
-/* Adding logo image alignment in h1 */
 .experience-content .content h1 img {
     vertical-align: middle;
     margin-right: 10px;
@@ -450,9 +438,9 @@ section {
 }
 
 .experience-content .content .placetitle img {
-    float: left;
-    width: 4rem;
-    height: 4rem;
+    float: left; 
+    width: 4rem; 
+    height: 4rem; 
     margin-top: 0.3rem;
     margin-right: 1.2rem;
     border-radius: 10%;
@@ -468,6 +456,7 @@ section {
     background: #FFC300; /* Yellow dot indicator */
     border-radius: 50%;
 }
+
 
 
 
