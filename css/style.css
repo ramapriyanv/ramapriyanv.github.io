@@ -154,36 +154,56 @@ section {
 
 
 .btn-box {
-    position:relative;
-    display:flex;
-    justify-content:space-between;
-    width:39rem;
-    height:6rem;
-    
-
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    width: 39rem;
+    height: 6rem;
+    margin: 0 auto; /* Center the buttons horizontally */
 }
 
 .btn-box .btn {
-    background: linear-gradient(var(--second-bg-color), var(--second-bg-color)) padding-box, 
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 18rem; /* Equal width for both buttons */
+    height: 100%; 
+    color: black;
+    font-weight: 600;
+    background: linear-gradient(var(--main-color), var(--main-color)) padding-box, 
                 linear-gradient(to right, var(--second-color), var(--main-color)) border-box;
+    border: 2px solid transparent;
+    border-radius: 0.4rem;
+    font-size: 1.8rem;
+    text-align: center;
 }
 
 .btn-box .btn:hover {
-    background: linear-gradient(var(--second-bg-color), var(--second-bg-color)) padding-box, 
+    background: linear-gradient(var(--main-color), var(--main-color)) padding-box, 
                 linear-gradient(to right, var(--main-color), var(--second-color)) border-box;
-    color: var(--text-color);
+    color: white;
 }
 
 .btn-box .btn2 {
-    background: linear-gradient(transparent, transparent) padding-box, 
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 18rem; /* Make sure both buttons have the same width */
+    height: 100%;
+    color: black;
+    font-weight: 600;
+    background: linear-gradient(var(--bg-color), var(--bg-color)) padding-box, 
                 linear-gradient(to right, var(--second-color), var(--main-color)) border-box;
+    border: 2px solid transparent;
+    border-radius: 0.4rem;
+    font-size: 1.8rem;
+    text-align: center;
 }
 
 .btn-box .btn2:hover {
-    background-color: var(--main-color);
-    color: white;
-    background: linear-gradient(transparent, transparent) padding-box, 
+    background: linear-gradient(var(--second-color), var(--second-color)) padding-box, 
                 linear-gradient(to right, var(--main-color), var(--second-color)) border-box;
+    color: white;
 }
 
 
