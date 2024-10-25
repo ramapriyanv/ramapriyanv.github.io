@@ -252,7 +252,7 @@ section {
 .about-img {
     position:relative;
     width:18rem;
-    height:18rem;
+    height:auto;
     border-radius:100%;
     display:flex;
     justify-content:center;
