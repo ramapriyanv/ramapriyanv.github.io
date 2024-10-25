@@ -375,7 +375,7 @@ section {
 }
 
 .experience-column .experience-box {
-    background: linear-gradient(#000814, #003566) padding-box, /* Corrected Gradient using Darker Blues */
+    background: linear-gradient(#000814, #001D3D) padding-box, /* Corrected Gradient using Darker Blues */
                 linear-gradient(to bottom, #FFC300, #FFD60A) border-box; /* Highlight Yellow Borders */
     border-left: 2px solid transparent;
 }
