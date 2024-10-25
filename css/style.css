@@ -391,7 +391,7 @@ section {
     position: relative;
     padding: 2.5rem;
     color: white;
-    background: linear-gradient(#001D3D, #001D3D) padding-box, /* Dark Blue Background inside boxes */
+    background: linear-gradient(#191507, #191507) padding-box, /* Dark Blue Background inside boxes */
                 linear-gradient(to right, #FFC300, #FFD60A) border-box; /* Yellow Gradient Border */
     border: 2px solid transparent;
     border-radius: 0.6rem;
