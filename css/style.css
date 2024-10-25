@@ -375,11 +375,10 @@ section {
 }
 
 .experience-column .experience-box {
-    background: linear-gradient(#191507, #191507) padding-box, /* Darker Blue Background */
-                linear-gradient(to bottom, #FFC300, #FFD60A) border-box; /* Yellow Border */
+    background: linear-gradient(#000814, #003566) padding-box, /* Corrected Gradient using Darker Blues */
+                linear-gradient(to bottom, #FFC300, #FFD60A) border-box; /* Highlight Yellow Borders */
     border-left: 2px solid transparent;
 }
-
 
 .experience-box .experience-content {
     position: relative;
@@ -457,6 +456,7 @@ section {
     background: #FFC300; /* Yellow dot indicator */
     border-radius: 50%;
 }
+
 
 
 
