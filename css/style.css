@@ -13,14 +13,12 @@
 }
 
 :root {
-    --bg-color: #000814; /* Darkest Blue for background */
-    --second-bg-color: #001D3D; /* Dark Blue */
-    --third-bg-color: #003566; /* Lighter Blue */
-    --highlight-color: #FFC300; /* Yellow for highlights */
-    --highlight-color-secondary: #FFD60A; /* Brighter Yellow */
+    --bg-color: #14213d; /* Dark Blue */
+    --second-bg-color: #000000; /* Black */
     --text-color: white;
+    --main-color: #fca311; /* Mustard */
+    --second-color: #fca319; /* Darker Mustard */
 }
-
 
 html {
     font-size:62.5%;
@@ -49,9 +47,8 @@ body {
 }
 
 .header.sticky {
-    background: var(--second-bg-color);
+    background:black;
 }
-
 
 .logo {
     font-size:2.5rem;
