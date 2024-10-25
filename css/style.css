@@ -617,12 +617,12 @@ section {
 
 .projects-layer a i {
     font-size:2rem;
-    color:var(--second-bg-color);
+    color:var(#a37e11);
 }
 
 .certs {
     padding-bottom:15rem;
-    background:var(--second-bg-color);
+    background:var(#a37e11);
 }
 
 .certs h2 {
