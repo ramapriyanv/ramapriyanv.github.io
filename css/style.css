@@ -375,7 +375,7 @@ section {
 }
 
 .experience-column .experience-box {
-    background: linear-gradient(#001D3D, #001D3D) padding-box, /* Darker Blue Background */
+    background: linear-gradient(#191507, #191507) padding-box, /* Darker Blue Background */
                 linear-gradient(to bottom, #FFC300, #FFD60A) border-box; /* Yellow Border */
     border-left: 2px solid transparent;
 }
