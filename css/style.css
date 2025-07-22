@@ -479,10 +479,11 @@ section {
 }
 
 .skills .skills-row {
-    display:flex;
-    flex-wrap:wrap;
-    gap:5rem;
-
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 4rem;
+    width: 100%;
+    max-width: 1200px;
 }
 
 .skills-row .skills-column {
