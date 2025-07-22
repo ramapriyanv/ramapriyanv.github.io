@@ -785,7 +785,7 @@ section {
         font-size:2rem;
         font-weight:600;
         gap:10rem;
-        border:1px solid white;
+       /* border:1px solid white; */
         padding:2rem;
         align-items:center;
     
