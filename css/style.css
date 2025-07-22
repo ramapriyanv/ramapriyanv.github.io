@@ -492,6 +492,8 @@ section {
     font-size:2rem;
     background: linear-gradient(rgba(0, 0, 0, 0.9),rgba(0, 0, 0, 0.9)) padding-box, linear-gradient(to bottom, var(--second-color), var(--main-color)) border-box;
     border: 2px solid transparent;
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
     border-radius:1rem;
     font-weight:600;
     gap:10rem;
