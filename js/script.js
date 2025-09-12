@@ -43,9 +43,20 @@ document.querySelectorAll(
   '.hero-copy, .about-wrap, .skill-card, .timeline .content, .cert, .card'
 ).forEach(el => reveal.observe(el));
 
-// Mobile menu slide toggle + autoclose
+// Mobile menu slide toggle + autoclose + correct offset
 const menuBtn = document.querySelector('.menu-toggle');
 const mobileNav = document.querySelector('.mobile-nav');
+const topBar   = document.querySelector('.sidebar');
+
+function setMobileNavTop(){
+  if (!topBar || !mobileNav) return;
+  const h = topBar.getBoundingClientRect().height;
+  // write CSS var so the menu sits just below the bar
+  document.documentElement.style.setProperty('--bar-h', `${h}px`);
+}
+setMobileNavTop();
+window.addEventListener('resize', setMobileNavTop);
+window.addEventListener('load', setMobileNavTop);
 
 if (menuBtn && mobileNav){
   const updateAria = () => {
@@ -61,7 +72,7 @@ if (menuBtn && mobileNav){
     updateAria();
   });
 
-  // Auto-close when any link is clicked
+  // Auto-close when a link is tapped
   mobileNav.querySelectorAll('a').forEach(a => {
     a.addEventListener('click', () => {
       mobileNav.classList.remove('open');
@@ -71,4 +82,5 @@ if (menuBtn && mobileNav){
 
   updateAria();
 }
+
 

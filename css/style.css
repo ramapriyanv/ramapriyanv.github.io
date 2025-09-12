@@ -328,40 +328,45 @@ a{ text-decoration:none; color:inherit; }
   font-size: 1.4rem;         /* bigger dates */
 }
 
-/* Mobile menu (hidden by default, animated) */
-.menu-toggle{
-  display:none;            /* shown only on mobile */
-  margin-left:auto;
-  font-size:2.4rem;
-  background:none;
-  border:none;
-  color:var(--text);
-  cursor:pointer;
+/* Hamburger (mobile only) */
+@media (max-width:880px){
+  .menu-toggle{
+    display:block;
+    margin-left:auto;
+    font-size:2.4rem;
+    background:none;
+    border:none;
+    color:var(--text);
+    cursor:pointer;
+  }
 }
 
+/* Mobile menu (animated) */
 .mobile-nav{
-  display:flex;            /* animate height, so keep flex (with overflow hidden) */
+  /* DO NOT set display:none anywhere! */
+  display:flex;                 /* keep flex so children stack */
   flex-direction:column;
   gap:1.2rem;
+
+  position:fixed; left:0; right:0;
+  top:var(--bar-h,74px);        /* js will update this */
+  z-index:999;                  /* above everything */
+
   background:var(--panel);
-  padding:0 1.6rem;        /* vertical padding animates in */
   border-top:1px solid var(--line);
 
-  position:fixed; left:0; right:0; top:74px;  /* below the top bar on mobile */
-  z-index:9;
-
+  /* slide open/close */
   max-height:0;
   overflow:hidden;
   opacity:0;
   transform:translateY(-6px);
+  padding:0 1.6rem;
   transition:
     max-height .35s ease,
     opacity .25s ease,
     transform .35s ease,
     padding .25s ease;
 }
-
-/* when open */
 .mobile-nav.open{
   max-height:60vh;
   opacity:1;
@@ -378,28 +383,12 @@ a{ text-decoration:none; color:inherit; }
 .mobile-nav a:hover{ color:var(--accent); }
 
 .mobile-socials{
-  display:flex;
-  gap:1rem;
-  margin: .4rem 0 1rem;
+  display:flex; gap:1rem; margin:.4rem 0 1rem;
 }
 .mobile-socials a{
   width:40px; height:40px; display:inline-flex; align-items:center; justify-content:center;
   border:1px solid var(--line); border-radius:10px; color:var(--accent); background:rgba(255,255,255,.03);
 }
 
-/* rotate icon when open */
+/* optional: icon rotates when open */
 .menu-toggle.open i{ transform:rotate(90deg); transition:transform .2s ease; }
-
-/* Show hamburger + convert sidebar to top bar on mobile */
-@media(max-width:880px){
-  .menu-toggle{ display:block; }
-  .sidebar{
-    position:fixed; width:100%; height:auto; flex-direction:row; align-items:center;
-    gap:1rem; padding:1rem 1.4rem;
-  }
-  .brand{ flex:1; }
-  .side-nav{ display:none; }       /* we use mobile-nav instead */
-  .side-socials{ display:none; }   /* moved into mobile-nav */
-  .resume-btn{ display:none; }     /* shown in mobile-nav */
-  .main{ margin-left:0; padding-top:74px; }  /* keep content below top bar */
-}
