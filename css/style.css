@@ -342,3 +342,25 @@ a{ text-decoration:none; color:inherit; }
   border:1px solid rgba(255,213,74,.35);          
   box-shadow:0 0 0 4px rgba(255,213,74,.08), var(--shadow);
 }
+
+/* Footer boxed style */
+.footer {
+  margin-top: 3rem;
+  padding: 3rem 0 5rem;
+  color: var(--muted);
+  font-size: 1.5rem;
+  text-align: center;
+
+  border: 1px solid rgba(255,213,74,.35);    /* golden border */
+  border-radius: 1rem;                       /* smooth rounded edges */
+  box-shadow: 0 0 0 4px rgba(255,213,74,.08), var(--shadow);
+  background: rgba(17,24,38,.6);             /* match other cards */
+}
+
+.footer-links {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.4rem;
+  margin-top: 1rem;
+}
