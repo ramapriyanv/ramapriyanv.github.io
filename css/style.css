@@ -328,20 +328,27 @@ a{ text-decoration:none; color:inherit; }
   .certs .cert-grid{grid-template-columns:repeat(2,1fr)}
   .about .about-wrap{grid-template-columns:1fr}
 }
-@media(max-width:880px){
-  .sidebar{
-    position: fixed;
-    left: 0;
-    top: 0;
-    bottom: auto;                 /* prevents full-height overlay */
-    width: 100%;
-    height: 74px;                 /* fixed header height */
-    flex-direction: row;
-    align-items: center;
+@media (max-width:880px){
+  /* show them inside the drawer */
+  .side-nav .side-socials{
+    display: flex;
     gap: 1rem;
-    padding: 1rem 1.4rem;
-    z-index: 20;
+    width: 100%;
+    margin-top: auto;          /* push to bottom of drawer */
+    margin-bottom: .6rem;
   }
+  .side-nav .side-socials a{
+    flex: 1;
+    max-width: 70px;           /* same as desktop look */
+    height: 48px;
+  }
+
+  .side-nav .resume-btn{
+    display: flex;
+    width: 100%;
+    margin: 0 0 .4rem 0;       /* a little breathing room above footer edge */
+  }
+}
 
   .brand{flex:1}
 
