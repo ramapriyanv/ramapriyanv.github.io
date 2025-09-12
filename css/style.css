@@ -538,3 +538,46 @@ a{ text-decoration:none; color:inherit; }
   }
 }
 
+/* Ensure header lays out brand + button cleanly */
+.sidebar{
+  display:flex;
+  justify-content: space-between;   /* spread brand and button */
+}
+
+/* Brand must not overlap the button */
+.brand{
+  flex: 1 1 auto;
+  max-width: calc(100% - 64px);     /* 44px button + ~20px gap */
+  position: relative;
+  z-index: 1;                        /* under the button */
+}
+
+/* Make the hamburger the topmost, fully tappable box */
+.menu-btn{
+  flex: 0 0 44px;
+  width: 44px;
+  height: 44px;
+  position: relative;
+  z-index: 50;                       /* above brand hitbox */
+  pointer-events: auto;
+}
+
+/* Taps on the icon shouldn't fall through to elements underneath */
+.menu-btn i{ pointer-events: none; }
+
+/* Make "View My Resume" in the mobile drawer match desktop */
+@media (max-width:880px){
+  /* target the button when it sits inside the drawer */
+  .side-nav .resume-btn,
+  .side-nav a.resume-btn:link,
+  .side-nav a.resume-btn:visited {
+    color: #111 !important;        /* dark text */
+    font-weight: 800;               /* bolder like desktop */
+    text-shadow: none !important;   /* ensure no dim overlay */
+  }
+  .side-nav .resume-btn i {
+    color: #111 !important;         /* dark icon too */
+    opacity: 1 !important;
+  }
+}
+
