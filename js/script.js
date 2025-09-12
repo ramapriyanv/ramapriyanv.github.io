@@ -43,83 +43,49 @@ document.querySelectorAll(
   '.hero-copy, .about-wrap, .skill-card, .timeline .content, .cert, .card'
 ).forEach(el => reveal.observe(el));
 
-
 // --- Mobile drawer toggle ---
 const menuBtn  = document.querySelector('.menu-btn');
-const drawer   = document.querySelector('.side-nav');   // drawer panel
-const backdrop = document.querySelector('.backdrop');   // dim layer
+const drawer   = document.querySelector('.side-nav');     // the nav panel
+const backdrop = document.querySelector('.backdrop');
 
 function openDrawer(){
   drawer.classList.add('open');
-  backdrop.classList.remove('hidden');          // show backdrop
+  backdrop.classList.remove('hidden');
   menuBtn?.setAttribute('aria-expanded','true');
-
-  // lock page scroll behind drawer
+  // Lock page scroll under the drawer
   document.documentElement.style.overflow = 'hidden';
   document.body.style.overflow = 'hidden';
 }
 
 function closeDrawer(){
   drawer.classList.remove('open');
-  backdrop.classList.add('hidden');             // hide backdrop
+  backdrop.classList.add('hidden');
   menuBtn?.setAttribute('aria-expanded','false');
-
-  // restore page scroll
+  // Restore scroll
   document.documentElement.style.overflow = '';
   document.body.style.overflow = '';
 }
 
-// iOS-safe tap handling for the hamburger
-menuBtn?.addEventListener('click', (e)=>{
-  e.preventDefault();
-  e.stopPropagation();
+// Replace your existing click listener with this (includes iOS fix)
+menuBtn?.addEventListener('click', (e) => {
+  e.preventDefault();      // stops jumping to #home
+  e.stopPropagation();     // prevents bubbling into the brand <a>
   drawer.classList.contains('open') ? closeDrawer() : openDrawer();
 });
-menuBtn?.addEventListener('touchstart', (e)=>{
+
+// iOS Safari: block ghost taps passing through to underlying elements
+menuBtn?.addEventListener('touchstart', (e) => {
   e.preventDefault();
   e.stopPropagation();
-}, { passive:false });
+}, { passive: false });
 
-// Backdrop tap closes; nav links/ESC close
-backdrop?.addEventListener('click', closeDrawer);
-drawer?.querySelectorAll('a').forEach(a => a.addEventListener('click', closeDrawer));
-document.addEventListener('keydown', (e)=>{ if (e.key === 'Escape') closeDrawer(); });
 
-// --- Move socials + resume into the drawer on mobile, back on desktop ---
-(function () {
-  function placeDrawerExtras() {
-    const drawerNav   = document.querySelector('.side-nav');
-    const sidebarWrap = document.querySelector('.sidebar');
-    const socialsEl   = document.querySelector('.side-socials');
-    const resumeEl    = document.querySelector('.resume-btn');
+// Close on nav link tap (nice for single-page sites)
+drawer?.querySelectorAll('a').forEach(a => {
+  a.addEventListener('click', closeDrawer);
+});
 
-    if (!drawerNav || !sidebarWrap) return;
-
-    const isMobile = window.matchMedia('(max-width: 880px)').matches;
-
-    if (isMobile) {
-      socialsEl && socialsEl.parentElement !== drawerNav && drawerNav.appendChild(socialsEl);
-      resumeEl  && resumeEl.parentElement  !== drawerNav && drawerNav.appendChild(resumeEl);
-    } else {
-      socialsEl && socialsEl.parentElement !== sidebarWrap && sidebarWrap.appendChild(socialsEl);
-      resumeEl  && resumeEl.parentElement  !== sidebarWrap && sidebarWrap.appendChild(resumeEl);
-    }
-  }
-
-  // expose for resize cleanup
-  window.placeDrawerExtras = placeDrawerExtras;
-
-  document.addEventListener('DOMContentLoaded', placeDrawerExtras);
-  window.addEventListener('resize', placeDrawerExtras);
-  setTimeout(placeDrawerExtras, 0);
-})();
-
-// Never keep the drawer/backdrop open on desktop after resizing
-function syncDesktopState(){
-  if (window.matchMedia('(min-width: 881px)').matches){
-    window.placeDrawerExtras?.();
-    closeDrawer();
-  }
-}
-window.addEventListener('resize', syncDesktopState);
-document.addEventListener('DOMContentLoaded', syncDesktopState);
+// Close on Escape key
+document.addEventListener('keydown', (e)=>{
+  if (e.key === 'Escape') closeDrawer();
+});

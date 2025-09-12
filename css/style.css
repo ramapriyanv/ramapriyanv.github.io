@@ -338,21 +338,14 @@ a{ text-decoration:none; color:inherit; }
     height: 74px;                 /* fixed header height */
     flex-direction: row;
     align-items: center;
-    justify-content: space-between; /* keep brand and button apart */
     gap: 1rem;
     padding: 1rem 1.4rem;
     z-index: 20;
   }
 
-  /* Brand must not overlap the button */
-  .brand{
-    flex: 1 1 auto;
-    max-width: calc(100% - 64px);   /* room for 44px button + gap */
-    position: relative;
-    z-index: 1;                      /* under the button */
-  }
+  .brand{flex:1}
 
-  /* Drawer panel */
+  /* Drawer panel instead of hiding nav */
   .side-nav{
     position: fixed;
     top: 74px; right: 0;
@@ -368,43 +361,13 @@ a{ text-decoration:none; color:inherit; }
     transform: translateX(100%);
     transition: transform .25s ease;
     z-index: 19;
-
-    /* allow scrolling inside the drawer */
-    overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
   }
   .side-nav.open{ transform: translateX(0); }
 
-  /* Drawer — must be scrollable on mobile */
-.side-nav{
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
-  z-index: 19;            /* drawer */
-}
-.sidebar{ z-index: 20; }  /* header */
-.backdrop{ z-index: 15; } /* dim layer under drawer */
-
-
-  /* SHOW socials + resume inside the drawer at the bottom */
-  .side-nav .side-socials{
-    display:flex;
-    gap:1rem;
-    width:100%;
-    margin-top:auto;
-    margin-bottom:.6rem;
-    justify-content:space-between;
-  }
-  .side-nav .side-socials a{
-    flex:1; max-width:70px; height:48px;
-  }
-  .side-nav .resume-btn{
-    display:flex; width:100%; margin:0 0 .4rem 0;
-  }
-
-  /* Content under fixed header */
+  .side-socials{display:none}
+  .resume-btn{display:none}
   .main{margin-left:0;padding-top:74px}
 }
-
 
 @media(max-width:640px){
   .skills .skills-grid{grid-template-columns:1fr}
@@ -442,56 +405,23 @@ a{ text-decoration:none; color:inherit; }
   box-shadow:0 0 0 4px rgba(255,213,74,.08), var(--shadow);
 }
 
-/* Brand must not overlap the button */
-.brand{
-  flex: 1 1 auto;
-  max-width: calc(100% - 64px);  /* room for 44px button + gap */
-  position: relative;
-  z-index: 1;                    /* beneath the button */
-}
-
-/* Button sits on top and consumes the tap */
+/* Hamburger button (hidden on desktop) */
 .menu-btn{
-  display: inline-flex;
-  flex: 0 0 44px;
-  width: 44px; height: 44px;
-  position: relative;
-  z-index: 100;
-  pointer-events: auto;
+  display:none;
+  width:44px; height:44px;
+  align-items:center; justify-content:center;
+  border:1px solid var(--line);
+  border-radius:8px;
+  background:rgba(255,255,255,.05);
+  color:var(--accent);
+  font-size:2.2rem;
+  cursor:pointer;
+  position:relative; 
+  z-index:21;          /* ensures button receives the tap */
 }
-.menu-btn i { pointer-events: none; }
 
 
-
-/* Remove the bottom divider from the last content section (fixes the thin line above footer) */
-.section:last-of-type { border-bottom: none; }
-
-/* Make "View My Resume" in the mobile drawer match desktop */
-@media (max-width:880px){
-  /* target the button when it sits inside the drawer */
-  .side-nav .resume-btn,
-  .side-nav a.resume-btn:link,
-  .side-nav a.resume-btn:visited {
-    color: #111 !important;        /* dark text */
-    font-weight: 800;               /* bolder like desktop */
-    text-shadow: none !important;   /* ensure no dim overlay */
-  }
-  .side-nav .resume-btn i {
-    color: #111 !important;         /* dark icon too */
-    opacity: 1 !important;
-  }
-}
-.backdrop{
-  position:fixed; inset:0;
-  background:rgba(0,0,0,.45);
-  backdrop-filter:blur(2px);
-  z-index:15;               /* below drawer (19), above page */
-}
-.backdrop.hidden { display: none; }
-
-/* ====== OVERRIDE PATCH (put at END of style.css) ====== */
-
-/* Backdrop (hidden by default) */
+/* Backdrop for the drawer */
 .backdrop{
   position:fixed; inset:0;
   background:rgba(0,0,0,.45);
@@ -500,55 +430,14 @@ a{ text-decoration:none; color:inherit; }
 }
 .backdrop.hidden{ display:none; }
 
-/* Desktop reset guard (ensures no mobile styles leak) */
-@media (min-width: 881px){
-  .side-nav{
-    position: static !important;
-    height: auto !important;
-    width: auto !important;
-    transform: none !important;
-    background: transparent !important;
-    border: 0 !important;
-    box-shadow: none !important;
-    overflow: visible !important;
-    pointer-events: auto !important;
-    padding: 0 !important;
-    gap: 1rem;
-    display: flex;
-    flex-direction: column;
-  }
-  .backdrop{ display: none !important; }
-  .sidebar > .side-socials,
-  .sidebar > .resume-btn{ display: flex !important; }
-}
-
-/* ---------- Mobile header + drawer (<=880px) ---------- */
+/* Turn the side-nav into a slide-in drawer on mobile */
 @media (max-width:880px){
-  /* Fixed top header */
-  .sidebar{
-    position: fixed; left:0; top:0; bottom:auto;
-    width:100%; height:74px;
-    display:flex; justify-content:space-between; align-items:center;
-    gap:1rem; padding:1rem 1.4rem; z-index:20;
-  }
+  .menu-btn{ display:inline-flex; }
 
-  /* Brand must not overlap the hamburger */
-  .brand{
-    flex:1 1 auto;
-    max-width: calc(100% - 64px);
-    position:relative; z-index:1;
-  }
-
-  /* Hamburger full hit-area on top */
-  .menu-btn{
-    display:inline-flex; flex:0 0 44px; width:44px; height:44px;
-    position:relative; z-index:100; pointer-events:auto;
-  }
-  .menu-btn i{ pointer-events:none; }
-
-  /* Drawer panel */
+  /* Replace display:none with a drawer panel */
   .side-nav{
-    position:fixed; top:74px; right:0;
+    position:fixed;
+    top:74px; right:0;                  /* slide from right; change to left:0 if preferred */
     height:calc(100vh - 74px);
     width:80vw; max-width:360px;
     display:flex; flex-direction:column; gap:.8rem;
@@ -556,26 +445,19 @@ a{ text-decoration:none; color:inherit; }
     background:#0A0F1A;
     border-left:1px solid var(--line);
     box-shadow:-12px 0 30px rgba(0,0,0,.5);
-    transform:translateX(100%);
+    transform:translateX(100%);         /* hidden off-canvas */
     transition:transform .25s ease;
-    overflow-y:auto; -webkit-overflow-scrolling:touch;
     z-index:19;
   }
   .side-nav.open{ transform:translateX(0); }
 
-  /* Drawer bottom content */
-  .side-nav .side-socials{
-    display:flex; gap:1rem; width:100%;
-    margin-top:auto; margin-bottom:.6rem; justify-content:space-between;
-  }
-  .side-nav .side-socials a{ flex:1; max-width:70px; height:48px; }
-  .side-nav .resume-btn{ display:flex; width:100%; margin:0 0 .4rem 0; }
+  /* Keep these hidden in compact header */
+  .side-socials{ display:none; }
+  .resume-btn{ display:none; }
 
-  /* Hide the sidebar copies while header is fixed (JS moves them) */
-  .sidebar > .side-socials,
-  .sidebar > .resume-btn{ display:none; }
-
-  /* Content offset below fixed header */
+  /* Main content under fixed header */
   .main{ margin-left:0; padding-top:74px; }
 }
-/* ====== END OVERRIDE PATCH ====== */
+
+/* Remove the bottom divider from the last content section (fixes the thin line above footer) */
+.section:last-of-type { border-bottom: none; }
