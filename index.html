@@ -12,6 +12,11 @@
   <!-- Sidebar (Just for PC) -->
   <aside class="sidebar">
     <a class="brand" href="#home">
+      <!-- Mobile hamburger -->
+<button class="menu-btn" aria-label="Toggle menu" aria-controls="mobile-nav" aria-expanded="false">
+  <i class='bx bx-menu'></i>
+</button>
+
       <img src="images/about.jpeg" alt="Avatar"/>
       <div>
         <h1>Ramapriyan</h1>
@@ -19,7 +24,7 @@
       </div>
     </a>
 
-    <nav class="side-nav">
+    <nav id="mobile-nav" class="side-nav">
       <a href="#home" class="active"><i class='bx bx-home'></i> Home</a>
       <a href="#about"><i class='bx bx-user'></i> About</a>
       <a href="#skills"><i class='bx bx-scatter-chart'></i> Skills</a>
@@ -38,6 +43,9 @@
       <i class='bx bx-file-blank'></i> View Resume
     </a>
   </aside>
+  <!-- Backdrop for the mobile drawer -->
+<div class="backdrop hidden"></div>
+
 
   <!-- Main content -->
   <main class="main">
@@ -305,7 +313,6 @@
           <a href="mailto:ramapriyanv@gmail.com" target="_blank"><i class='bx bxs-envelope'></i></a>
         </div>
       </footer>
-    </section>
   </main>
 
   <script src="js/script.js"></script>
