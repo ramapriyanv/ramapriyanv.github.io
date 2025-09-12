@@ -375,6 +375,16 @@ a{ text-decoration:none; color:inherit; }
   }
   .side-nav.open{ transform: translateX(0); }
 
+  /* Drawer — must be scrollable on mobile */
+.side-nav{
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  z-index: 19;            /* drawer */
+}
+.sidebar{ z-index: 20; }  /* header */
+.backdrop{ z-index: 15; } /* dim layer under drawer */
+
+
   /* SHOW socials + resume inside the drawer at the bottom */
   .side-nav .side-socials{
     display:flex;
@@ -432,25 +442,25 @@ a{ text-decoration:none; color:inherit; }
   box-shadow:0 0 0 4px rgba(255,213,74,.08), var(--shadow);
 }
 
-/* Hamburger button (hidden on desktop) */
+/* Brand must not overlap the button */
+.brand{
+  flex: 1 1 auto;
+  max-width: calc(100% - 64px);  /* room for 44px button + gap */
+  position: relative;
+  z-index: 1;                    /* beneath the button */
+}
+
+/* Button sits on top and consumes the tap */
 .menu-btn{
-  display:none;
-  width:44px; height:44px;
-  align-items:center; justify-content:center;
-  border:1px solid var(--line);
-  border-radius:8px;
-  background:rgba(255,255,255,.05);
-  color:var(--accent);
-  font-size:2.2rem;
-  cursor:pointer;
-  position:relative; 
-  z-index:21;
+  display: inline-flex;
+  flex: 0 0 44px;
+  width: 44px; height: 44px;
+  position: relative;
+  z-index: 100;
+  pointer-events: auto;
 }
-/* Mobile: show and guarantee hit area */
-@media (max-width:880px){
-  .menu-btn{ display:inline-flex; flex:0 0 44px; width:44px; height:44px; position:relative; z-index:100; pointer-events:auto; }
-  .menu-btn i{ pointer-events:none; }
-}
+.menu-btn i { pointer-events: none; }
+
 
 
 /* Remove the bottom divider from the last content section (fixes the thin line above footer) */
@@ -477,4 +487,5 @@ a{ text-decoration:none; color:inherit; }
   backdrop-filter:blur(2px);
   z-index:15;               /* below drawer (19), above page */
 }
+.backdrop.hidden { display: none; }
 

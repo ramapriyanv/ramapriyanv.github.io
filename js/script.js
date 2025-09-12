@@ -44,74 +44,53 @@ document.querySelectorAll(
 ).forEach(el => reveal.observe(el));
 
 // --- Mobile drawer toggle ---
+// Elements
 const menuBtn  = document.querySelector('.menu-btn');
-const drawer   = document.querySelector('.side-nav');     // the nav panel
+const drawer   = document.querySelector('.side-nav');
 const backdrop = document.querySelector('.backdrop');
 
+// Open/close helpers
 function openDrawer(){
   drawer.classList.add('open');
-  backdrop.classList.remove('hidden');
+  backdrop.classList.remove('hidden');        // show backdrop
   menuBtn?.setAttribute('aria-expanded','true');
-  // Lock page scroll under the drawer
+  // lock page scroll
   document.documentElement.style.overflow = 'hidden';
   document.body.style.overflow = 'hidden';
 }
 
 function closeDrawer(){
   drawer.classList.remove('open');
-  backdrop.classList.add('hidden');
+  backdrop.classList.add('hidden');           // hide backdrop
   menuBtn?.setAttribute('aria-expanded','false');
-  // Restore scroll
+  // restore scroll
   document.documentElement.style.overflow = '';
   document.body.style.overflow = '';
 }
 
-// Replace your existing click listener with this (includes iOS fix)
-menuBtn?.addEventListener('click', (e) => {
-  e.preventDefault();      // stops jumping to #home
-  e.stopPropagation();     // prevents bubbling into the brand <a>
-  drawer.classList.contains('open') ? closeDrawer() : openDrawer();
-});
-
-// iOS Safari: block ghost taps passing through to underlying elements
-menuBtn?.addEventListener('touchstart', (e) => {
+// Hamburger (iOS-safe)
+menuBtn?.addEventListener('click', (e)=>{
   e.preventDefault();
   e.stopPropagation();
-}, { passive: false });
-
-
-// Close on nav link tap (nice for single-page sites)
-drawer?.querySelectorAll('a').forEach(a => {
-  a.addEventListener('click', closeDrawer);
+  drawer.classList.contains('open') ? closeDrawer() : openDrawer();
 });
+menuBtn?.addEventListener('touchstart', (e)=>{
+  e.preventDefault();
+  e.stopPropagation();
+}, { passive:false });
 
-// Close on Escape key
-document.addEventListener('keydown', (e)=>{
-  if (e.key === 'Escape') closeDrawer();
-});
-// --- Safely move socials + resume into the drawer on mobile, back on desktop
-(function () {
-  function placeDrawerExtras() {
-    const drawerNav   = document.querySelector('.side-nav');
-    const sidebarWrap = document.querySelector('.sidebar');
-    const socialsEl   = document.querySelector('.side-socials');
-    const resumeEl    = document.querySelector('.resume-btn');
+// Backdrop tap closes
+backdrop?.addEventListener('click', closeDrawer);
 
-    if (!drawerNav || !sidebarWrap) return;
+// Close on nav link tap + Escape
+drawer?.querySelectorAll('a').forEach(a => a.addEventListener('click', closeDrawer));
+document.addEventListener('keydown', (e)=>{ if (e.key === 'Escape') closeDrawer(); });
 
-    const isMobile = window.matchMedia('(max-width: 880px)').matches;
+// Make sure desktop never keeps the drawer/backdrop open after resizing
+function syncDesktopState(){
+  if (window.matchMedia('(min-width: 881px)').matches) closeDrawer();
+}
+window.addEventListener('resize', syncDesktopState);
+document.addEventListener('DOMContentLoaded', syncDesktopState);
 
-    if (isMobile) {
-      if (socialsEl && socialsEl.parentElement !== drawerNav) drawerNav.appendChild(socialsEl);
-      if (resumeEl  && resumeEl.parentElement  !== drawerNav) drawerNav.appendChild(resumeEl);
-    } else {
-      if (socialsEl && socialsEl.parentElement !== sidebarWrap) sidebarWrap.appendChild(socialsEl);
-      if (resumeEl  && resumeEl.parentElement  !== sidebarWrap) sidebarWrap.appendChild(resumeEl);
-    }
-  }
-
-  document.addEventListener('DOMContentLoaded', placeDrawerExtras);
-  window.addEventListener('resize', placeDrawerExtras);
-  setTimeout(placeDrawerExtras, 0);
-})();
 
