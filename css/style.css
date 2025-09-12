@@ -489,3 +489,93 @@ a{ text-decoration:none; color:inherit; }
 }
 .backdrop.hidden { display: none; }
 
+/* ====== OVERRIDE PATCH (put at END of style.css) ====== */
+
+/* Backdrop (hidden by default) */
+.backdrop{
+  position:fixed; inset:0;
+  background:rgba(0,0,0,.45);
+  backdrop-filter:blur(2px);
+  z-index:15;
+}
+.backdrop.hidden{ display:none; }
+
+/* Desktop reset guard (ensures no mobile styles leak) */
+@media (min-width: 881px){
+  .side-nav{
+    position: static !important;
+    height: auto !important;
+    width: auto !important;
+    transform: none !important;
+    background: transparent !important;
+    border: 0 !important;
+    box-shadow: none !important;
+    overflow: visible !important;
+    pointer-events: auto !important;
+    padding: 0 !important;
+    gap: 1rem;
+    display: flex;
+    flex-direction: column;
+  }
+  .backdrop{ display: none !important; }
+  .sidebar > .side-socials,
+  .sidebar > .resume-btn{ display: flex !important; }
+}
+
+/* ---------- Mobile header + drawer (<=880px) ---------- */
+@media (max-width:880px){
+  /* Fixed top header */
+  .sidebar{
+    position: fixed; left:0; top:0; bottom:auto;
+    width:100%; height:74px;
+    display:flex; justify-content:space-between; align-items:center;
+    gap:1rem; padding:1rem 1.4rem; z-index:20;
+  }
+
+  /* Brand must not overlap the hamburger */
+  .brand{
+    flex:1 1 auto;
+    max-width: calc(100% - 64px);
+    position:relative; z-index:1;
+  }
+
+  /* Hamburger full hit-area on top */
+  .menu-btn{
+    display:inline-flex; flex:0 0 44px; width:44px; height:44px;
+    position:relative; z-index:100; pointer-events:auto;
+  }
+  .menu-btn i{ pointer-events:none; }
+
+  /* Drawer panel */
+  .side-nav{
+    position:fixed; top:74px; right:0;
+    height:calc(100vh - 74px);
+    width:80vw; max-width:360px;
+    display:flex; flex-direction:column; gap:.8rem;
+    padding:1.6rem;
+    background:#0A0F1A;
+    border-left:1px solid var(--line);
+    box-shadow:-12px 0 30px rgba(0,0,0,.5);
+    transform:translateX(100%);
+    transition:transform .25s ease;
+    overflow-y:auto; -webkit-overflow-scrolling:touch;
+    z-index:19;
+  }
+  .side-nav.open{ transform:translateX(0); }
+
+  /* Drawer bottom content */
+  .side-nav .side-socials{
+    display:flex; gap:1rem; width:100%;
+    margin-top:auto; margin-bottom:.6rem; justify-content:space-between;
+  }
+  .side-nav .side-socials a{ flex:1; max-width:70px; height:48px; }
+  .side-nav .resume-btn{ display:flex; width:100%; margin:0 0 .4rem 0; }
+
+  /* Hide the sidebar copies while header is fixed (JS moves them) */
+  .sidebar > .side-socials,
+  .sidebar > .resume-btn{ display:none; }
+
+  /* Content offset below fixed header */
+  .main{ margin-left:0; padding-top:74px; }
+}
+/* ====== END OVERRIDE PATCH ====== */
