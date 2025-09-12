@@ -228,14 +228,32 @@ a{ text-decoration:none; color:inherit; }
 }
 
 .chip {
-  align-self:flex-start;          /* left-aligned (default) */
-  margin-top:auto;                /* forces it to bottom */
+  display:inline-flex;
+  align-items:center;
+  gap:.4rem;
+  text-decoration:none;
+  font-size:1.35rem;
+  font-weight:500;
+  color:var(--text);
+
+  background:rgba(255,255,255,.05);   /* darker box */
+  border:1px solid var(--line);
+  border-radius:.6rem;
+  padding:.6rem 1rem;
+
+  transition:background .2s, transform .12s;
 }
 
-/* If you prefer center alignment: */
-.chip.center { 
-  align-self:center; 
+.chip i {
+  font-size:1.5rem;                  /* bigger icon */
+  opacity:.9;
 }
+
+.chip:hover {
+  background:rgba(255,255,255,.12);
+  transform:translateY(-2px);
+}
+
 
 
 /* ---------------- Footer ---------------- */
