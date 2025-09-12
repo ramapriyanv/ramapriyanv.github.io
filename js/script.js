@@ -85,32 +85,6 @@ drawer?.querySelectorAll('a').forEach(a => {
   a.addEventListener('click', closeDrawer);
 });
 
-// --- Move socials + resume into the drawer on mobile, back on desktop ---
-const drawerNav   = document.querySelector('.side-nav');
-const sidebarWrap = document.querySelector('.sidebar');
-const socialsEl   = document.querySelector('.side-socials');
-const resumeEl    = document.querySelector('.resume-btn');
-
-function placeDrawerExtras(){
-  const isMobile = window.matchMedia('(max-width: 880px)').matches;
-  if (!drawerNav || !sidebarWrap) return;
-
-  if (isMobile) {
-    // append to drawer (at the end)
-    if (socialsEl && socialsEl.parentElement !== drawerNav) drawerNav.appendChild(socialsEl);
-    if (resumeEl  && resumeEl.parentElement  !== drawerNav) drawerNav.appendChild(resumeEl);
-  } else {
-    // move back to the sidebar (original location)
-    if (socialsEl && socialsEl.parentElement !== sidebarWrap) sidebarWrap.appendChild(socialsEl);
-    if (resumeEl  && resumeEl.parentElement  !== sidebarWrap) sidebarWrap.appendChild(resumeEl);
-  }
-}
-
-window.addEventListener('resize', placeDrawerExtras);
-document.addEventListener('DOMContentLoaded', placeDrawerExtras);
-placeDrawerExtras();
-
-
 // Close on Escape key
 document.addEventListener('keydown', (e)=>{
   if (e.key === 'Escape') closeDrawer();
