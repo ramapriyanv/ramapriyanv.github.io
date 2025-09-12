@@ -263,10 +263,10 @@ a{ text-decoration:none; color:inherit; }
   font-weight: 600;
   color: var(--text);
 
-  /* 🔥 darker background than main page */
-  background: rgba(10, 15, 26, .9);
+  /* same as site background */
+  background: #0A0F1A;               /* or use var(--bg) if you have one */
 
-  /* 🔥 yellow border + glow */
+  /* yellow border + subtle glow */
   border: 1px solid rgba(255,213,74,.35);
   border-radius: .8rem;
   box-shadow: 0 0 0 4px rgba(255,213,74,.08), var(--shadow);
@@ -279,12 +279,12 @@ a{ text-decoration:none; color:inherit; }
 }
 
 .chip:hover {
-  background: rgba(10, 15, 26, 1);    /* slightly darker on hover */
   transform: translateY(-2px);
   box-shadow: 0 0 6px rgba(255,213,74,.5),
               0 0 0 4px rgba(255,213,74,.08),
               var(--shadow);
 }
+
 
 
 .projects.section {
