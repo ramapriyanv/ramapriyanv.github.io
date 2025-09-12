@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', onScroll);
 onScroll();
 
 
-// Reveal on intersect
+// Reveal on scroll using IntersectionObserver
 const reveal = new IntersectionObserver((entries)=>{
   entries.forEach(e=>{
     if (e.isIntersecting){

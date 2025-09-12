@@ -275,7 +275,6 @@ a{ text-decoration:none; color:inherit; }
   color:var(--muted);
   font-size:1.5rem;         /* slightly bigger text */
   text-align:center;
-  border-top:1px solid var(--line);
 }
 
 .footer-links{
@@ -343,7 +342,7 @@ a{ text-decoration:none; color:inherit; }
   box-shadow:0 0 0 4px rgba(255,213,74,.08), var(--shadow);
 }
 
-/* Footer boxed style */
+/* Footer boxed border style */
 .footer {
   margin-top: 3rem;
   padding: 3rem 0 5rem;
