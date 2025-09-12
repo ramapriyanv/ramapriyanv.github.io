@@ -42,3 +42,33 @@ const reveal = new IntersectionObserver((entries)=>{
 document.querySelectorAll(
   '.hero-copy, .about-wrap, .skill-card, .timeline .content, .cert, .card'
 ).forEach(el => reveal.observe(el));
+
+// Mobile menu slide toggle + autoclose
+const menuBtn = document.querySelector('.menu-toggle');
+const mobileNav = document.querySelector('.mobile-nav');
+
+if (menuBtn && mobileNav){
+  const updateAria = () => {
+    const open = mobileNav.classList.contains('open');
+    menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    menuBtn.classList.toggle('open', open);
+    const icon = menuBtn.querySelector('i');
+    if (icon) icon.className = open ? 'bx bx-x' : 'bx bx-menu';
+  };
+
+  menuBtn.addEventListener('click', () => {
+    mobileNav.classList.toggle('open');
+    updateAria();
+  });
+
+  // Auto-close when any link is clicked
+  mobileNav.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      mobileNav.classList.remove('open');
+      updateAria();
+    });
+  });
+
+  updateAria();
+}
+
