@@ -203,3 +203,22 @@ a{ text-decoration:none; color:inherit; }
 
 /* ---------------- Micro-animations ---------------- */
 @keyframes spin{to{transform:rotate(360deg)}}
+
+/* Make Education timeline cards bigger & more readable */
+.exp-col .timeline .content {
+  padding: 2rem;             /* more padding inside */
+  font-size: 1.5rem;         /* slightly larger text */
+  line-height: 1.6;          /* better spacing between lines */
+}
+
+.exp-col .timeline h4 {
+  font-size: 1.9rem;         /* bigger degree title */
+}
+
+.exp-col .timeline .placetitle h5 {
+  font-size: 1.6rem;         /* bigger university name */
+}
+
+.exp-col .timeline .when {
+  font-size: 1.4rem;         /* bigger dates */
+}
