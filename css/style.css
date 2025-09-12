@@ -10,14 +10,18 @@
 *{box-sizing:border-box;margin:0;padding:0}
 html{font-size:62.5%}
 body{background:var(--bg);color:var(--text);font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,Arial;overflow-x:hidden}
+a{ text-decoration:none; color:inherit; }
 
-/* Sidebar */
+/* ---------------- Sidebar ---------------- */
 .sidebar{
-  position:fixed;left:0;top:0;bottom:0;width:280px;background:rgba(17,24,38,.9);
-  backdrop-filter:blur(10px);border-right:1px solid var(--line);
-  padding:2rem 1.8rem;display:flex;flex-direction:column;gap:2rem;z-index:10
+  position:fixed; left:0; top:0; bottom:0; width:280px;
+  background:#0A0F1A;                 /* darker for stronger contrast */
+  backdrop-filter:blur(10px);
+  border-right:1px solid var(--line);
+  box-shadow: 12px 0 30px rgba(0,0,0,.5);
+  padding:2rem 1.8rem; display:flex; flex-direction:column; gap:2rem; z-index:10;
 }
-.main{margin-left:280px;min-height:100vh}
+.main{ margin-left:280px; min-height:100vh; border-left:1px solid var(--line); }
 
 .brand{display:flex;align-items:center;gap:1.2rem;color:var(--text)}
 .brand img{width:44px;height:44px;border-radius:50%;object-fit:cover;border:1px solid var(--line)}
@@ -35,70 +39,60 @@ body{background:var(--bg);color:var(--text);font-family:'Inter',system-ui,-apple
 
 .resume-btn{display:flex;align-items:center;justify-content:center;gap:.6rem;background:linear-gradient(180deg,var(--accent),var(--accent-2));color:#111;padding:1rem;border-radius:.8rem;font-size:1.4rem;font-weight:700;text-decoration:none}
 
-/* Sections */
+/* ---------------- Sections ---------------- */
 .section{padding:6rem 6% 5rem;border-bottom:1px solid var(--line)}
 .section-head{margin-bottom:2.4rem}
 .section-head h3{font-size:2.4rem;font-weight:800}
 .section-head p{color:var(--muted);font-size:1.4rem;margin-top:.4rem}
 .accent{background:linear-gradient(90deg,var(--accent),var(--accent-2));-webkit-text-fill-color:transparent;-webkit-background-clip:text}
 
-/* Hero */
-.hero {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  min-height: 80vh;
-  padding: 6rem 6%;
-  background: radial-gradient(800px 400px at 100% -10%, rgba(255,213,74,.12), transparent 60%),
-              radial-gradient(600px 300px at 0% 110%, rgba(255,195,0,.10), transparent 60%),
-              var(--panel);
-  border-bottom: 1px solid var(--line);
+/* ---------------- Buttons ---------------- */
+.btn{
+  display:inline-flex; align-items:center; justify-content:center;
+  padding:1.1rem 1.8rem; border-radius:.8rem; font-size:1.4rem; font-weight:700;
+  border:1px solid var(--line); cursor:pointer; transition:transform .12s ease, opacity .2s ease, background .25s ease;
+}
+.btn:hover{ transform:translateY(-1px); }
+.btn.primary{
+  background:linear-gradient(180deg,var(--accent),var(--accent-2));
+  color:#111; border-color:transparent;
+}
+.btn.ghost{
+  background:rgba(255,255,255,.03);
+  color:var(--text);
 }
 
-.hero-copy {
-  max-width: 800px;
+/* ---------------- Hero ---------------- */
+.hero{
+  display:flex; flex-direction:column; justify-content:center;
+  min-height:80vh; padding:6rem 6%;
+  background:
+    radial-gradient(800px 400px at 100% -10%, rgba(255,213,74,.12), transparent 60%),
+    radial-gradient(600px 300px at 0% 110%, rgba(255,195,0,.10), transparent 60%),
+    var(--bg-soft);                       /* distinct from sidebar */
+  border-bottom:1px solid var(--line);
 }
+.hero-copy{ max-width: 800px; }
+.hero h2{ font-size:4.2rem; line-height:1.2; }
+.hero h3{ font-size:2rem; margin:.6rem 0 1.2rem; font-weight:500; color:#D6DBE6; }
+.hero p{ font-size:1.6rem; color:#D6DBE6; margin:1rem 0 1.8rem; }
+.cta-row{ display:flex; gap:1rem; flex-wrap:wrap; }
 
-.hero h2 {
-  font-size: 4.2rem;
-  line-height: 1.2;
-}
-
-.hero h3 {
-  font-size: 2rem;
-  margin: .6rem 0 1.2rem;
-  font-weight: 500;
-  color: #D6DBE6;
-}
-
-.hero p {
-  font-size: 1.6rem;
-  color: #D6DBE6;
-  margin: 1rem 0 1.8rem;
-}
-
-.cta-row {
-  display: flex;
-  gap: 1rem;
-  flex-wrap: wrap;
-}
-
-
-/* About */
+/* ---------------- About ---------------- */
 .about .about-wrap{display:grid;grid-template-columns:240px 1fr;gap:2rem;align-items:center}
 .about .about-img{position:relative;width:200px;height:200px;border-radius:50%;display:flex;align-items:center;justify-content:center}
 .about .about-img img{width:90%;height:90%;object-fit:cover;border-radius:50%;border:2px solid rgba(255,255,255,.12)}
 .circle-spin{position:absolute;inset:0;border:2px dashed rgba(255,255,255,.12);border-radius:50%;animation:spin 14s linear infinite}
 .about .about-content{font-size:1.7rem;color:#C9CFDA}
 
-/* Skills */
+/* ---------------- Skills ---------------- */
 .skills .skills-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.6rem}
 .skill-card{background:rgba(17,24,38,.6);border:1px solid var(--line);border-radius:1.2rem;padding:1.6rem;box-shadow:var(--shadow)}
 .skill-card i{font-size:2.6rem;color:var(--accent)}
 .skill-card h4{font-size:1.7rem;margin:.6rem 0}
 .skill-card p{font-size:1.45rem;color:#D6DBE6}
 
-/* Experience */
+/* ---------------- Experience ---------------- */
 .timeline{display:flex;flex-direction:column;gap:1.6rem}
 .timeline .item{position:relative;padding-left:2.8rem}
 .timeline .dot{position:absolute;left:.6rem;top:.8rem;width:.9rem;height:.9rem;border-radius:50%;background:linear-gradient(180deg,var(--accent),var(--accent-2));box-shadow:0 0 0 6px rgba(255,213,74,.12)}
@@ -112,14 +106,14 @@ body{background:var(--bg);color:var(--text);font-family:'Inter',system-ui,-apple
 .skills-line{margin-top:.6rem}
 .coursework{margin-left:1.6rem}
 
-/* Certifications */
+/* ---------------- Certifications ---------------- */
 .certs .cert-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.6rem}
 .cert{display:flex;gap:1rem;align-items:center;text-decoration:none;color:var(--text);background:rgba(255,255,255,.03);border:1px solid var(--line);border-radius:1rem;padding:1rem;box-shadow:var(--shadow)}
 .cert img{width:54px;height:54px;object-fit:cover;border-radius:.6rem}
 .cert-info{display:flex;align-items:center;gap:.8rem}
 .cert-info h4{font-size:1.4rem}
 
-/* Projects */
+/* ---------------- Projects ---------------- */
 .projects .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.6rem}
 .card{background:rgba(17,24,38,.6);border:1px solid var(--line);border-radius:1.2rem;overflow:hidden;box-shadow:var(--shadow);display:flex;flex-direction:column}
 .card img{width:100%;height:180px;object-fit:cover}
@@ -128,12 +122,12 @@ body{background:var(--bg);color:var(--text);font-family:'Inter',system-ui,-apple
 .card-body p{font-size:1.35rem;color:#D6DBE6}
 .chip{align-self:flex-start;text-decoration:none;color:var(--text);border:1px solid var(--line);padding:.5rem .8rem;border-radius:.6rem;background:rgba(255,255,255,.03);font-size:1.25rem}
 
-/* Footer */
+/* ---------------- Footer ---------------- */
 .footer{margin-top:2.4rem;color:var(--muted);font-size:1.3rem;text-align:center}
 .footer-links{display:flex;justify-content:center;gap:1rem;margin-top:.6rem}
 .footer-links a{color:var(--accent)}
 
-/* Responsive */
+/* ---------------- Responsive ---------------- */
 @media(max-width:1100px){
   .projects .grid{grid-template-columns:repeat(2,1fr)}
   .certs .cert-grid{grid-template-columns:repeat(2,1fr)}
@@ -146,7 +140,6 @@ body{background:var(--bg);color:var(--text);font-family:'Inter',system-ui,-apple
   .side-socials{display:none}
   .resume-btn{display:none}
   .main{margin-left:0;padding-top:74px}
-  .hero{grid-template-columns:1fr}
 }
 @media(max-width:640px){
   .skills .skills-grid{grid-template-columns:1fr}
@@ -154,5 +147,5 @@ body{background:var(--bg);color:var(--text);font-family:'Inter',system-ui,-apple
   .certs .cert-grid{grid-template-columns:1fr}
 }
 
-/* Micro-animations */
+/* ---------------- Micro-animations ---------------- */
 @keyframes spin{to{transform:rotate(360deg)}}
