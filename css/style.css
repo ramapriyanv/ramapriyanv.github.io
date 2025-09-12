@@ -261,9 +261,30 @@ a{ text-decoration:none; color:inherit; }
 
 
 /* ---------------- Footer ---------------- */
-.footer{margin-top:2.4rem;color:var(--muted);font-size:1.3rem;text-align:center}
-.footer-links{display:flex;justify-content:center;gap:1rem;margin-top:.6rem}
-.footer-links a{color:var(--accent)}
+/* Footer: bigger, clearer */
+.footer{
+  margin-top:3rem;
+  padding:3rem 0 5rem;      /* more height */
+  color:var(--muted);
+  font-size:1.5rem;         /* slightly bigger text */
+  text-align:center;
+  border-top:1px solid var(--line);
+}
+
+.footer-links{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:1.4rem;               /* more spacing */
+  margin-top:1rem;
+}
+
+.footer-links a{
+  color:var(--accent);
+  font-size:1.8rem;         /* larger icons */
+  line-height:1;
+}
+
 
 /* ---------------- Responsive ---------------- */
 @media(max-width:1100px){
