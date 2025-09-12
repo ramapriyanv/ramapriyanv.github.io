@@ -89,25 +89,29 @@ drawer?.querySelectorAll('a').forEach(a => {
 document.addEventListener('keydown', (e)=>{
   if (e.key === 'Escape') closeDrawer();
 });
-// Move socials + resume into the drawer on mobile, and back on desktop
-const drawerNav   = document.querySelector('.side-nav');
-const sidebarWrap = document.querySelector('.sidebar');
-const socialsEl   = document.querySelector('.side-socials');
-const resumeEl    = document.querySelector('.resume-btn');
+// --- Safely move socials + resume into the drawer on mobile, back on desktop
+(function () {
+  function placeDrawerExtras() {
+    const drawerNav   = document.querySelector('.side-nav');
+    const sidebarWrap = document.querySelector('.sidebar');
+    const socialsEl   = document.querySelector('.side-socials');
+    const resumeEl    = document.querySelector('.resume-btn');
 
-function placeDrawerExtras(){
-  const isMobile = window.matchMedia('(max-width: 880px)').matches;
-  if (!drawerNav || !sidebarWrap) return;
+    if (!drawerNav || !sidebarWrap) return;
 
-  if (isMobile) {
-    if (socialsEl && socialsEl.parentElement !== drawerNav) drawerNav.appendChild(socialsEl);
-    if (resumeEl  && resumeEl.parentElement  !== drawerNav) drawerNav.appendChild(resumeEl);
-  } else {
-    if (socialsEl && socialsEl.parentElement !== sidebarWrap) sidebarWrap.appendChild(socialsEl);
-    if (resumeEl  && resumeEl.parentElement  !== sidebarWrap) sidebarWrap.appendChild(resumeEl);
+    const isMobile = window.matchMedia('(max-width: 880px)').matches;
+
+    if (isMobile) {
+      if (socialsEl && socialsEl.parentElement !== drawerNav) drawerNav.appendChild(socialsEl);
+      if (resumeEl  && resumeEl.parentElement  !== drawerNav) drawerNav.appendChild(resumeEl);
+    } else {
+      if (socialsEl && socialsEl.parentElement !== sidebarWrap) sidebarWrap.appendChild(socialsEl);
+      if (resumeEl  && resumeEl.parentElement  !== sidebarWrap) sidebarWrap.appendChild(resumeEl);
+    }
   }
-}
 
-window.addEventListener('resize', placeDrawerExtras);
-document.addEventListener('DOMContentLoaded', placeDrawerExtras);
-placeDrawerExtras();
+  document.addEventListener('DOMContentLoaded', placeDrawerExtras);
+  window.addEventListener('resize', placeDrawerExtras);
+  setTimeout(placeDrawerExtras, 0);
+})();
+

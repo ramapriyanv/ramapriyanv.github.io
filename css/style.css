@@ -468,7 +468,7 @@ a{ text-decoration:none; color:inherit; }
     display:flex;
     gap:1rem;
     width:100%;
-    margin-top:auto;         /* push to bottom of drawer */
+    margin-top:auto;
     margin-bottom:.6rem;
     justify-content:space-between;
   }
@@ -481,6 +481,7 @@ a{ text-decoration:none; color:inherit; }
   .side-nav .resume-btn{
     display:flex;
     width:100%;
-    margin:0 0 .4rem 0;      /* small gap below socials */
+    margin:0 0 .4rem 0;
   }
 }
+
