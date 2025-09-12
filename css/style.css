@@ -259,31 +259,33 @@ a{ text-decoration:none; color:inherit; }
   gap: .6rem;
   text-decoration: none;
 
-  font-size: 1.5rem;             /* same size everywhere */
+  font-size: 1.5rem;
   font-weight: 600;
   color: var(--text);
 
-  background: rgba(255, 255, 255, .08);
-  border: 1px solid var(--line);
+  /* 🔥 darker background than main page */
+  background: rgba(10, 15, 26, .9);
+
+  /* 🔥 yellow border + glow */
+  border: 1px solid rgba(255,213,74,.35);
   border-radius: .8rem;
+  box-shadow: 0 0 0 4px rgba(255,213,74,.08), var(--shadow);
+
   padding: .8rem 1.6rem;
+  transition: background .2s, transform .12s, box-shadow .2s;
 
-  transition: background .2s, transform .12s;
-
-  /* positioning */
-  margin-top: auto;              /* pushes button to bottom */
-  align-self: center;            /* centers it horizontally */
-}
-
-.chip i {
-  font-size: 1.6rem;
-  opacity: .9;
+  margin-top: auto;
+  align-self: center;
 }
 
 .chip:hover {
-  background: rgba(255, 255, 255, .18);
+  background: rgba(10, 15, 26, 1);    /* slightly darker on hover */
   transform: translateY(-2px);
+  box-shadow: 0 0 6px rgba(255,213,74,.5),
+              0 0 0 4px rgba(255,213,74,.08),
+              var(--shadow);
 }
+
 
 .projects.section {
   border-bottom: none;
