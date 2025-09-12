@@ -118,7 +118,14 @@ a{ text-decoration:none; color:inherit; }
 .timeline{display:flex;flex-direction:column;gap:1.6rem}
 .timeline .item{position:relative;padding-left:2.8rem}
 .timeline .dot{position:absolute;left:.6rem;top:.8rem;width:.9rem;height:.9rem;border-radius:50%;background:linear-gradient(180deg,var(--accent),var(--accent-2));box-shadow:0 0 0 6px rgba(255,213,74,.12)}
-.timeline .content{background:rgba(17,24,38,.6);border:1px solid var(--line);border-radius:1rem;padding:1.4rem}
+.timeline .content {
+  background:rgba(17,24,38,.6);
+  border:1px solid rgba(255,213,74,.35);          /* golden border */
+  border-radius:1rem;
+  padding:2rem;                                   /* a little more breathing room */
+  box-shadow:0 0 0 4px rgba(255,213,74,.08), var(--shadow);
+}
+
 .timeline .when{font-size:1.2rem;color:var(--accent)}
 .timeline h4{font-size:1.6rem;margin:.2rem 0 .6rem}
 .timeline .placetitle{display:flex;align-items:center;gap:.8rem;margin-bottom:.6rem}
