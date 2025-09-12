@@ -327,3 +327,11 @@ a{ text-decoration:none; color:inherit; }
 .exp-col .timeline .when {
   font-size: 1.4rem;         /* bigger dates */
 }
+
+/* Give skills, projects, and certifications the same golden border as experience */
+.skill-card,
+.card,
+.cert {
+  border:1px solid rgba(255,213,74,.35);          
+  box-shadow:0 0 0 4px rgba(255,213,74,.08), var(--shadow);
+}
