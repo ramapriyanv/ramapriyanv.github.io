@@ -39,18 +39,29 @@ a{ text-decoration:none; color:inherit; }
 .side-nav a.active{ color:var(--accent); background:rgba(255,213,74,.06); }
 
 /* NEW: keep socials at bottom */
-.side-socials{
-  display:flex; gap:1rem;
-  margin-top:auto;        /* pushes this block to the bottom */
-  margin-bottom:1.2rem;   /* breathing room above the resume button */
+.side-socials {
+  display: flex;
+  justify-content: space-between;   /* spread evenly across */
+  width: 100%;                      /* match resume-btn full width */
+  margin-top: auto;
+  margin-bottom: 1.2rem;
 }
-.side-socials a{
-  width:48px; height:48px; font-size:2rem;
-  display:inline-flex; align-items:center; justify-content:center;
-  border:1px solid var(--line); border-radius:12px;
-  color:var(--accent); background:rgba(255,255,255,.03);
-  transition:transform .12s;
+
+.side-socials a {
+  flex: 1;                          /* each icon takes equal share */
+  max-width: 70px;                  /* optional: keep them compact */
+  height: 48px;
+  font-size: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  color: var(--accent);
+  background: rgba(255,255,255,.03);
+  transition: transform .12s;
 }
+
 .side-socials a:hover{ transform:translateY(-2px) scale(1.05); }
 
 /* Resume button sits just under socials */
