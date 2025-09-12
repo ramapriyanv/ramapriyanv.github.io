@@ -419,6 +419,10 @@ a{ text-decoration:none; color:inherit; }
   position:relative; 
   z-index:21;          /* ensures button receives the tap */
 }
+/* Make the hamburger fully clickable and above brand */
+.menu-btn{ flex: 0 0 44px; pointer-events: auto; }
+.menu-btn i{ pointer-events: none; }     /* taps on the icon count as button taps */
+
 
 
 /* Backdrop for the drawer */
@@ -463,6 +467,55 @@ a{ text-decoration:none; color:inherit; }
 .section:last-of-type { border-bottom: none; }
 
 /* Show & place socials + resume inside the drawer on mobile */
+@media(max-width:880px){
+  .sidebar{
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: auto;
+    width: 100%;
+    height: 74px;
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.4rem;
+    z-index: 20;
+  }
+
+  /* Make brand NOT cover the button */
+  .brand{
+    flex: 1;
+    max-width: calc(100% - 56px);   /* ← leave room for 44px button + gap */
+    position: relative;
+    z-index: 1;                      /* under the button */
+  }
+
+  /* Drawer panel (already correct) */
+  .side-nav{
+    position: fixed;
+    top: 74px; right: 0;
+    height: calc(100vh - 74px);
+    width: 80vw; max-width: 360px;
+    display: flex;
+    flex-direction: column;
+    gap: .8rem;
+    padding: 1.6rem;
+    background: #0A0F1A;
+    border-left: 1px solid var(--line);
+    box-shadow: -12px 0 30px rgba(0,0,0,.5);
+    transform: translateX(100%);
+    transition: transform .25s ease;
+    z-index: 19;
+  }
+  .side-nav.open{ transform: translateX(0); }
+
+  /* REMOVE these two lines so they don't hide your items: */
+  /* .side-socials{display:none} */
+  /* .resume-btn{display:none} */
+
+  .main{margin-left:0;padding-top:74px}
+}
+
 @media (max-width:880px){
   .side-nav .side-socials{
     display:flex;
