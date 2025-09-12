@@ -159,6 +159,17 @@ a{ text-decoration:none; color:inherit; }
   }
 }
 
+/* Remove bullets + indentation for coursework lists */
+.coursework {
+  list-style: none;      /* no bullets */
+  margin: 0;             /* remove left margin */
+  padding: 0;            /* remove padding */
+}
+
+.coursework li {
+  margin-bottom: .6rem;  /* optional: add a little space between lines */
+}
+
 
 /* ---------------- Certifications ---------------- */
 .certs .cert-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.6rem}
