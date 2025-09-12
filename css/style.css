@@ -461,3 +461,26 @@ a{ text-decoration:none; color:inherit; }
 
 /* Remove the bottom divider from the last content section (fixes the thin line above footer) */
 .section:last-of-type { border-bottom: none; }
+
+/* Show & place socials + resume inside the drawer on mobile */
+@media (max-width:880px){
+  .side-nav .side-socials{
+    display:flex;
+    gap:1rem;
+    width:100%;
+    margin-top:auto;         /* push to bottom of drawer */
+    margin-bottom:.6rem;
+    justify-content:space-between;
+  }
+  .side-nav .side-socials a{
+    flex:1;
+    max-width:70px;
+    height:48px;
+  }
+
+  .side-nav .resume-btn{
+    display:flex;
+    width:100%;
+    margin:0 0 .4rem 0;      /* small gap below socials */
+  }
+}
