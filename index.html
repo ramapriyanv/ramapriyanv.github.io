@@ -1,221 +1,212 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Ramapriyan Varadarajan</title>
-        <link rel="icon" href="images/logo.png">
-        <link rel="stylesheet" href="css/style.css">
-        <!-- box icons -->
-        <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    </head>
-    <body>
-        <!-- header design -->
-        <header class="header">
-            <a href="#" class="logo">Ramapriyan Varadarajan</a>
-            <div class="bx bx-menu" id="menu-icon"> </div>
-            <nav class="navbar">
-                <a href="#">Home</a>
-                <a href="#about">About</a>
-                <a href="#experience">Experience</a>
-                <a href="#certs">Certifications</a>
-                <a href="#projects">Projects</a>
-            </nav>
-        </header>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ramapriyan Varadarajan</title>
+  <link rel="icon" href="images/logo.png" />
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet"/>
+  <link rel="stylesheet" href="css/style.css"/>
+</head>
+<body>
+  <!-- Sidebar Navigation (new) -->
+  <aside class="sidebar">
+    <a class="brand" href="#hero">
+      <img src="images/about.jpeg" alt="Avatar"/>
+      <div>
+        <h1>Ramapriyan</h1>
+        <p>Software • ML • AI</p>
+      </div>
+    </a>
 
-        <!-- home section -->
-        <section class="home" id="home">
-            <div class="home-content">
-                <h1>Hi, I'm <span class="grad">Ramapriyan.</span></h1>
-                <div class="text-animate">
-                    <h3>My interests lie in <span class="grad">Software Development, Machine Learning, AI and Data Science.</span></h3>
-                </div>
-                <p>I have a Master's degree in <span class="grad2">Computer Science</span> from <span class="grad2">University of Wisconsin - Milwaukee</span> with a focus on Data Science, AI, and Machine Learning. I hold a Bachelor's degree in Computer Science and Engineering.</p>
-                <div class="btn-box">
-                    <a href="https://drive.google.com/file/d/1Wr5dEZRStHacADokZZyhnrhoju-feNOG/view?usp=sharing" target="_blank" class="btn2">View My Resume</a>
-                    <a href="#about" class="btn">About Me</a>
-                </div>
-            </div>
-            <div class="home-sci">
-                <a href="https://www.linkedin.com/in/ramapriyan-varadarajan/" target="_blank"><i class='bx bxl-linkedin'></i>  </a>
-                <a href="https://github.com/ramapriyanv" target="_blank"><i class='bx bxl-github'></i>  </a>
-                <a href="mailto:ramapriyanv@gmail.com" target="_blank"><i class='bx bxs-envelope' ></i></a>
-            </div>
-        </section>
+    <nav class="side-nav">
+      <a href="#featured" class="active"><i class='bx bxs-star'></i> Featured</a>
+      <a href="#projects"><i class='bx bx-grid-alt'></i> Projects</a>
+      <a href="#experience"><i class='bx bx-briefcase'></i> Experience</a>
+      <a href="#skills"><i class='bx bx-scatter-chart'></i> Skills</a>
+      <a href="#certs"><i class='bx bx-badge-check'></i> Certifications</a>
+      <a href="#about"><i class='bx bx-user'></i> About</a>
+      <a href="#contact"><i class='bx bx-send'></i> Contact</a>
+    </nav>
 
-        <div class="about" id="about">
-            <div class="about-img">
-                <img src="images/about.jpeg" alt="">
-                <span class="circle-spin"></span>
-            </div>
-            <p class="about-content"> I’m passionate about data, problem-solving, and creative design in technology. Through my graduate studies, I am constantly honing my skills in machine learning, AI, and software engineering to solve real-world challenges.
-            </p>
-        </div>
-
-        <!-- Skills Section -->
-        <section class="skills" id="skills">
-            <h2 class="heading">My <span class="grad">Skills</span></h2>
-            <div class="skills-row">
-                <div class="skills-column">
-                    <div class="skills-content"><i class='bx bx-scatter-chart grad' ></i><br><h2>Data Analysis & Database Tools</h2><p>Python (Matplotlib, Seaborn, etc.), SQL (PostgreSQL, SQLite, SQLAlchemy, MySQL), NoSQL (MongoDB, DynamoDB), Power BI.</p></div>
-                </div>
-                <div class="skills-column">
-                    <div class="skills-content"><i class='bx bx-code-alt grad' ></i><br><h2>Design & Development</h2><p>HTML, CSS, JavaScript, TypeScript, React, Node.js, Flask, Django, REST APIs, FastAPI.</p></div>
-                </div>
-                <div class="skills-column">
-                    <div class="skills-content"><i class='bx bxs-network-chart grad' ></i></i><br><h2>Machine Learning</h2><p>PyTorch, TensorFlow, Keras, Scikit-Learn, Pandas, Numpy, Decision Tree, Random Forest, SVM, GANs.</p></div>
-                </div>
-                <div class="skills-column">
-                    <div class="skills-content"><i class='bx bx-cloud grad' ></i></i><br><h2>Cloud & DevOps</h2><p>AWS (Lambda, EC2, S3, CloudWatch, RedShift), Docker, GitHub Actions, Agile Methodologies, CI/CD pipelines, Shell scripting.</p>
-            </div>
-        </section>
-
-<!-- Experience Section -->
-<section class="experience" id="experience">
-    <h2 class="heading">My <span class="grad">Journey</span></h2>
-    <div class="experience-row">
-        <div class="experience-column">
-            <h3 class="title">Work Experience</h3>
-            <div class="experience-box">
-                <div class="experience-content">
-                    <div class="content">
-                        <div class="year"><i class='bx bxs-calendar-alt'></i> April 2024 - March 2025</div>
-                        <div class="placetitle">
-                            <img src="images/uwm.jpg" alt="Logo" width="20px" height="20px">
-                            <h1>University of Wisconsin - Milwaukee</h1>
-                        </div>
-                        <h2>Graduate Research Assistant - Software Engineer</h2>
-                        <p>Designed and deployed a full-stack web platform using Flask, PostgreSQL and JavaScript to stream and analyze microcontroller sensor data from live lab environments. Engineered a Python system using FeatherWing and PyBadge to detect lead levels in water; increased testing accuracy and reduced analysis time by 30%. Visualized data trends using Matplotlib and Seaborn, automating diagnostics and reducing manual effort by 30%. Delivered 15+ features in weekly Agile sprints, improving research data access across 3 simultaneous projects.</p>
-                        <p style="padding-top:0.5rem;font-size:1.5rem;"><span style="font-weight:500;">Skills: </span>Flask, PostgreSQL, React, JavaScript, HTML, Matplotlib, Seaborn, Agile methodologies</p>
-                    </div>
-                </div>
-                <div class="experience-content">
-                    <div class="content">
-                        <div class="year"><i class='bx bxs-calendar-alt'></i> August 2022 - August 2023</div>
-                        <div class="placetitle">
-                            <img src="images/vish.jpeg" alt="Logo" width="20px" height="20px">
-                            <h1>Vishwak Solutions Inc.</h1>
-                        </div>
-                        <h2>Software Engineer Intern</h2>
-                        <p>Automated internal workflows by building web tools in Flask and JavaScript, cutting data processing time by 40%. Refactored legacy scripts into maintainable APIs, standardizing backend access and reducing maintenance load by 30%. Revamped the frontend with React, improving UX and reducing support tickets by 25%.</p>
-                        <p style="padding-top:0.5rem;font-size:1.5rem;"><span style="font-weight:500;">Skills: </span>React, Flask, JavaScript, REST APIs</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Education Column -->
-        <div class="experience-column">
-            <h3 class="title">Education</h3>
-            <div class="experience-box">
-                <div class="experience-content">
-                    <div class="content">
-                        <div class="year"><i class='bx bxs-calendar-alt'></i> September 2023 - May 2025</div>
-                        <div class="placetitle">
-                            <img src="images/uwm.jpg" alt="Logo" width="20px" height="20px">
-                            <h1>University of Wisconsin - Milwaukee</h1>
-                        </div>
-                        <h2>MS in Computer Science</h2>
-                        <p><ul>
-                            <li>Coursework: Introduction to Natural Language Processing; Machine Learning; Programming for Machine Learning; Introduction to Cyber Security; Immersive Technologies and 3D User Interfaces; Computational Models of Decision Making; Rich Internet Applications; Algorithm Design and Analysis; Server Side Internet Programming</li>
-                        </p>
-                    </div>
-                </div>
-                <div class="experience-content">
-                    <div class="content">
-                        <div class="year"><i class='bx bxs-calendar-alt'></i> August 2019 - May 2023</div>
-                        <div class="placetitle">
-                            <img src="images/biher.jpg" alt="Logo" width="20px" height="20px">
-                            <h1>Bharath Institute of Higher Education and Research</h1>
-                        </div>
-                        <h2>BS in Computer Science and Engineering</h2>
-                        <p><ul>
-                            <li>Coursework: Data Structures and Algorithms; Object Oriented Programming; Cloud Computing; Operating Systems; Software Engineering; Artificial Intelligence; Database Management Systems; Compiler Design; Big Data Analytics</li>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <div class="side-socials">
+      <a href="https://www.linkedin.com/in/ramapriyan-varadarajan/" target="_blank"><i class='bx bxl-linkedin'></i></a>
+      <a href="https://github.com/ramapriyanv" target="_blank"><i class='bx bxl-github'></i></a>
+      <a href="mailto:ramapriyanv@gmail.com" target="_blank"><i class='bx bxs-envelope'></i></a>
     </div>
-</section>
 
+    <a class="resume-btn" href="https://drive.google.com/file/d/1Wr5dEZRStHacADokZZyhnrhoju-feNOG/view?usp=sharing" target="_blank">
+      <i class='bx bx-file-blank'></i> View Resume
+    </a>
+  </aside>
 
-        <!-- Certifications Section -->
-        <section class="certs" id="certs">
-            <h2 class="heading">My <span class="grad">Certificates</span></h2>
-            <div class="projects-container">
-                <!-- First Certificate -->
-                <div class="projects-box">
-                    <img src="images/cert1.jpg" alt="AWS - Certified Cloud Practitioner">
-                    <div class="projects-layer">
-                        <h4>AWS - Certified Cloud Practitioner</h4>
-                        <a href="https://www.credly.com/badges/2f7acc76-86e4-48ae-a217-34ea3e02b8af/public_url" target="_blank"><i class='bx bx-link-external'></i></a>
-                    </div>
-                </div>
-        
-                <!-- First Certificate -->
-                <div class="projects-box">
-                    <img src="images/cert2.jpeg" alt="IBM's Python for Data Science Certificate">
-                    <div class="projects-layer">
-                        <h4>IBM's Python for Data Science, AI and Development</h4>
-                        <a href="https://coursera.org/share/1d7b13d5c2704f5ac6c5c90a3c4ff9a4" target="_blank"><i class='bx bx-link-external'></i></a>
-                    </div>
-                </div>
-        
-                <!-- Third Certificate -->
-                <div class="projects-box">
-                    <img src="images/cert3.jpeg" alt="SQL HR">
-                    <div class="projects-layer">
-                        <h4>HackerRank - SQL</h4>
-                        <a href="https://www.hackerrank.com/certificates/fcd24e1cd7fb" target="_blank"><i class='bx bx-link-external'></i></a>
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-
-        <!-- Projects Section -->
-<section class="projects" id="projects">
-    <h2 class="heading">My <span class="grad">Projects</span></h2>
-    <div class="projects-container">
-        <div class="projects-box">
-            <img src="images/project1.jpeg" alt="">
-            <div class="projects-layer">
-                <h4>StockSnap - AI Stock Analysis Tool</h4>
-                <p>AI- powered stock analysis tool for generating insightful summaries.</p>
-                <a href="https://github.com/ramapriyanv/StockSnap-AI" target="_blank"><i class='bx bx-link-external' ></i></a>
-            </div>
+  <!-- Main Content -->
+  <main class="main">
+    <!-- HERO -->
+    <section id="hero" class="section hero">
+      <div class="hero-copy">
+        <h2>Hi, I’m <span class="accent">Ramapriyan</span>.</h2>
+        <p>I build reliable software and applied ML/AI systems. I care about clean architecture, performance, and UX.</p>
+        <div class="cta-row">
+          <a href="#featured" class="btn primary">See Featured Work</a>
+          <a href="#projects" class="btn ghost">All Projects</a>
         </div>
-        <div class="projects-box"> <!-- New Project -->
-            <img src="images/project2.jpeg" alt="">
-            <div class="projects-layer">
-                <h4>FixMyHood – AI Civic Issue Reporter</h4>
-                <p>AI-driven civic issue reporting app to collect user complaints.</p>
-                <a href="https://github.com/ramapriyanv/FixMyHood" target="_blank"><i class='bx bx-link-external' ></i></a>
-            </div>
-        </div>
-        <div class="projects-box">
-            <img src="images/project3.jpeg" alt="">
-            <div class="projects-layer">
-                <h4>Federated Email Based Phishing Detection System</h4>
-                <p>Federated Learning based privacy preserving pipeline to detect Email Phishing.</p>
-                <a href="https://github.com/ramapriyanv/FL-Email-Phishing" target="_blank"><i class='bx bx-link-external' ></i></a>
-            </div>
-        </div>
-    </div>
-</section>
+      </div>
+      <div class="hero-art" aria-hidden="true"></div>
+    </section>
 
+    <!-- FEATURED (new first-class section) -->
+    <section id="featured" class="section featured">
+      <header class="section-head">
+        <h3>Featured Work</h3>
+        <p>Impactful, end-to-end builds showcasing AI + full-stack craft.</p>
+      </header>
 
-        <footer class="footer">
-            <div class="footer-text">
-                <p><span class="grad" style="font-weight:400;">&copy; Ramapriyan Varadarajan</span></p>
-                <div class="footer-links">
-                    <a href="https://www.linkedin.com/in/ramapriyan-varadarajan/" target="_blank"><i class='bx bxl-linkedin grad'></i>  </a>
-                    <a href="https://github.com/ramapriyanv" target="_blank"><i class='bx bxl-github grad'></i>  </a>
-                    <a href="mailto:ramapriyanv@gmail.com" target="_blank"><i class='bx bxs-envelope grad' ></i></a>
-                </div>
-            </div>
-        </footer>
-        <script src="js/script.js"></script>
-    </body>
+      <article class="feature-card">
+        <img src="images/project1.jpeg" alt="StockSnap"/>
+        <div class="feature-body">
+          <h4>StockSnap — AI Stock Analysis</h4>
+          <p>Interactive stock insights with AI summaries and crisp visualizations. Built for speed and clarity.</p>
+          <ul class="meta">
+            <li>React</li><li>FastAPI</li><li>Gemini</li><li>Vercel + Heroku</li>
+          </ul>
+          <div class="links">
+            <a class="chip" href="https://github.com/ramapriyanv/StockSnap-AI" target="_blank"><i class='bx bx-link-external'></i> View Code</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="feature-card">
+        <img src="images/project2.jpeg" alt="FixMyHood"/>
+        <div class="feature-body">
+          <h4>FixMyHood — AI Civic Issue Reporting</h4>
+          <p>Report local issues with a chat-style assistant, media uploads, and admin workflows.</p>
+          <ul class="meta">
+            <li>React</li><li>Flask</li><li>JWT</li><li>AI Assistant</li>
+          </ul>
+          <div class="links">
+            <a class="chip" href="https://github.com/ramapriyanv/FixMyHood" target="_blank"><i class='bx bx-link-external'></i> View Code</a>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <!-- PROJECTS GRID -->
+    <section id="projects" class="section projects">
+      <header class="section-head">
+        <h3>Projects</h3>
+        <p>Selected builds, experiments, and shipped features.</p>
+      </header>
+
+      <div class="grid">
+        <div class="card">
+          <img src="images/project3.jpeg" alt="FL Email Phishing"/>
+          <div class="card-body">
+            <h4>Federated Email Phishing Detection</h4>
+            <p>Privacy-preserving FL pipeline for phishing detection across clients.</p>
+            <ul class="meta"><li>PyTorch</li><li>FL</li><li>NLP</li></ul>
+            <a class="chip" href="https://github.com/ramapriyanv/FL-Email-Phishing" target="_blank"><i class='bx bx-link-external'></i> Code</a>
+          </div>
+        </div>
+        <!-- Add more cards as needed -->
+      </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section id="experience" class="section experience">
+      <header class="section-head">
+        <h3>Experience</h3>
+        <p>Shipped features, research tooling, and measurable impact.</p>
+      </header>
+
+      <div class="timeline">
+        <div class="item">
+          <div class="dot"></div>
+          <div class="content">
+            <span class="when">Apr 2024 – Mar 2025</span>
+            <h4>Graduate Research Assistant — University of Wisconsin–Milwaukee</h4>
+            <p>Full-stack platform for live microcontroller data; Python system for lead-in-water detection; automated diagnostics.</p>
+            <ul class="meta"><li>Flask</li><li>PostgreSQL</li><li>React</li><li>Matplotlib</li><li>Seaborn</li></ul>
+          </div>
+        </div>
+        <div class="item">
+          <div class="dot"></div>
+          <div class="content">
+            <span class="when">Aug 2022 – Aug 2023</span>
+            <h4>Software Engineer Intern — Vishwak Solutions</h4>
+            <p>Automated workflows, API refactors, and React UX revamp reducing support tickets.</p>
+            <ul class="meta"><li>React</li><li>Flask</li><li>REST APIs</li></ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS (as tags) -->
+    <section id="skills" class="section skills">
+      <header class="section-head">
+        <h3>Skills</h3>
+        <p>Core tools and technologies I use to ship.</p>
+      </header>
+
+      <div class="tags">
+        <span>Python</span><span>Flask</span><span>FastAPI</span><span>PostgreSQL</span>
+        <span>React</span><span>TypeScript</span><span>Docker</span><span>AWS</span>
+        <span>PyTorch</span><span>TensorFlow</span><span>scikit-learn</span><span>Pandas</span>
+        <span>SQL</span><span>MongoDB</span><span>CI/CD</span><span>REST APIs</span>
+      </div>
+    </section>
+
+    <!-- CERTIFICATIONS (strip) -->
+    <section id="certs" class="section certs">
+      <header class="section-head">
+        <h3>Certifications</h3>
+      </header>
+
+      <div class="cert-strip">
+        <a class="cert" href="https://www.credly.com/badges/2f7acc76-86e4-48ae-a217-34ea3e02b8af/public_url" target="_blank">
+          <img src="images/cert1.jpg" alt="AWS CCP"/><span>AWS Cloud Practitioner</span>
+        </a>
+        <a class="cert" href="https://coursera.org/share/1d7b13d5c2704f5ac6c5c90a3c4ff9a4" target="_blank">
+          <img src="images/cert2.jpeg" alt="IBM Python DS"/><span>IBM Python for DS</span>
+        </a>
+        <a class="cert" href="https://www.hackerrank.com/certificates/fcd24e1cd7fb" target="_blank">
+          <img src="images/cert3.jpeg" alt="HackerRank SQL"/><span>HackerRank SQL</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="section about">
+      <header class="section-head">
+        <h3>About</h3>
+      </header>
+      <div class="about-wrap">
+        <p>
+          I’m passionate about building reliable software and practical ML systems.
+          I enjoy clean design, data-driven decisions, and solving real problems with code.
+        </p>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="section contact">
+      <header class="section-head">
+        <h3>Contact</h3>
+        <p>Open to full-time SWE/AI roles and impactful product work.</p>
+      </header>
+
+      <div class="contact-cards">
+        <a class="card" href="mailto:ramapriyanv@gmail.com" target="_blank"><i class='bx bxs-envelope'></i><span>Email</span></a>
+        <a class="card" href="https://www.linkedin.com/in/ramapriyan-varadarajan/" target="_blank"><i class='bx bxl-linkedin'></i><span>LinkedIn</span></a>
+        <a class="card" href="https://github.com/ramapriyanv" target="_blank"><i class='bx bxl-github'></i><span>GitHub</span></a>
+      </div>
+
+      <footer class="footer">
+        <p>© Ramapriyan Varadarajan</p>
+      </footer>
+    </section>
+  </main>
+
+  <script src="js/script.js"></script>
+</body>
 </html>
