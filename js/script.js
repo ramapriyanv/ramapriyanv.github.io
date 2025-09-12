@@ -66,11 +66,19 @@ function closeDrawer(){
   document.body.style.overflow = '';
 }
 
-menuBtn?.addEventListener('click', ()=>{
+// Replace your existing click listener with this (includes iOS fix)
+menuBtn?.addEventListener('click', (e) => {
+  e.preventDefault();      // stops jumping to #home
+  e.stopPropagation();     // prevents bubbling into the brand <a>
   drawer.classList.contains('open') ? closeDrawer() : openDrawer();
 });
 
-backdrop?.addEventListener('click', closeDrawer);
+// iOS Safari: block ghost taps passing through to underlying elements
+menuBtn?.addEventListener('touchstart', (e) => {
+  e.preventDefault();
+  e.stopPropagation();
+}, { passive: false });
+
 
 // Close on nav link tap (nice for single-page sites)
 drawer?.querySelectorAll('a').forEach(a => {
