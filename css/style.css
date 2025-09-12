@@ -266,6 +266,11 @@ a{ text-decoration:none; color:inherit; }
   transform: translateY(-2px);
 }
 
+.projects.section {
+  border-bottom: none;
+}
+
+
 
 /* ---------------- Footer ---------------- */
 .footer {
