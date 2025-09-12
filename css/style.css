@@ -106,6 +106,38 @@ a{ text-decoration:none; color:inherit; }
 .skills-line{margin-top:.6rem}
 .coursework{margin-left:1.6rem}
 
+/* ---- Experience: two-column layout ---- */
+.exp-grid{
+  display:grid;
+  grid-template-columns: 1.6fr 1fr;  /* left wider for work */
+  gap:1.6rem;
+}
+.exp-col .col-title{
+  font-size:1.6rem;
+  font-weight:800;
+  color:#E7E9EE;
+  margin-bottom:1.2rem;
+}
+
+/* Optional highlight style for the new job card */
+.timeline .content.highlight{
+  border:1px solid rgba(255,213,74,.35);
+  box-shadow: 0 0 0 4px rgba(255,213,74,.08), var(--shadow);
+}
+
+/* Make dot a tiny bit brighter on highlight */
+.timeline .item .dot{
+  /* already styled globally; no change needed */
+}
+
+/* Responsive: stack columns on smaller screens */
+@media (max-width: 900px){
+  .exp-grid{
+    grid-template-columns: 1fr;
+  }
+}
+
+
 /* ---------------- Certifications ---------------- */
 .certs .cert-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.6rem}
 .cert{display:flex;gap:1rem;align-items:center;text-decoration:none;color:var(--text);background:rgba(255,255,255,.03);border:1px solid var(--line);border-radius:1rem;padding:1rem;box-shadow:var(--shadow)}
