@@ -249,6 +249,8 @@ a{ text-decoration:none; color:inherit; }
   }
   .mobile-topnav a:hover{ color:var(--text); }
   .mobile-topnav a i{ font-size:1.6rem; }
+  .sidebar { display: none !important; }
+
 
   /* Ensure content isn't indented for the desktop sidebar on mobile */
   .main{ margin-left:0 !important; padding-top:64px; }
