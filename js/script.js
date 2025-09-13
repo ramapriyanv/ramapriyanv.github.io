@@ -1,6 +1,16 @@
 // Scroll spy for sidebar links (uses viewport middle for accuracy)
 const sideLinks = document.querySelectorAll('.side-nav a');
+const topLinks  = document.querySelectorAll('.mobile-topnav a[href^="#"]'); // mobile tabs
+const allNavLinks = [...sideLinks, ...topLinks];
 const sections = [...document.querySelectorAll('main .section')].filter(s => s.id);
+
+topLinks.forEach(a => {
+  a.addEventListener('click', () => {
+    allNavLinks.forEach(l => l.classList.remove('active'));
+    a.classList.add('active');
+  });
+});
+
 
 function onScroll(){
   const mid = window.scrollY + window.innerHeight / 2;
@@ -15,9 +25,10 @@ function onScroll(){
     }
   }
 
-  sideLinks.forEach(a => {
-    a.classList.toggle('active', a.getAttribute('href') === `#${current}`);
-  });
+  allNavLinks.forEach(a => {
+  a.classList.toggle('active', a.getAttribute('href') === `#${current}`);
+});
+
 }
 
 window.addEventListener('scroll', onScroll, { passive: true });
@@ -41,3 +52,27 @@ const reveal = new IntersectionObserver((entries)=>{
 document.querySelectorAll(
   '.hero-copy, .about-wrap, .skill-card, .timeline .content, .cert, .card'
 ).forEach(el => reveal.observe(el));
+
+// Hide/show mobile top bar based on scroll direction
+const topnav = document.querySelector('.mobile-topnav');
+let lastY = window.scrollY;
+
+function handleHideShow(){
+  if (!topnav) return;
+  const y = window.scrollY;
+  const isMobile = window.matchMedia('(max-width: 880px)').matches;
+
+  if (isMobile){
+    if (y > lastY && y - lastY > 4) {         // scrolling down
+      topnav.classList.add('hide');
+    } else if (y < lastY && lastY - y > 4) {  // scrolling up
+      topnav.classList.remove('hide');
+    }
+  } else {
+    topnav.classList.remove('hide');          // safety on desktop
+  }
+  lastY = y;
+}
+
+window.addEventListener('scroll', handleHideShow, { passive: true });
+window.addEventListener('resize', handleHideShow);
