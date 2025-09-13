@@ -451,6 +451,18 @@ a{ text-decoration:none; color:inherit; }
   }
   .side-nav.open{ transform:translateX(0); }
 
+  .side-nav .in-drawer { 
+  display: block !important; 
+}
+.side-nav .side-socials.in-drawer { 
+  display: flex !important; 
+  margin-top: auto; 
+  margin-bottom: 1.2rem; 
+}
+.side-nav .resume-btn.in-drawer { 
+  display: flex !important; 
+}
+
   /* On small screens… */
 .sidebar > .side-socials,
 .sidebar > .resume-btn { display: none; }  /* hide desktop copies */
@@ -474,7 +486,9 @@ a{ text-decoration:none; color:inherit; }
 /* Remove the bottom divider from the last content section (fixes the thin line above footer) */
 .section:last-of-type { border-bottom: none; }
 
-/* Hide drawer-only items by default (desktop) */
-.in-drawer { display: none; }
+/* Hide drawer-only items on desktop by default */
+.in-drawer { 
+  display: none !important; 
+}
 
 
