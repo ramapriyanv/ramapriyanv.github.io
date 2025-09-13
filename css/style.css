@@ -249,3 +249,11 @@ a{ text-decoration:none; color:inherit; }
   .mobile-topnav a:hover{ color:var(--text); }
   .mobile-topnav a i{ font-size:1.6rem; }
 }
+
+@media (max-width:880px){
+  .sidebar{ display:none !important; }
+  .main{ margin-left:0 !important; padding-top:64px !important; padding-bottom:96px; }
+
+  .mobile-topnav{ display:flex !important; }
+  .mobile-cta{ display:flex !important; }
+}
