@@ -13,17 +13,16 @@ topLinks.forEach(a => {
 
 
 function onScroll(){
-  const mid = window.scrollY + window.innerHeight / 2;
   let current = sections[0]?.id || '';
 
-  for (const sec of sections){
-    const top = sec.offsetTop;
-    const bottom = top + sec.offsetHeight;
-    if (mid >= top && mid < bottom){
-      current = sec.id;
-      break;
-    }
+for (const sec of sections){
+  const top = sec.offsetTop - 100; // 100px threshold so header area counts
+  const bottom = top + sec.offsetHeight;
+  if (window.scrollY >= top && window.scrollY < bottom){
+    current = sec.id;
+    break;
   }
+}
 
   allNavLinks.forEach(a => {
   a.classList.toggle('active', a.getAttribute('href') === `#${current}`);
