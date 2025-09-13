@@ -25,7 +25,6 @@ window.addEventListener('resize', onScroll);
 document.addEventListener('DOMContentLoaded', onScroll);
 onScroll();
 
-
 // Reveal on scroll using IntersectionObserver
 const reveal = new IntersectionObserver((entries)=>{
   entries.forEach(e=>{
@@ -45,7 +44,7 @@ document.querySelectorAll(
 
 // --- Mobile drawer toggle ---
 const menuBtn  = document.querySelector('.menu-btn');
-const drawer   = document.querySelector('.side-nav');     // the nav panel
+const drawer   = document.querySelector('.side-nav');
 const backdrop = document.querySelector('.backdrop');
 
 function openDrawer(){
@@ -66,10 +65,10 @@ function closeDrawer(){
   document.body.style.overflow = '';
 }
 
-// Replace your existing click listener with this (includes iOS fix)
+// Toggle on hamburger click
 menuBtn?.addEventListener('click', (e) => {
-  e.preventDefault();      // stops jumping to #home
-  e.stopPropagation();     // prevents bubbling into the brand <a>
+  e.preventDefault();
+  e.stopPropagation();
   drawer.classList.contains('open') ? closeDrawer() : openDrawer();
 });
 
@@ -79,8 +78,7 @@ menuBtn?.addEventListener('touchstart', (e) => {
   e.stopPropagation();
 }, { passive: false });
 
-
-// Close on nav link tap (nice for single-page sites)
+// Close on nav link tap
 drawer?.querySelectorAll('a').forEach(a => {
   a.addEventListener('click', closeDrawer);
 });
@@ -89,3 +87,6 @@ drawer?.querySelectorAll('a').forEach(a => {
 document.addEventListener('keydown', (e)=>{
   if (e.key === 'Escape') closeDrawer();
 });
+
+// NEW: Close when tapping the dimmed backdrop
+backdrop?.addEventListener('click', closeDrawer);
