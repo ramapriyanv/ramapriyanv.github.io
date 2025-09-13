@@ -47,6 +47,7 @@ document.querySelectorAll(
 const menuBtn  = document.querySelector('.menu-btn');
 const drawer   = document.querySelector('.side-nav');     // the nav panel
 const backdrop = document.querySelector('.backdrop');
+backdrop?.addEventListener('click', closeDrawer);
 
 function openDrawer(){
   drawer.classList.add('open');
@@ -89,3 +90,5 @@ drawer?.querySelectorAll('a').forEach(a => {
 document.addEventListener('keydown', (e)=>{
   if (e.key === 'Escape') closeDrawer();
 });
+
+

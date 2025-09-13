@@ -451,6 +451,18 @@ a{ text-decoration:none; color:inherit; }
   }
   .side-nav.open{ transform:translateX(0); }
 
+  /* On small screens… */
+.sidebar > .side-socials,
+.sidebar > .resume-btn { display: none; }  /* hide desktop copies */
+
+.side-nav .in-drawer { display: block; }   /* show drawer copies */
+.side-nav .side-socials { display:flex; margin-top:auto; margin-bottom:1.2rem; }
+.side-nav .resume-btn { display:flex; }
+
+/* Ensure hamburger is visible and aligned right */
+.menu-btn { display:inline-flex; margin-left:auto; }
+
+
   /* Keep these hidden in compact header */
   .side-socials{ display:none; }
   .resume-btn{ display:none; }
@@ -461,3 +473,8 @@ a{ text-decoration:none; color:inherit; }
 
 /* Remove the bottom divider from the last content section (fixes the thin line above footer) */
 .section:last-of-type { border-bottom: none; }
+
+/* Hide drawer-only items by default (desktop) */
+.in-drawer { display: none; }
+
+
