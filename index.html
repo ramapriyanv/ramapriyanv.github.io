@@ -9,60 +9,47 @@
   <link rel="stylesheet" href="css/style.css"/>
 </head>
 <body>
-  <!-- Sidebar (PC header / Mobile header bar) -->
+  <!-- Sidebar (Just for PC) -->
   <aside class="sidebar">
     <a class="brand" href="#home">
-      <img src="images/about.jpeg" alt="Avatar"/>
-      <div>
-        <h1>Ramapriyan</h1>
-        <p>Software • ML • AI</p>
-      </div>
-    </a>
+  <img src="images/about.jpeg" alt="Avatar"/>
+  <div>
+    <h1>Ramapriyan</h1>
+    <p>Software • ML • AI</p>
+  </div>
+</a>
 
-    <!-- Hamburger button (mobile) -->
-    <button class="menu-btn" aria-label="Toggle menu" aria-controls="mobile-nav" aria-expanded="false">
-      <i class='bx bx-menu'></i>
-    </button>
+<!-- Mobile hamburger (now outside the anchor) -->
+<button class="menu-btn" aria-label="Toggle menu" aria-controls="mobile-nav" aria-expanded="false">
+  <i class='bx bx-menu'></i>
+</button>
 
-    <!-- Drawer nav (mobile) + Sidebar nav (desktop) -->
-    <nav id="mobile-nav" class="side-nav" aria-label="Primary">
+    <nav id="mobile-nav" class="side-nav">
       <a href="#home" class="active"><i class='bx bx-home'></i> Home</a>
       <a href="#about"><i class='bx bx-user'></i> About</a>
       <a href="#skills"><i class='bx bx-scatter-chart'></i> Skills</a>
       <a href="#experience"><i class='bx bx-briefcase'></i> Experience</a>
       <a href="#certs"><i class='bx bx-badge-check'></i> Certifications</a>
       <a href="#projects"><i class='bx bx-grid-alt'></i> Projects</a>
-
-      <!-- Mobile drawer: socials + resume (visible only in drawer on small screens) -->
-      <div class="side-socials in-drawer">
-        <a href="https://www.linkedin.com/in/ramapriyan-varadarajan/" target="_blank" rel="noopener"><i class='bx bxl-linkedin'></i></a>
-        <a href="https://github.com/ramapriyanv" target="_blank" rel="noopener"><i class='bx bxl-github'></i></a>
-        <a href="mailto:ramapriyanv@gmail.com" target="_blank" rel="noopener"><i class='bx bxs-envelope'></i></a>
-      </div>
-
-      <a class="resume-btn in-drawer" href="https://drive.google.com/file/d/1Wr5dEZRStHacADokZZyhnrhoju-feNOG/view?usp=sharing" target="_blank" rel="noopener">
-        <i class='bx bx-file-blank'></i> View My Resume
-      </a>
     </nav>
 
-    <!-- Desktop sidebar: socials + resume (hidden on mobile header; still visible on desktop) -->
     <div class="side-socials">
-      <a href="https://www.linkedin.com/in/ramapriyan-varadarajan/" target="_blank" rel="noopener"><i class='bx bxl-linkedin'></i></a>
-      <a href="https://github.com/ramapriyanv" target="_blank" rel="noopener"><i class='bx bxl-github'></i></a>
-      <a href="mailto:ramapriyanv@gmail.com" target="_blank" rel="noopener"><i class='bx bxs-envelope'></i></a>
+      <a href="https://www.linkedin.com/in/ramapriyan-varadarajan/" target="_blank"><i class='bx bxl-linkedin'></i></a>
+      <a href="https://github.com/ramapriyanv" target="_blank"><i class='bx bxl-github'></i></a>
+      <a href="mailto:ramapriyanv@gmail.com" target="_blank"><i class='bx bxs-envelope'></i></a>
     </div>
 
-    <a class="resume-btn" href="https://drive.google.com/file/d/1Wr5dEZRStHacADokZZyhnrhoju-feNOG/view?usp=sharing" target="_blank" rel="noopener">
+    <a class="resume-btn" href="https://drive.google.com/file/d/1Wr5dEZRStHacADokZZyhnrhoju-feNOG/view?usp=sharing" target="_blank">
       <i class='bx bx-file-blank'></i> View My Resume
     </a>
   </aside>
-
   <!-- Backdrop for the mobile drawer -->
-  <div class="backdrop hidden"></div>
+<div class="backdrop hidden"></div>
+
 
   <!-- Main content -->
   <main class="main">
-    <!-- HOME -->
+    <!-- HOME (same copy) -->
     <section class="section hero" id="home">
       <div class="hero-copy">
         <h2>Hi, I'm <span class="accent">Ramapriyan.</span></h2>
@@ -74,11 +61,12 @@
         </p>
         <div class="cta-row">
           <a href="#about" class="btn primary">About Me</a>
+
         </div>
       </div>
     </section>
 
-    <!-- ABOUT -->
+    <!-- ABOUT (same copy) -->
     <section class="section about" id="about">
       <header class="section-head">
         <h3>About</h3>
@@ -94,7 +82,7 @@
       </div>
     </section>
 
-    <!-- SKILLS -->
+    <!-- SKILLS (same items, new tags layout) -->
     <section class="section skills" id="skills">
       <header class="section-head">
         <h3>My <span class="accent">Skills</span></h3>
@@ -123,196 +111,208 @@
       </div>
     </section>
 
-    <!-- EXPERIENCE -->
-    <section class="section experience" id="experience">
-      <header class="section-head">
-        <h3>My <span class="accent">Journey</span></h3>
-      </header>
+<!-- EXPERIENCE -->
+<section class="section experience" id="experience">
+  <header class="section-head">
+    <h3>My <span class="accent">Journey</span></h3>
+  </header>
 
-      <div class="exp-grid">
-        <!-- LEFT: WORK EXPERIENCE -->
-        <div class="exp-col">
-          <h4 class="col-title">Work Experience</h4>
-          <div class="timeline">
+  <!-- NEW: two-column grid -->
+  <div class="exp-grid">
+    <!-- LEFT: WORK EXPERIENCE -->
+    <div class="exp-col">
+      <h4 class="col-title">Work Experience</h4>
+      <div class="timeline">
 
-            <!-- Placeholder for current role -->
-            <div class="item">
-              <div class="dot"></div>
-              <div class="content highlight">
-                <span class="when"><i class='bx bxs-calendar-alt'></i> Sep 2025 – Present</span>
-                <h4>Software Engineer</h4>
-                <div class="placetitle">
-                  <img src="images/acx.jpg" alt="Logo"/>
-                  <h5>Acxhange</h5>
-                </div>
-                <p>Description: TBA</p>
-                <p class="skills-line"><strong>Skills:</strong> TBA</p>
-              </div>
+        <!-- NEW JOB (add your real details) -->
+        <div class="item">
+          <div class="dot"></div>
+          <div class="content highlight">
+            <span class="when"><i class='bx bxs-calendar-alt'></i> Sep 2025 – Present</span>
+            <h4>Software Engineer</h4>
+            <div class="placetitle">
+              <img src="images/acx.jpg" alt="Logo"/>
+              <h5>Acxhange</h5>
             </div>
-
-            <!-- Graduate Research Assistant -->
-            <div class="item">
-              <div class="dot"></div>
-              <div class="content">
-                <span class="when"><i class='bx bxs-calendar-alt'></i> April 2024 - March 2025</span>
-                <h4>Graduate Research Assistant - Software Engineer</h4>
-                <div class="placetitle">
-                  <img src="images/uwm.jpg" alt="Logo"/>
-                  <h5>University of Wisconsin - Milwaukee</h5>
-                </div>
-                <p>Designed and deployed a full-stack web platform using Flask, PostgreSQL and JavaScript to stream and analyze microcontroller sensor data from live lab environments. Engineered a Python system using FeatherWing and PyBadge to detect lead levels in water; increased testing accuracy and reduced analysis time by 30%. Visualized data trends using Matplotlib and Seaborn, automating diagnostics and reducing manual effort by 30%. Delivered 15+ features in weekly Agile sprints, improving research data access across 3 simultaneous projects.</p>
-                <p class="skills-line"><strong>Skills:</strong> Flask, PostgreSQL, React, JavaScript, HTML, Matplotlib, Seaborn, Agile methodologies</p>
-              </div>
-            </div>
-
-            <!-- Software Engineer Intern -->
-            <div class="item">
-              <div class="dot"></div>
-              <div class="content">
-                <span class="when"><i class='bx bxs-calendar-alt'></i> August 2022 - August 2023</span>
-                <h4>Software Engineer Intern</h4>
-                <div class="placetitle">
-                  <img src="images/vish.jpeg" alt="Logo"/>
-                  <h5>Vishwak Solutions Inc.</h5>
-                </div>
-                <p>Automated internal workflows by building web tools in Flask and JavaScript, cutting data processing time by 40%. Refactored legacy scripts into maintainable APIs, standardizing backend access and reducing maintenance load by 30%. Revamped the frontend with React, improving UX and reducing support tickets by 25%.</p>
-                <p class="skills-line"><strong>Skills:</strong> React, Flask, JavaScript, REST APIs</p>
-              </div>
-            </div>
+            <p>Description: TBA</p>
+            <p class="skills-line"><strong>Skills:</strong> TBA</p>
           </div>
         </div>
 
-        <!-- RIGHT: EDUCATION -->
-        <div class="exp-col">
-          <h4 class="col-title">Education</h4>
-          <div class="timeline">
-            <!-- MS -->
-            <div class="item">
-              <div class="dot"></div>
-              <div class="content">
-                <span class="when"><i class='bx bxs-calendar-alt'></i> September 2023 - May 2025</span>
-                <h4>MS in Computer Science</h4>
-                <div class="placetitle">
-                  <img src="images/uwm.jpg" alt="Logo"/>
-                  <h5>University of Wisconsin - Milwaukee</h5>
-                </div>
-                <ul class="coursework">
-                  <li>Relevant Coursework: Introduction to Natural Language Processing; Machine Learning; Programming for Machine Learning; Introduction to Cyber Security; Immersive Technologies and 3D User Interfaces; Computational Models of Decision Making; Rich Internet Applications; Algorithm Design and Analysis; Server Side Internet Programming</li>
-                </ul>
-              </div>
+        <!-- Existing: Graduate Research Assistant -->
+        <div class="item">
+          <div class="dot"></div>
+          <div class="content">
+            <span class="when"><i class='bx bxs-calendar-alt'></i> April 2024 - March 2025</span>
+            <h4>Graduate Research Assistant - Software Engineer</h4>
+            <div class="placetitle">
+              <img src="images/uwm.jpg" alt="Logo"/>
+              <h5>University of Wisconsin - Milwaukee</h5>
             </div>
+            <p>Designed and deployed a full-stack web platform using Flask, PostgreSQL and JavaScript to stream and analyze microcontroller sensor data from live lab environments. Engineered a Python system using FeatherWing and PyBadge to detect lead levels in water; increased testing accuracy and reduced analysis time by 30%. Visualized data trends using Matplotlib and Seaborn, automating diagnostics and reducing manual effort by 30%. Delivered 15+ features in weekly Agile sprints, improving research data access across 3 simultaneous projects.</p>
+            <p class="skills-line"><strong>Skills:</strong> Flask, PostgreSQL, React, JavaScript, HTML, Matplotlib, Seaborn, Agile methodologies</p>
+          </div>
+        </div>
 
-            <!-- BS -->
-            <div class="item">
-              <div class="dot"></div>
-              <div class="content">
-                <span class="when"><i class='bx bxs-calendar-alt'></i> August 2019 - May 2023</span>
-                <h4>BS in Computer Science and Engineering</h4>
-                <div class="placetitle">
-                  <img src="images/biher.jpg" alt="Logo"/>
-                  <h5>Bharath Institute of Higher Education and Research</h5>
-                </div>
-                <ul class="coursework">
-                  <li>Relevant Coursework: Data Structures and Algorithms; Object Oriented Programming; Cloud Computing; Operating Systems; Software Engineering; Artificial Intelligence; Database Management Systems; Compiler Design; Big Data Analytics</li>
-                </ul>
-              </div>
+        <!-- Existing: Software Engineer Intern -->
+        <div class="item">
+          <div class="dot"></div>
+          <div class="content">
+            <span class="when"><i class='bx bxs-calendar-alt'></i> August 2022 - August 2023</span>
+            <h4>Software Engineer Intern</h4>
+            <div class="placetitle">
+              <img src="images/vish.jpeg" alt="Logo"/>
+              <h5>Vishwak Solutions Inc.</h5>
             </div>
-
+            <p>Automated internal workflows by building web tools in Flask and JavaScript, cutting data processing time by 40%. Refactored legacy scripts into maintainable APIs, standardizing backend access and reducing maintenance load by 30%. Revamped the frontend with React, improving UX and reducing support tickets by 25%.</p>
+            <p class="skills-line"><strong>Skills:</strong> React, Flask, JavaScript, REST APIs</p>
           </div>
         </div>
       </div>
-    </section>
+    </div>
 
-    <!-- CERTIFICATIONS -->
-    <section class="section certs" id="certs">
-      <header class="section-head">
-        <h3>My <span class="accent">Certificates</span></h3>
-      </header>
-
-      <div class="cert-grid">
-        <div class="cert">
-          <img src="images/cert1.jpg" alt="AWS - Certified Cloud Practitioner"/>
-          <div class="cert-info">
-            <h4>AWS - Certified Cloud Practitioner</h4>
-            <a class="chip" href="https://www.credly.com/badges/2f7acc76-86e4-48ae-a217-34ea3e02b8af/public_url" target="_blank" rel="noopener">
-              <i class='bx bx-link-external'></i> View Certificate
-            </a>
+    <!-- RIGHT: EDUCATION -->
+    <div class="exp-col">
+      <h4 class="col-title">Education</h4>
+      <div class="timeline">
+        <!-- Existing: MS -->
+        <div class="item">
+          <div class="dot"></div>
+          <div class="content">
+            <span class="when"><i class='bx bxs-calendar-alt'></i> September 2023 - May 2025</span>
+            <h4>MS in Computer Science</h4>
+            <div class="placetitle">
+              <img src="images/uwm.jpg" alt="Logo"/>
+              <h5>University of Wisconsin - Milwaukee</h5>
+            </div>
+            <ul class="coursework">
+              <li>Relevant Coursework: Introduction to Natural Language Processing; Machine Learning; Programming for Machine Learning; Introduction to Cyber Security; Immersive Technologies and 3D User Interfaces; Computational Models of Decision Making; Rich Internet Applications; Algorithm Design and Analysis; Server Side Internet Programming</li>
+            </ul>
           </div>
         </div>
 
-        <div class="cert">
-          <img src="images/cert2.jpeg" alt="IBM's Python for Data Science, AI and Development"/>
-          <div class="cert-info">
-            <h4>IBM's Python for Data Science, AI and Development</h4>
-            <a class="chip" href="https://coursera.org/share/1d7b13d5c2704f5ac6c5c90a3c4ff9a4" target="_blank" rel="noopener">
-              <i class='bx bx-link-external'></i> View Certificate
-            </a>
+        <!-- Existing: BS -->
+        <div class="item">
+          <div class="dot"></div>
+          <div class="content">
+            <span class="when"><i class='bx bxs-calendar-alt'></i> August 2019 - May 2023</span>
+            <h4>BS in Computer Science and Engineering</h4>
+            <div class="placetitle">
+              <img src="images/biher.jpg" alt="Logo"/>
+              <h5>Bharath Institute of Higher Education and Research</h5>
+            </div>
+            <ul class="coursework">
+              <li>Relevant Coursework: Data Structures and Algorithms; Object Oriented Programming; Cloud Computing; Operating Systems; Software Engineering; Artificial Intelligence; Database Management Systems; Compiler Design; Big Data Analytics</li>
+            </ul>
           </div>
         </div>
 
-        <div class="cert">
-          <img src="images/cert3.jpeg" alt="HackerRank - SQL"/>
-          <div class="cert-info">
-            <h4>HackerRank - SQL</h4>
-            <a class="chip" href="https://www.hackerrank.com/certificates/fcd24e1cd7fb" target="_blank" rel="noopener">
-              <i class='bx bx-link-external'></i> View Certificate
-            </a>
-          </div>
-        </div>
       </div>
-    </section>
+    </div>
+  </div>
+</section>
 
-    <!-- PROJECTS -->
-    <section class="section projects" id="projects">
-      <header class="section-head">
-        <h3>My <span class="accent">Projects</span></h3>
-      </header>
 
-      <div class="grid">
-        <div class="card">
-          <img src="images/project1.jpeg" alt="StockSnap"/>
-          <div class="card-body">
-            <h4>StockSnap - AI Stock Analysis Tool</h4>
-            <p>AI- powered stock analysis tool for generating insightful summaries.</p>
-            <a class="chip" href="https://github.com/ramapriyanv/StockSnap-AI" target="_blank" rel="noopener">
-              <i class='bx bx-link-external'></i> GitHub Link
-            </a>
-          </div>
-        </div>
+<!-- CERTIFICATIONS -->
+<section class="section certs" id="certs">
+  <header class="section-head">
+    <h3>My <span class="accent">Certificates</span></h3>
+  </header>
 
-        <div class="card">
-          <img src="images/project2.jpeg" alt="FixMyHood"/>
-          <div class="card-body">
-            <h4>FixMyHood – AI Civic Issue Reporter</h4>
-            <p>AI-driven civic issue reporting app to collect user complaints.</p>
-            <a class="chip" href="https://github.com/ramapriyanv/FixMyHood" target="_blank" rel="noopener">
-              <i class='bx bx-link-external'></i> GitHub Link
-            </a>
-          </div>
-        </div>
+  <div class="cert-grid">
 
-        <div class="card">
-          <img src="images/project3.jpeg" alt="Phishing"/>
-          <div class="card-body">
-            <h4>Federated Email Based Phishing Detection System</h4>
-            <p>Federated Learning based privacy preserving pipeline to detect Email Phishing.</p>
-            <a class="chip" href="https://github.com/ramapriyanv/FL-Email-Phishing" target="_blank" rel="noopener">
-              <i class='bx bx-link-external'></i> GitHub Link
-            </a>
-          </div>
-        </div>
+    <!-- Certificate 1 -->
+    <div class="cert">
+      <img src="images/cert1.jpg" alt="AWS - Certified Cloud Practitioner"/>
+      <div class="cert-info">
+        <h4>AWS - Certified Cloud Practitioner</h4>
+        <a class="chip" href="https://www.credly.com/badges/2f7acc76-86e4-48ae-a217-34ea3e02b8af/public_url"
+           target="_blank" rel="noopener noreferrer">
+          <i class='bx bx-link-external'></i> View Certificate
+        </a>
       </div>
-    </section>
+    </div>
 
-    <!-- FOOTER -->
-    <footer class="footer">
-      <p>© Ramapriyan Varadarajan</p>
-      <div class="footer-links">
-        <a href="https://www.linkedin.com/in/ramapriyan-varadarajan/" target="_blank" rel="noopener"><i class='bx bxl-linkedin'></i></a>
-        <a href="https://github.com/ramapriyanv" target="_blank" rel="noopener"><i class='bx bxl-github'></i></a>
-        <a href="mailto:ramapriyanv@gmail.com" target="_blank" rel="noopener"><i class='bx bxs-envelope'></i></a>
+    <!-- Certificate 2 -->
+    <div class="cert">
+      <img src="images/cert2.jpeg" alt="IBM's Python for Data Science, AI and Development"/>
+      <div class="cert-info">
+        <h4>IBM's Python for Data Science, AI and Development</h4>
+        <a class="chip" href="https://coursera.org/share/1d7b13d5c2704f5ac6c5c90a3c4ff9a4"
+           target="_blank" rel="noopener noreferrer">
+          <i class='bx bx-link-external'></i> View Certificate
+        </a>
       </div>
-    </footer>
+    </div>
+
+    <!-- Certificate 3 -->
+    <div class="cert">
+      <img src="images/cert3.jpeg" alt="HackerRank - SQL"/>
+      <div class="cert-info">
+        <h4>HackerRank - SQL</h4>
+        <a class="chip" href="https://www.hackerrank.com/certificates/fcd24e1cd7fb"
+           target="_blank" rel="noopener noreferrer">
+          <i class='bx bx-link-external'></i> View Certificate
+        </a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+
+<!-- PROJECTS -->
+<section class="section projects" id="projects">
+  <header class="section-head">
+    <h3>My <span class="accent">Projects</span></h3>
+  </header>
+
+  <div class="grid">
+    <div class="card">
+      <img src="images/project1.jpeg" alt="StockSnap"/>
+      <div class="card-body">
+        <h4>StockSnap - AI Stock Analysis Tool</h4>
+        <p>AI- powered stock analysis tool for generating insightful summaries.</p>
+        <a class="chip" href="https://github.com/ramapriyanv/StockSnap-AI" target="_blank" rel="noopener noreferrer">
+          <i class='bx bx-link-external'></i> GitHub Link
+        </a>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="images/project2.jpeg" alt="FixMyHood"/>
+      <div class="card-body">
+        <h4>FixMyHood – AI Civic Issue Reporter</h4>
+        <p>AI-driven civic issue reporting app to collect user complaints.</p>
+        <a class="chip" href="https://github.com/ramapriyanv/FixMyHood" target="_blank" rel="noopener noreferrer">
+          <i class='bx bx-link-external'></i> GitHub Link
+        </a>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="images/project3.jpeg" alt="Phishing"/>
+      <div class="card-body">
+        <h4>Federated Email Based Phishing Detection System</h4>
+        <p>Federated Learning based privacy preserving pipeline to detect Email Phishing.</p>
+        <a class="chip" href="https://github.com/ramapriyanv/FL-Email-Phishing" target="_blank" rel="noopener noreferrer">
+          <i class='bx bx-link-external'></i> GitHub Link
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+    <!-- FOOTER (same copy) -->
+
+      <footer class="footer">
+        <p>© Ramapriyan Varadarajan</p>
+        <div class="footer-links">
+          <a href="https://www.linkedin.com/in/ramapriyan-varadarajan/" target="_blank"><i class='bx bxl-linkedin'></i></a>
+          <a href="https://github.com/ramapriyanv" target="_blank"><i class='bx bxl-github'></i></a>
+          <a href="mailto:ramapriyanv@gmail.com" target="_blank"><i class='bx bxs-envelope'></i></a>
+        </div>
+      </footer>
   </main>
 
   <script src="js/script.js"></script>
