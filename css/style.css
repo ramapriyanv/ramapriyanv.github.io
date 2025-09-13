@@ -328,32 +328,27 @@ a{ text-decoration:none; color:inherit; }
   .certs .cert-grid{grid-template-columns:repeat(2,1fr)}
   .about .about-wrap{grid-template-columns:1fr}
 }
-@media(max-width:880px){
+@media (max-width:880px){
+  /* Header turns into a top bar */
   .sidebar{
     position: fixed;
-    left: 0;
-    top: 0;
-    bottom: auto;                 /* prevents full-height overlay */
-    width: 100%;
-    height: 74px;                 /* fixed header height */
-    flex-direction: row;
-    align-items: center;
-    gap: 1rem;
-    padding: 1rem 1.4rem;
-    z-index: 20;
+    left: 0; top: 0; bottom: auto;
+    width: 100%; height: 74px;
+    flex-direction: row; align-items: center; gap: 1rem;
+    padding: 1rem 1.4rem; z-index: 20;
   }
+  .brand{ flex:1; }
 
-  .brand{flex:1}
+  /* Hamburger: visible and pushed to the right */
+  .menu-btn{ display:inline-flex; margin-left:auto; }
 
-  /* Drawer panel instead of hiding nav */
+  /* Slide-in drawer */
   .side-nav{
     position: fixed;
     top: 74px; right: 0;
     height: calc(100vh - 74px);
     width: 80vw; max-width: 360px;
-    display: flex;
-    flex-direction: column;
-    gap: .8rem;
+    display: flex; flex-direction: column; gap: .8rem;
     padding: 1.6rem;
     background: #0A0F1A;
     border-left: 1px solid var(--line);
@@ -361,19 +356,39 @@ a{ text-decoration:none; color:inherit; }
     transform: translateX(100%);
     transition: transform .25s ease;
     z-index: 19;
+    overflow-y: auto;              /* make drawer scroll if needed */
+    -webkit-overflow-scrolling: touch;
   }
   .side-nav.open{ transform: translateX(0); }
 
-  .side-socials{display:none}
-  .resume-btn{display:none}
-  .main{margin-left:0;padding-top:74px}
+  /* Hide the DESKTOP copies on small screens */
+  .sidebar > .side-socials,
+  .sidebar > .resume-btn { display: none; }
+
+  /* Show the drawer-only copies */
+  .side-nav .in-drawer { display: block !important; }
+  .side-nav .side-socials.in-drawer {
+    display:flex !important;
+    margin-top:auto; margin-bottom:1.2rem;
+  }
+  .side-nav .resume-btn.in-drawer { display:flex !important; }
+
+  /* Main content sits under the fixed top bar */
+  .main{ margin-left:0; padding-top:74px; }
 }
+
 
 @media(max-width:640px){
   .skills .skills-grid{grid-template-columns:1fr}
   .projects .grid{grid-template-columns:1fr}
   .certs .cert-grid{grid-template-columns:1fr}
 }
+
+/* Hide drawer-only items on desktop by default */
+.in-drawer { 
+  display: none !important; 
+}
+
 
 /* ---------------- Micro-animations ---------------- */
 @keyframes spin{to{transform:rotate(360deg)}}
@@ -430,65 +445,74 @@ a{ text-decoration:none; color:inherit; }
 }
 .backdrop.hidden{ display:none; }
 
-/* Turn the side-nav into a slide-in drawer on mobile */
-@media (max-width:880px){
-  .menu-btn{ display:inline-flex; }
-
-  /* Replace display:none with a drawer panel */
-  .side-nav{
-    position:fixed;
-    top:74px; right:0;                  /* slide from right; change to left:0 if preferred */
-    height:calc(100vh - 74px);
-    width:80vw; max-width:360px;
-    display:flex; flex-direction:column; gap:.8rem;
-    padding:1.6rem;
-    background:#0A0F1A;
-    border-left:1px solid var(--line);
-    box-shadow:-12px 0 30px rgba(0,0,0,.5);
-    transform:translateX(100%);         /* hidden off-canvas */
-    transition:transform .25s ease;
-    z-index:19;
-  }
-  .side-nav.open{ transform:translateX(0); }
-
-  .side-nav .in-drawer { 
-  display: block !important; 
-}
-.side-nav .side-socials.in-drawer { 
-  display: flex !important; 
-  margin-top: auto; 
-  margin-bottom: 1.2rem; 
-}
-.side-nav .resume-btn.in-drawer { 
-  display: flex !important; 
-}
-
-  /* On small screens… */
-.sidebar > .side-socials,
-.sidebar > .resume-btn { display: none; }  /* hide desktop copies */
-
-.side-nav .in-drawer { display: block; }   /* show drawer copies */
-.side-nav .side-socials { display:flex; margin-top:auto; margin-bottom:1.2rem; }
-.side-nav .resume-btn { display:flex; }
-
-/* Ensure hamburger is visible and aligned right */
-.menu-btn { display:inline-flex; margin-left:auto; }
-
-
-  /* Keep these hidden in compact header */
-  .side-socials{ display:none; }
-  .resume-btn{ display:none; }
-
-  /* Main content under fixed header */
-  .main{ margin-left:0; padding-top:74px; }
-}
 
 /* Remove the bottom divider from the last content section (fixes the thin line above footer) */
 .section:last-of-type { border-bottom: none; }
 
-/* Hide drawer-only items on desktop by default */
-.in-drawer { 
-  display: none !important; 
+/* default desktop: hide drawer-only */
+.in-drawer { display: none !important; }
+
+/* structure inside the drawer */
+.drawer-links { 
+  display: flex; 
+  flex-direction: column; 
+  gap: .8rem; 
+}
+
+/* footer that pins to bottom of drawer */
+.drawer-footer {
+  margin-top: auto;              /* pushes it to the bottom */
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  padding-bottom: calc(env(safe-area-inset-bottom, 0px) + 12px); /* iOS notch friendly */
+}
+
+@media (max-width:880px){
+  /* show drawer-only on mobile */
+  .side-nav .in-drawer { display: block !important; }
+
+  /* hide desktop copies on mobile */
+  .sidebar > .side-socials,
+  .sidebar > .resume-btn { display: none !important; }
+
+  /* drawer footer internals */
+  .side-nav .side-socials.in-drawer { 
+    display: flex !important; 
+    margin: 0;                   /* no auto margin here anymore; footer controls spacing */
+    justify-content: space-between;
+  }
+  .side-nav .resume-btn.in-drawer { display: flex !important; }
+
+  /* if not already present */
+  .side-nav{
+    display: flex;               /* required for margin-top:auto to work */
+    flex-direction: column;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+/* Unified Resume Button */
+.resume-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: .6rem;
+
+  background: linear-gradient(180deg, var(--accent), var(--accent-2));
+  color: #fff;                   /* 🔥 unified to white/light text */
+  padding: 1rem;
+  border-radius: .8rem;
+  font-size: 1.4rem;
+  font-weight: 700;
+  text-decoration: none;
+
+  transition: transform .12s ease, box-shadow .2s ease, opacity .2s ease;
+}
+
+.resume-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 6px rgba(255,213,74,0.5), 0 0 0 4px rgba(255,213,74,0.2), var(--shadow);
 }
 
 
