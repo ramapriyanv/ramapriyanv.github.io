@@ -25,7 +25,6 @@ window.addEventListener('resize', onScroll);
 document.addEventListener('DOMContentLoaded', onScroll);
 onScroll();
 
-
 // Reveal on scroll using IntersectionObserver
 const reveal = new IntersectionObserver((entries)=>{
   entries.forEach(e=>{
@@ -42,53 +41,3 @@ const reveal = new IntersectionObserver((entries)=>{
 document.querySelectorAll(
   '.hero-copy, .about-wrap, .skill-card, .timeline .content, .cert, .card'
 ).forEach(el => reveal.observe(el));
-
-// --- Mobile drawer toggle ---
-const menuBtn  = document.querySelector('.menu-btn');
-const drawer   = document.querySelector('.side-nav');     // the nav panel
-const backdrop = document.querySelector('.backdrop');
-backdrop?.addEventListener('click', closeDrawer);
-
-function openDrawer(){
-  drawer.classList.add('open');
-  backdrop.classList.remove('hidden');
-  menuBtn?.setAttribute('aria-expanded','true');
-  // Lock page scroll under the drawer
-  document.documentElement.style.overflow = 'hidden';
-  document.body.style.overflow = 'hidden';
-}
-
-function closeDrawer(){
-  drawer.classList.remove('open');
-  backdrop.classList.add('hidden');
-  menuBtn?.setAttribute('aria-expanded','false');
-  // Restore scroll
-  document.documentElement.style.overflow = '';
-  document.body.style.overflow = '';
-}
-
-// Replace your existing click listener with this (includes iOS fix)
-menuBtn?.addEventListener('click', (e) => {
-  e.preventDefault();      // stops jumping to #home
-  e.stopPropagation();     // prevents bubbling into the brand <a>
-  drawer.classList.contains('open') ? closeDrawer() : openDrawer();
-});
-
-// iOS Safari: block ghost taps passing through to underlying elements
-menuBtn?.addEventListener('touchstart', (e) => {
-  e.preventDefault();
-  e.stopPropagation();
-}, { passive: false });
-
-
-// Close on nav link tap (nice for single-page sites)
-drawer?.querySelectorAll('a').forEach(a => {
-  a.addEventListener('click', closeDrawer);
-});
-
-// Close on Escape key
-document.addEventListener('keydown', (e)=>{
-  if (e.key === 'Escape') closeDrawer();
-});
-
-
