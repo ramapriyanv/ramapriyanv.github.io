@@ -281,3 +281,20 @@ html { scroll-behavior: smooth; }
     display:flex;                   /* ensure visible */
   }
 }
+
+/* Desktop-only hero centering + size bump */
+@media (min-width: 881px) {
+  .hero {
+    align-items: center;   /* centers contents horizontally */
+    text-align: center;    /* centers text */
+  }
+  .hero-copy {
+    max-width: 1000px;     /* slightly wider so text breathes */
+  }
+  .hero h2 {
+    font-size: 5rem;       /* bigger name */
+  }
+  .hero h3 {
+    font-size: 2.4rem;     /* bigger interests */
+  }
+}
