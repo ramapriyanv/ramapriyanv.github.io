@@ -312,12 +312,18 @@ html { scroll-behavior: smooth; }
 
 /* Add decorative ovals only on desktop */
 @media (min-width: 881px) {
+  .hero {
+    position: relative;   /* establish containing block */
+    overflow: hidden;     /* clip anything that goes outside */
+    z-index: 1;
+  }
+
   .hero::before,
   .hero::after {
     content: "";
     position: absolute;
     border-radius: 50%;
-    z-index: 0;  /* keep them behind the text */
+    z-index: 0;  /* behind hero content */
   }
 
   /* Top-right oval */
@@ -333,18 +339,15 @@ html { scroll-behavior: smooth; }
   .hero::after {
     width: 500px;
     height: 500px;
-    bottom: -200px;
+    bottom: -150px;
     left: -200px;
     background: radial-gradient(circle at center, rgba(241,91,181,0.25), transparent 70%);
   }
 
-  /* Make sure hero text stays above */
-  .hero {
-    position: relative;
-    z-index: 1;
-  }
+  /* Keep hero text above */
   .hero > * {
     position: relative;
     z-index: 2;
   }
 }
+
