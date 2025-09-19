@@ -40,6 +40,25 @@ html { scroll-behavior: smooth; }
 .side-nav a:hover{ background:rgba(255,255,255,.03); color:var(--text); }
 .side-nav a.active{ color:var(--accent); background:rgba(155,93,229,.06); }
 
+/* Desktop-only: sidebar transparency + active highlight */
+@media (min-width: 881px) {
+  .side-nav a {
+    background: transparent;
+    opacity: 0.5;
+    transition: opacity 0.3s ease, background 0.3s ease, color 0.3s ease;
+  }
+
+  .side-nav a:hover {
+    opacity: 0.8;
+  }
+
+  .side-nav a.active {
+    opacity: 1;
+    background: rgba(155,93,229,0.15);
+    color: var(--accent);
+  }
+}
+
 /* Socials cluster */
 .side-socials {
   display:flex;
