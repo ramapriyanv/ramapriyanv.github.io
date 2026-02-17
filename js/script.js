@@ -1,36 +1,38 @@
-// Scroll spy for sidebar links (uses viewport middle for accuracy)
+// Scroll spy for sidebar + mobile tabs
 const sideLinks = document.querySelectorAll('.side-nav a');
-const topLinks  = document.querySelectorAll('.mobile-topnav a[href^="#"]'); // mobile tabs
+const topLinks  = document.querySelectorAll('.mobile-topnav a[href^="#"]');
 const allNavLinks = [...sideLinks, ...topLinks];
+
+// Only track real sections that have an id
 const sections = [...document.querySelectorAll('main .section')].filter(s => s.id);
 
-topLinks.forEach(a => {
-  a.addEventListener('click', () => {
-    allNavLinks.forEach(l => l.classList.remove('active'));
-    a.classList.add('active');
+function setActiveById(id){
+  allNavLinks.forEach(a => {
+    a.classList.toggle('active', a.getAttribute('href') === `#${id}`);
   });
-});
+}
 
+topLinks.forEach(a => {
+  a.addEventListener('click', () => setActiveById(a.getAttribute('href').slice(1)));
+});
 
 function onScroll(){
-  let current = sections[0]?.id || '';
+  if (!sections.length) return;
+  let current = sections[0].id;
 
-for (const sec of sections){
-  const top = sec.offsetTop - 100; // 100px threshold so header area counts
-  const bottom = top + sec.offsetHeight;
-  if (window.scrollY >= top && window.scrollY < bottom){
-    current = sec.id;
-    break;
+  for (const sec of sections){
+    const top = sec.offsetTop - 120; // header threshold
+    const bottom = top + sec.offsetHeight;
+    if (window.scrollY >= top && window.scrollY < bottom){
+      current = sec.id;
+      break;
+    }
   }
+
+  setActiveById(current);
 }
 
-  allNavLinks.forEach(a => {
-  a.classList.toggle('active', a.getAttribute('href') === `#${current}`);
-});
-
-}
-
-window.addEventListener('scroll', onScroll, { passive: true });
+window.addEventListener('scroll', onScroll, { passive:true });
 window.addEventListener('resize', onScroll);
 document.addEventListener('DOMContentLoaded', onScroll);
 onScroll();
@@ -62,41 +64,16 @@ function handleHideShow(){
   const isMobile = window.matchMedia('(max-width: 880px)').matches;
 
   if (isMobile){
-    if (y > lastY && y - lastY > 4) {         // scrolling down
+    if (y > lastY && y - lastY > 4){
       topnav.classList.add('hide');
-    } else if (y < lastY && lastY - y > 4) {  // scrolling up
+    } else if (y < lastY && lastY - y > 4){
       topnav.classList.remove('hide');
     }
   } else {
-    topnav.classList.remove('hide');          // safety on desktop
+    topnav.classList.remove('hide');
   }
   lastY = y;
 }
 
-window.addEventListener('scroll', handleHideShow, { passive: true });
+window.addEventListener('scroll', handleHideShow, { passive:true });
 window.addEventListener('resize', handleHideShow);
-
-// Desktop-only scroll spy for sidebar
-if (window.innerWidth > 880) {
-  const sections = document.querySelectorAll("section");
-  const navLinks = document.querySelectorAll(".side-nav a");
-
-  window.addEventListener("scroll", () => {
-    let current = "";
-
-    sections.forEach(section => {
-      const sectionTop = section.offsetTop;
-      const sectionHeight = section.clientHeight;
-      if (pageYOffset >= sectionTop - sectionHeight / 3) {
-        current = section.getAttribute("id");
-      }
-    });
-
-    navLinks.forEach(link => {
-      link.classList.remove("active");
-      if (link.getAttribute("href") === "#" + current) {
-        link.classList.add("active");
-      }
-    });
-  });
-}
