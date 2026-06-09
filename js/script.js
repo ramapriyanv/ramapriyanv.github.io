@@ -1,33 +1,58 @@
-// Scroll spy for sidebar links (uses viewport middle for accuracy)
-const sideLinks = document.querySelectorAll('.side-nav a');
-const topLinks  = document.querySelectorAll('.mobile-topnav a[href^="#"]'); // mobile tabs
-const allNavLinks = [...sideLinks, ...topLinks];
-const sections = [...document.querySelectorAll('main .section')].filter(s => s.id);
+// ============================================================
+// Helpers
+// ============================================================
+const $$ = (sel, ctx = document) => [...ctx.querySelectorAll(sel)];
+const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-topLinks.forEach(a => {
-  a.addEventListener('click', () => {
-    allNavLinks.forEach(l => l.classList.remove('active'));
-    a.classList.add('active');
-  });
-});
+// ============================================================
+// Scroll progress bar
+// ============================================================
+const progressBar = document.createElement('div');
+progressBar.className = 'scroll-progress';
+progressBar.setAttribute('aria-hidden', 'true');
+document.body.appendChild(progressBar);
 
+// ============================================================
+// Unified scroll spy (sidebar + mobile tabs)
+// ============================================================
+const allNavLinks = $$('.side-nav a, .mobile-topnav .tabs-row a');
+const sections = $$('main .section').filter(s => s.id);
+const topnav = document.querySelector('.mobile-topnav');
+let lastY = window.scrollY;
 
-function onScroll(){
-  let current = sections[0]?.id || '';
-
-for (const sec of sections){
-  const top = sec.offsetTop - 100; // 100px threshold so header area counts
-  const bottom = top + sec.offsetHeight;
-  if (window.scrollY >= top && window.scrollY < bottom){
-    current = sec.id;
-    break;
-  }
+function setActive(id) {
+  allNavLinks.forEach(a =>
+    a.classList.toggle('active', a.getAttribute('href') === `#${id}`)
+  );
 }
 
-  allNavLinks.forEach(a => {
-  a.classList.toggle('active', a.getAttribute('href') === `#${current}`);
-});
+function onScroll() {
+  const y = window.scrollY;
 
+  // progress bar
+  const max = document.documentElement.scrollHeight - window.innerHeight;
+  progressBar.style.setProperty('--p', max > 0 ? Math.min(y / max, 1) : 0);
+
+  // scroll spy
+  let current = sections[0]?.id || '';
+  for (const sec of sections) {
+    if (y >= sec.offsetTop - 180) current = sec.id;
+  }
+  // snap to last section when at the very bottom
+  if (max > 0 && y >= max - 2) current = sections[sections.length - 1]?.id || current;
+  setActive(current);
+
+  // hide/show mobile top bar based on scroll direction
+  if (topnav) {
+    const isMobile = window.matchMedia('(max-width: 880px)').matches;
+    if (isMobile) {
+      if (y > lastY && y - lastY > 4 && y > 120) topnav.classList.add('hide');
+      else if (y < lastY && lastY - y > 4) topnav.classList.remove('hide');
+    } else {
+      topnav.classList.remove('hide');
+    }
+  }
+  lastY = y;
 }
 
 window.addEventListener('scroll', onScroll, { passive: true });
@@ -35,68 +60,51 @@ window.addEventListener('resize', onScroll);
 document.addEventListener('DOMContentLoaded', onScroll);
 onScroll();
 
-// Reveal on scroll using IntersectionObserver
-const reveal = new IntersectionObserver((entries)=>{
-  entries.forEach(e=>{
-    if (e.isIntersecting){
-      e.target.animate(
-        [{opacity:0, transform:'translateY(10px)'},{opacity:1, transform:'translateY(0)'}],
-        {duration:420, easing:'ease-out', fill:'forwards'}
-      );
-      reveal.unobserve(e.target);
-    }
+// Immediate feedback when tapping mobile tabs
+$$('.mobile-topnav .tabs-row a').forEach(a => {
+  a.addEventListener('click', () => {
+    allNavLinks.forEach(l => l.classList.remove('active'));
+    a.classList.add('active');
   });
-},{threshold:.12});
+});
 
-document.querySelectorAll(
-  '.hero-copy, .about-wrap, .skill-card, .timeline .content, .cert, .card'
-).forEach(el => reveal.observe(el));
+// ============================================================
+// Staggered scroll-reveal
+// ============================================================
+const revealTargets = $$(
+  '.hero-copy, .section-head, .about-wrap, .skill-card, .timeline .item, .cert, .card, .footer'
+);
 
-// Hide/show mobile top bar based on scroll direction
-const topnav = document.querySelector('.mobile-topnav');
-let lastY = window.scrollY;
+if (!reducedMotion && 'IntersectionObserver' in window) {
+  // tag elements + compute stagger delay among revealed siblings
+  revealTargets.forEach(el => el.classList.add('reveal'));
+  revealTargets.forEach(el => {
+    const sibs = [...el.parentElement.children].filter(c => c.classList.contains('reveal'));
+    const idx = Math.max(sibs.indexOf(el), 0);
+    el.style.setProperty('--d', `${Math.min(idx, 6) * 90}ms`);
+  });
 
-function handleHideShow(){
-  if (!topnav) return;
-  const y = window.scrollY;
-  const isMobile = window.matchMedia('(max-width: 880px)').matches;
-
-  if (isMobile){
-    if (y > lastY && y - lastY > 4) {         // scrolling down
-      topnav.classList.add('hide');
-    } else if (y < lastY && lastY - y > 4) {  // scrolling up
-      topnav.classList.remove('hide');
-    }
-  } else {
-    topnav.classList.remove('hide');          // safety on desktop
-  }
-  lastY = y;
-}
-
-window.addEventListener('scroll', handleHideShow, { passive: true });
-window.addEventListener('resize', handleHideShow);
-
-// Desktop-only scroll spy for sidebar
-if (window.innerWidth > 880) {
-  const sections = document.querySelectorAll("section");
-  const navLinks = document.querySelectorAll(".side-nav a");
-
-  window.addEventListener("scroll", () => {
-    let current = "";
-
-    sections.forEach(section => {
-      const sectionTop = section.offsetTop;
-      const sectionHeight = section.clientHeight;
-      if (pageYOffset >= sectionTop - sectionHeight / 3) {
-        current = section.getAttribute("id");
+  const reveal = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('in');
+        reveal.unobserve(e.target);
       }
     });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
 
-    navLinks.forEach(link => {
-      link.classList.remove("active");
-      if (link.getAttribute("href") === "#" + current) {
-        link.classList.add("active");
-      }
+  revealTargets.forEach(el => reveal.observe(el));
+}
+
+// ============================================================
+// Mouse-tracking spotlight on cards
+// ============================================================
+if (window.matchMedia('(pointer: fine)').matches) {
+  $$('.skill-card, .card, .cert, .timeline .content').forEach(el => {
+    el.addEventListener('mousemove', e => {
+      const r = el.getBoundingClientRect();
+      el.style.setProperty('--mx', `${e.clientX - r.left}px`);
+      el.style.setProperty('--my', `${e.clientY - r.top}px`);
     });
   });
 }
