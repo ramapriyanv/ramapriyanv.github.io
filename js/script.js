@@ -13,6 +13,18 @@ progressBar.setAttribute('aria-hidden', 'true');
 document.body.appendChild(progressBar);
 
 // ============================================================
+// Back-to-top button
+// ============================================================
+const toTop = document.createElement('button');
+toTop.className = 'back-to-top';
+toTop.setAttribute('aria-label', 'Back to top');
+toTop.innerHTML = "<i class='bx bx-up-arrow-alt'></i>";
+toTop.addEventListener('click', () =>
+  window.scrollTo({ top: 0, behavior: reducedMotion ? 'auto' : 'smooth' })
+);
+document.body.appendChild(toTop);
+
+// ============================================================
 // Unified scroll spy (sidebar + mobile tabs)
 // ============================================================
 const allNavLinks = $$('.side-nav a, .mobile-topnav .tabs-row a');
@@ -54,6 +66,9 @@ function onScroll() {
   if (max > 0 && y >= max - 2) current = sections[sections.length - 1]?.id || current;
   setActive(current);
 
+  // back-to-top visibility
+  toTop.classList.toggle('show', y > 600);
+
   // hide/show mobile top bar based on scroll direction
   if (topnav) {
     const isMobile = window.matchMedia('(max-width: 880px)').matches;
@@ -84,7 +99,7 @@ $$('.mobile-topnav .tabs-row a').forEach(a => {
 // Staggered scroll-reveal
 // ============================================================
 const revealTargets = $$(
-  '.hero-copy, .section-head, .about-wrap, .skill-card, .timeline .item, .cert, .card, .footer'
+  '.hero-copy, .section-head, .about-wrap, .skill-card, .timeline-flow .flow-title, .timeline-flow .item, .cert, .card, .footer'
 );
 
 if (!reducedMotion && 'IntersectionObserver' in window) {
@@ -112,11 +127,26 @@ if (!reducedMotion && 'IntersectionObserver' in window) {
 // Mouse-tracking spotlight on cards
 // ============================================================
 if (window.matchMedia('(pointer: fine)').matches) {
-  $$('.skill-card, .card, .cert, .timeline .content').forEach(el => {
+  $$('.skill-card, .card, .cert, .timeline-flow .content').forEach(el => {
     el.addEventListener('mousemove', e => {
       const r = el.getBoundingClientRect();
       el.style.setProperty('--mx', `${e.clientX - r.left}px`);
       el.style.setProperty('--my', `${e.clientY - r.top}px`);
     });
   });
+
+  // subtle 3D tilt on cards (desktop only, respects reduced motion)
+  if (!reducedMotion) {
+    $$('.skill-card, .card, .cert').forEach(el => {
+      el.addEventListener('mousemove', e => {
+        const r = el.getBoundingClientRect();
+        const rx = (0.5 - (e.clientY - r.top) / r.height) * 4;
+        const ry = ((e.clientX - r.left) / r.width - 0.5) * 4;
+        el.style.transform = `perspective(900px) rotateX(${rx}deg) rotateY(${ry}deg) translateY(-4px)`;
+      });
+      el.addEventListener('mouseleave', () => {
+        el.style.transform = '';
+      });
+    });
+  }
 }
