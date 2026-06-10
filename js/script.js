@@ -1,122 +1,158 @@
-// ============================================================
-// Helpers
-// ============================================================
-const $$ = (sel, ctx = document) => [...ctx.querySelectorAll(sel)];
-const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+(() => {
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const isFinePointer = window.matchMedia('(pointer: fine)').matches;
 
-// ============================================================
-// Scroll progress bar
-// ============================================================
-const progressBar = document.createElement('div');
-progressBar.className = 'scroll-progress';
-progressBar.setAttribute('aria-hidden', 'true');
-document.body.appendChild(progressBar);
+  const sections = [...document.querySelectorAll('main .section[id]')];
+  const navLinks = [...document.querySelectorAll('.side-nav a[href^="#"], .tabs-row a[href^="#"]')];
+  const progress = document.querySelector('.page-progress');
+  const topnav = document.querySelector('.mobile-topnav');
+  const backToTop = document.querySelector('.back-to-top');
+  const cursorGlow = document.querySelector('.cursor-glow');
+  const year = document.querySelector('#year');
 
-// ============================================================
-// Unified scroll spy (sidebar + mobile tabs)
-// ============================================================
-const allNavLinks = $$('.side-nav a, .mobile-topnav .tabs-row a');
-const sections = $$('main .section').filter(s => s.id);
-const topnav = document.querySelector('.mobile-topnav');
-let lastY = window.scrollY;
-let lastActiveId = '';
+  if (year) year.textContent = new Date().getFullYear();
 
-function setActive(id) {
-  allNavLinks.forEach(a =>
-    a.classList.toggle('active', a.getAttribute('href') === `#${id}`)
-  );
+  function updateProgress() {
+    const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+    const progressValue = scrollable > 0 ? (window.scrollY / scrollable) * 100 : 0;
+    if (progress) progress.style.width = `${progressValue}%`;
+    if (backToTop) backToTop.classList.toggle('show', window.scrollY > 720);
+  }
 
-  // keep the highlighted mobile tab visible in the scrollable tabs row
-  if (id !== lastActiveId) {
-    lastActiveId = id;
-    const activeTab = document.querySelector(`.mobile-topnav .tabs-row a[href="#${id}"]`);
-    if (activeTab) {
-      const row = activeTab.parentElement;
-      const target = activeTab.offsetLeft - (row.clientWidth - activeTab.offsetWidth) / 2;
-      row.scrollTo({ left: Math.max(target, 0), behavior: 'smooth' });
+  function updateActiveNav() {
+    if (!sections.length) return;
+
+    const referenceLine = window.scrollY + Math.min(window.innerHeight * 0.42, 380);
+    let current = sections[0].id;
+
+    for (const section of sections) {
+      if (section.offsetTop <= referenceLine) current = section.id;
     }
-  }
-}
 
-function onScroll() {
-  const y = window.scrollY;
-
-  // progress bar
-  const max = document.documentElement.scrollHeight - window.innerHeight;
-  progressBar.style.setProperty('--p', max > 0 ? Math.min(y / max, 1) : 0);
-
-  // scroll spy
-  let current = sections[0]?.id || '';
-  for (const sec of sections) {
-    if (y >= sec.offsetTop - 180) current = sec.id;
-  }
-  // snap to last section when at the very bottom
-  if (max > 0 && y >= max - 2) current = sections[sections.length - 1]?.id || current;
-  setActive(current);
-
-  // hide/show mobile top bar based on scroll direction
-  if (topnav) {
-    const isMobile = window.matchMedia('(max-width: 880px)').matches;
-    if (isMobile) {
-      if (y > lastY && y - lastY > 4 && y > 120) topnav.classList.add('hide');
-      else if (y < lastY && lastY - y > 4) topnav.classList.remove('hide');
-    } else {
-      topnav.classList.remove('hide');
-    }
-  }
-  lastY = y;
-}
-
-window.addEventListener('scroll', onScroll, { passive: true });
-window.addEventListener('resize', onScroll);
-document.addEventListener('DOMContentLoaded', onScroll);
-onScroll();
-
-// Immediate feedback when tapping mobile tabs
-$$('.mobile-topnav .tabs-row a').forEach(a => {
-  a.addEventListener('click', () => {
-    allNavLinks.forEach(l => l.classList.remove('active'));
-    a.classList.add('active');
-  });
-});
-
-// ============================================================
-// Staggered scroll-reveal
-// ============================================================
-const revealTargets = $$(
-  '.hero-copy, .section-head, .about-wrap, .skill-card, .timeline .item, .cert, .card, .footer'
-);
-
-if (!reducedMotion && 'IntersectionObserver' in window) {
-  // tag elements + compute stagger delay among revealed siblings
-  revealTargets.forEach(el => el.classList.add('reveal'));
-  revealTargets.forEach(el => {
-    const sibs = [...el.parentElement.children].filter(c => c.classList.contains('reveal'));
-    const idx = Math.max(sibs.indexOf(el), 0);
-    el.style.setProperty('--d', `${Math.min(idx, 6) * 90}ms`);
-  });
-
-  const reveal = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.classList.add('in');
-        reveal.unobserve(e.target);
+    navLinks.forEach((link) => {
+      const isActive = link.getAttribute('href') === `#${current}`;
+      link.classList.toggle('active', isActive);
+      if (isActive && link.closest('.tabs-row')) {
+        link.scrollIntoView({ inline: 'center', block: 'nearest', behavior: prefersReducedMotion ? 'auto' : 'smooth' });
       }
     });
-  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  }
 
-  revealTargets.forEach(el => reveal.observe(el));
-}
+  let lastScrollY = window.scrollY;
+  function handleMobileNav() {
+    if (!topnav) return;
+    const isMobile = window.matchMedia('(max-width: 880px)').matches;
+    const currentY = window.scrollY;
 
-// ============================================================
-// Mouse-tracking spotlight on cards
-// ============================================================
-if (window.matchMedia('(pointer: fine)').matches) {
-  $$('.skill-card, .card, .cert, .timeline .content').forEach(el => {
-    el.addEventListener('mousemove', e => {
-      const r = el.getBoundingClientRect();
-      el.style.setProperty('--mx', `${e.clientX - r.left}px`);
-      el.style.setProperty('--my', `${e.clientY - r.top}px`);
+    if (!isMobile || currentY < 80) {
+      topnav.classList.remove('hide');
+      lastScrollY = currentY;
+      return;
+    }
+
+    const delta = currentY - lastScrollY;
+    if (delta > 8) topnav.classList.add('hide');
+    if (delta < -8) topnav.classList.remove('hide');
+    lastScrollY = currentY;
+  }
+
+  function onScroll() {
+    updateProgress();
+    updateActiveNav();
+    handleMobileNav();
+  }
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll);
+
+  navLinks.forEach((link) => {
+    link.addEventListener('click', () => {
+      navLinks.forEach((item) => item.classList.remove('active'));
+      link.classList.add('active');
+      if (topnav) topnav.classList.remove('hide');
     });
   });
-}
+
+  const revealTargets = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window && !prefersReducedMotion) {
+    const revealObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('in-view');
+        observer.unobserve(entry.target);
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+    revealTargets.forEach((target, index) => {
+      target.style.animationDelay = `${Math.min(index * 45, 360)}ms`;
+      revealObserver.observe(target);
+    });
+  } else {
+    revealTargets.forEach((target) => target.classList.add('in-view'));
+  }
+
+  const spotlightCards = document.querySelectorAll('.skill-card, .timeline-card, .cert, .project-card, .about-card, .contact-strip');
+  spotlightCards.forEach((card) => {
+    card.addEventListener('pointermove', (event) => {
+      const rect = card.getBoundingClientRect();
+      const x = ((event.clientX - rect.left) / rect.width) * 100;
+      const y = ((event.clientY - rect.top) / rect.height) * 100;
+      card.style.setProperty('--mx', `${x}%`);
+      card.style.setProperty('--my', `${y}%`);
+    });
+  });
+
+  if (isFinePointer && !prefersReducedMotion) {
+    const tiltCards = document.querySelectorAll('.tilt-card');
+
+    tiltCards.forEach((card) => {
+      card.addEventListener('pointermove', (event) => {
+        const rect = card.getBoundingClientRect();
+        const x = event.clientX - rect.left;
+        const y = event.clientY - rect.top;
+        const rotateY = ((x / rect.width) - 0.5) * 8;
+        const rotateX = ((0.5 - (y / rect.height)) * 8);
+        card.style.transform = `perspective(900px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-4px)`;
+      });
+
+      card.addEventListener('pointerleave', () => {
+        card.style.transform = '';
+      });
+    });
+
+    if (cursorGlow) {
+      window.addEventListener('pointermove', (event) => {
+        cursorGlow.style.opacity = '1';
+        cursorGlow.style.left = `${event.clientX}px`;
+        cursorGlow.style.top = `${event.clientY}px`;
+      }, { passive: true });
+
+      document.addEventListener('mouseleave', () => {
+        cursorGlow.style.opacity = '0';
+      });
+    }
+  }
+
+  document.querySelectorAll('.copy-email').forEach((button) => {
+    button.addEventListener('click', async () => {
+      const email = button.dataset.email;
+      if (!email) return;
+
+      const originalText = button.textContent;
+      try {
+        await navigator.clipboard.writeText(email);
+        button.textContent = 'Copied';
+      } catch (error) {
+        button.textContent = email;
+      }
+
+      window.setTimeout(() => {
+        button.textContent = originalText;
+      }, 1800);
+    });
+  });
+
+  updateProgress();
+  updateActiveNav();
+  handleMobileNav();
+})();
