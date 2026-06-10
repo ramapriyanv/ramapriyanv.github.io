@@ -696,6 +696,16 @@ html::after{
     -webkit-overflow-scrolling:touch;
     transition:transform .3s var(--ease), visibility 0s linear 0s;
   }
+  /* opaque shield extending above the bar: hides content that peeks into the
+     status-bar zone when Safari's fixed-position repaint lags during scroll */
+  .mobile-topnav::before{
+    content:"";
+    position:absolute;
+    left:0;right:0;
+    bottom:100%;
+    height:120px;
+    background:#070A12;
+  }
   .mobile-topnav::after{
     content:"";
     position:absolute;left:0;right:0;bottom:-1px;height:1px;
