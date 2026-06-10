@@ -698,10 +698,19 @@ html::after{
     position:absolute;left:0;right:0;bottom:100%;height:140px;
     background:#070A12;
   }
+  .topbar{
+    transition:
+      transform .5s var(--ease),
+      opacity .4s ease;
+  }
   .topbar.hide{
-    transform:translateY(calc(-100% - env(safe-area-inset-top,0px) - 160px));
+    transform:translateY(calc(-100% - env(safe-area-inset-top,0px) - 2px));
+    opacity:0;
     visibility:hidden;
-    transition:transform .3s var(--ease),visibility 0s linear .3s;
+    transition:
+      transform .5s var(--ease),
+      opacity .4s ease .1s,
+      visibility 0s linear .5s;
   }
   .logo{order:1}
   .logo h1{font-size:1.7rem}
