@@ -19,11 +19,23 @@ const allNavLinks = $$('.side-nav a, .mobile-topnav .tabs-row a');
 const sections = $$('main .section').filter(s => s.id);
 const topnav = document.querySelector('.mobile-topnav');
 let lastY = window.scrollY;
+let lastActiveId = '';
 
 function setActive(id) {
   allNavLinks.forEach(a =>
     a.classList.toggle('active', a.getAttribute('href') === `#${id}`)
   );
+
+  // keep the highlighted mobile tab visible in the scrollable tabs row
+  if (id !== lastActiveId) {
+    lastActiveId = id;
+    const activeTab = document.querySelector(`.mobile-topnav .tabs-row a[href="#${id}"]`);
+    if (activeTab) {
+      const row = activeTab.parentElement;
+      const target = activeTab.offsetLeft - (row.clientWidth - activeTab.offsetWidth) / 2;
+      row.scrollTo({ left: Math.max(target, 0), behavior: 'smooth' });
+    }
+  }
 }
 
 function onScroll() {
