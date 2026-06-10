@@ -690,20 +690,31 @@ html::after{
     display:flex;flex-direction:column;gap:.9rem;
     padding:1rem 1.2rem 1.1rem;
     padding-top:calc(env(safe-area-inset-top,0px) + 1rem);
-    background:rgba(6,9,16,.85);
-    backdrop-filter:blur(18px);
-    -webkit-backdrop-filter:blur(18px);
+    background:#070A12; /* fully opaque: prevents content ghosting through on phones */
     border-bottom:1px solid var(--line);
     box-shadow:0 10px 30px rgba(0,0,0,.45);
     -webkit-overflow-scrolling:touch;
-    transition:transform .3s var(--ease);
+    transition:transform .3s var(--ease), visibility 0s linear 0s;
   }
   .mobile-topnav::after{
     content:"";
     position:absolute;left:0;right:0;bottom:-1px;height:1px;
     background:linear-gradient(90deg,transparent,rgba(242,206,123,.45),transparent);
   }
-  .mobile-topnav.hide{transform:translateY(-110%)}
+  .mobile-topnav.hide{
+    transform:translateY(calc(-100% - env(safe-area-inset-top,0px) - 40px));
+    visibility:hidden;
+    transition:transform .3s var(--ease), visibility 0s linear .3s;
+  }
+
+  /* progress bar: move to bottom edge on mobile so it never clashes
+     with the phone status bar / notch area */
+  .scroll-progress{
+    top:auto;
+    bottom:0;
+    height:3px;
+    bottom:env(safe-area-inset-bottom,0px);
+  }
 
   .mobile-topnav .tabs-row{
     display:flex;gap:.6rem;overflow-x:auto;
