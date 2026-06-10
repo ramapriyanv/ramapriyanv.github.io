@@ -310,7 +310,7 @@ html::after{
   position:absolute;left:50%;bottom:2rem;
   transform:translateX(-50%);
   font-family:var(--serif);font-weight:600;
-  font-size:clamp(8rem,17vw,24rem);
+  font-size:min(15.5vw,24rem);
   line-height:1;letter-spacing:.02em;
   color:transparent;
   -webkit-text-stroke:1px rgba(242,206,123,.13);
@@ -723,7 +723,6 @@ html::after{
   }
 
   .hero{min-height:78vh;padding:5rem 7% 8rem}
-  .hero-giant{font-size:clamp(6rem,20vw,12rem)}
 
   .skill-card{
     grid-template-columns:4.6rem 3.2rem minmax(0,1fr);
