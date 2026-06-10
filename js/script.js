@@ -133,3 +133,15 @@ if (!reducedMotion && 'IntersectionObserver' in window) {
 
   revealTargets.forEach(el => reveal.observe(el));
 }
+
+// ============================================================
+// Touch highlight for skills & journey rows
+// (hover doesn't exist on touch — tap to glow, tap away to clear)
+// ============================================================
+if (window.matchMedia('(hover: none)').matches) {
+  const glowRows = $$('.skill-card, .timeline-flow .item');
+  document.addEventListener('touchstart', e => {
+    const row = e.target.closest('.skill-card, .timeline-flow .item');
+    glowRows.forEach(r => r.classList.toggle('touch-glow', r === row));
+  }, { passive: true });
+}
