@@ -145,3 +145,65 @@ if (window.matchMedia('(hover: none)').matches) {
     glowRows.forEach(r => r.classList.toggle('touch-glow', r === row));
   }, { passive: true });
 }
+
+// ============================================================
+// Ambient background — grid pulse
+// ============================================================
+if (!reducedMotion) {
+  const canvas = document.createElement('canvas');
+  canvas.className = 'grid-pulse';
+  canvas.setAttribute('aria-hidden', 'true');
+  document.body.prepend(canvas);
+  const ctx = canvas.getContext('2d');
+
+  const GOLD = (a) => `rgba(242,206,123,${a})`;
+  const CELL = 72, FPS = 30;
+  let W = 0, H = 0, pulses = [];
+
+  const sizeCanvas = () => {
+    W = canvas.width = window.innerWidth;
+    H = canvas.height = window.innerHeight;
+    pulses = [];
+  };
+  sizeCanvas();
+
+  let resizeT;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeT);
+    resizeT = setTimeout(sizeCanvas, 200);
+  });
+
+  let last = 0;
+  const tick = (t) => {
+    requestAnimationFrame(tick);
+    if (document.hidden || t - last < 1000 / FPS) return;
+    last = t;
+
+    ctx.clearRect(0, 0, W, H);
+    ctx.strokeStyle = GOLD(.04);
+    ctx.beginPath();
+    for (let x = 0; x <= W; x += CELL) { ctx.moveTo(x, 0); ctx.lineTo(x, H); }
+    for (let y = 0; y <= H; y += CELL) { ctx.moveTo(0, y); ctx.lineTo(W, y); }
+    ctx.stroke();
+
+    if (Math.random() < .06 && pulses.length < 7) {
+      pulses.push({
+        x: (Math.random() * (W / CELL) | 0) * CELL,
+        y: (Math.random() * (H / CELL) | 0) * CELL,
+        t: 0,
+      });
+    }
+    pulses = pulses.filter(p => {
+      p.t += .012;
+      if (p.t >= 1) return false;
+      const a = Math.sin(p.t * Math.PI);
+      // whole grid cell glows: soft fill + brighter edge
+      ctx.fillStyle = GOLD(a * .10);
+      ctx.fillRect(p.x, p.y, CELL, CELL);
+      ctx.strokeStyle = GOLD(a * .35);
+      ctx.strokeRect(p.x + .5, p.y + .5, CELL - 1, CELL - 1);
+      return true;
+    });
+  };
+  requestAnimationFrame(tick);
+}

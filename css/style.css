@@ -85,6 +85,14 @@ body::after{
 @keyframes drift-a{from{transform:translate(0,0) scale(1)}to{transform:translate(-8vw,6vw) scale(1.15)}}
 @keyframes drift-b{from{transform:translate(0,0) scale(1)}to{transform:translate(7vw,-5vw) scale(1.1)}}
 
+/* Grid pulse ambient background (injected by JS) */
+.grid-pulse{
+  position:fixed;inset:0;
+  z-index:-2;
+  pointer-events:none;
+  opacity:.5;
+}
+
 /* Film grain */
 html::after{
   content:"";
