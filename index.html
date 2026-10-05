@@ -8,6 +8,7 @@
   <link rel="icon" href="images/icon.png"/> <!-- Favicon Font - Arimo -->
   <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet"/>
   <link rel="stylesheet" href="css/style.css"/>
+  <link rel="stylesheet" href="css/studio.css"/>
 </head>
 <body>
   <!-- TOP BAR -->
@@ -20,6 +21,8 @@
       </div>
     </a>
 
+    <button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="portfolio-menu"><span></span><span></span></button>
+    <div class="nav-panel" id="portfolio-menu">
     <nav class="top-links" aria-label="Primary">
       <a href="#home" class="active">Home</a>
       <a href="#about">About</a>
@@ -37,15 +40,15 @@
         <i class='bx bx-file-blank'></i> View My Resume
       </a>
     </div>
+    </div>
   </header>
 
   <!-- Main content -->
   <main class="main">
     <!-- HOME -->
-    <section class="section hero" id="home">
-      <span class="hero-giant" aria-hidden="true">Ramapriyan</span>
+    <section class="section hero" id="home" tabindex="-1">
       <div class="hero-copy">
-        <h2>Hi, I'm <span class="accent">Ramapriyan.</span></h2>
+        <h2><span class="hero-greeting">Hi, I'm <span class="hero-spark" aria-hidden="true"></span></span><span class="accent hero-name" aria-label="Ramapriyan."><span class="name-visual" aria-hidden="true">Ramapriyan.</span></span></h2>
         <h3 class="sub">My interests lie in <span class="accent">Software Development, Machine Learning, AI and Data Science.</span></h3>
         <p>
           Currently a <span class="accent">Software Engineer</span> at <span class="accent">Acxhange</span>.
@@ -54,14 +57,14 @@
           I hold a Bachelor's degree in Computer Science and Engineering.
         </p>
         <div class="cta-row">
-          <a href="#about" class="btn primary">About Me</a>
+          <a href="#about" class="btn primary">About Me <span class="button-arrow" aria-hidden="true">↗</span></a>
         </div>
       </div>
 
     </section>
 
     <!-- ABOUT -->
-    <section class="section about" id="about">
+    <section class="section about" id="about" tabindex="-1">
       <header class="section-head">
         <h3>About <span class="accent">Me</span></h3>
       </header>
@@ -77,7 +80,7 @@
     </section>
 
     <!-- SKILLS -->
-    <section class="section skills" id="skills">
+    <section class="section skills" id="skills" tabindex="-1">
       <header class="section-head">
         <h3>My <span class="accent">Skills</span></h3>
       </header>
@@ -106,7 +109,7 @@
     </section>
 
     <!-- EXPERIENCE -->
-    <section class="section experience" id="experience">
+    <section class="section experience" id="experience" tabindex="-1">
       <header class="section-head">
         <h3>My <span class="accent">Journey</span></h3>
       </header>
@@ -196,7 +199,7 @@
     </section>
 
     <!-- CERTIFICATIONS -->
-    <section class="section certs" id="certs">
+    <section class="section certs" id="certs" tabindex="-1">
       <header class="section-head">
         <h3>My <span class="accent">Certifications</span></h3>
       </header>
@@ -235,7 +238,7 @@
     </section>
 
     <!-- PROJECTS -->
-    <section class="section projects" id="projects">
+    <section class="section projects" id="projects" tabindex="-1">
       <header class="section-head">
         <h3>My <span class="accent">Projects</span></h3>
       </header>
@@ -280,9 +283,9 @@
     <footer class="footer">
       <p>© <span id="year"></span> Ramapriyan Varadarajan</p>
       <div class="footer-links">
-        <a href="https://www.linkedin.com/in/ramapriyan-varadarajan/" target="_blank"><i class='bx bxl-linkedin'></i></a>
-        <a href="https://github.com/ramapriyanv" target="_blank"><i class='bx bxl-github'></i></a>
-        <a href="mailto:ramapriyanv@gmail.com" target="_blank"><i class='bx bxs-envelope'></i></a>
+        <a href="https://www.linkedin.com/in/ramapriyan-varadarajan/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class='bx bxl-linkedin'></i></a>
+        <a href="https://github.com/ramapriyanv" target="_blank" rel="noopener" aria-label="GitHub"><i class='bx bxl-github'></i></a>
+        <a href="mailto:ramapriyanv@gmail.com" target="_blank" rel="noopener" aria-label="Email"><i class='bx bxs-envelope'></i></a>
       </div>
     </footer>
   </main>

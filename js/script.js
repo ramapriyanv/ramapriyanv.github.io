@@ -2,6 +2,7 @@
 // Helpers
 // ============================================================
 const $$ = (sel, ctx = document) => [...ctx.querySelectorAll(sel)];
+document.documentElement.classList.add('js');
 const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 // ============================================================
@@ -25,9 +26,10 @@ const toTop = document.createElement('button');
 toTop.className = 'back-to-top';
 toTop.setAttribute('aria-label', 'Back to top');
 toTop.innerHTML = "<i class='bx bx-up-arrow-alt'></i>";
-toTop.addEventListener('click', () =>
-  window.scrollTo({ top: 0, behavior: reducedMotion ? 'auto' : 'smooth' })
-);
+toTop.addEventListener('click', () => {
+  document.getElementById('home').focus({ preventScroll: true });
+  window.scrollTo({ top: 0, behavior: reducedMotion ? 'auto' : 'smooth' });
+});
 document.body.appendChild(toTop);
 
 // ============================================================
@@ -36,13 +38,15 @@ document.body.appendChild(toTop);
 const navLinks = $$('.top-links a');
 const sections = $$('main .section').filter(s => s.id);
 const topbar = document.querySelector('.topbar');
-let lastY = window.scrollY;
 let lastActiveId = '';
 
 function setActive(id) {
-  navLinks.forEach(a =>
-    a.classList.toggle('active', a.getAttribute('href') === `#${id}`)
-  );
+  navLinks.forEach(a => {
+    const active = a.getAttribute('href') === `#${id}`;
+    a.classList.toggle('active', active);
+    if (active) a.setAttribute('aria-current', 'location');
+    else a.removeAttribute('aria-current');
+  });
 
   // keep the highlighted link visible in the scrollable mobile row
   if (id !== lastActiveId) {
@@ -52,7 +56,7 @@ function setActive(id) {
       const row = activeLink.parentElement;
       if (row.scrollWidth > row.clientWidth) {
         const target = activeLink.offsetLeft - (row.clientWidth - activeLink.offsetWidth) / 2;
-        row.scrollTo({ left: Math.max(target, 0), behavior: 'smooth' });
+        row.scrollTo({ left: Math.max(target, 0), behavior: reducedMotion ? 'auto' : 'smooth' });
       }
     }
   }
@@ -76,17 +80,7 @@ function onScroll() {
   // back-to-top visibility
   toTop.classList.toggle('show', y > 600);
 
-  // hide/show top bar on mobile based on scroll direction
-  if (topbar) {
-    const isMobile = window.matchMedia('(max-width: 880px)').matches;
-    if (isMobile) {
-      if (y > lastY && y - lastY > 4 && y > 120) topbar.classList.add('hide');
-      else if (y < lastY && lastY - y > 4) topbar.classList.remove('hide');
-    } else {
-      topbar.classList.remove('hide');
-    }
-  }
-  lastY = y;
+
 }
 
 window.addEventListener('scroll', onScroll, { passive: true });
@@ -135,13 +129,14 @@ if (!reducedMotion && 'IntersectionObserver' in window) {
 }
 
 // ============================================================
-// Touch highlight for skills & journey rows
+// Touch feedback uses the same card surfaces as hover and keyboard focus
 // (hover doesn't exist on touch — tap to glow, tap away to clear)
 // ============================================================
 if (window.matchMedia('(hover: none)').matches) {
-  const glowRows = $$('.skill-card, .timeline-flow .item');
+  const cardSelector = '.skill-card, .timeline-flow .content, .cert, .card, .about-img img';
+  const glowRows = $$(cardSelector);
   document.addEventListener('touchstart', e => {
-    const row = e.target.closest('.skill-card, .timeline-flow .item');
+    const row = e.target.closest(cardSelector);
     glowRows.forEach(r => r.classList.toggle('touch-glow', r === row));
   }, { passive: true });
 }
@@ -206,4 +201,59 @@ if (!reducedMotion) {
     });
   };
   requestAnimationFrame(tick);
+}
+
+// Compact navigation expands into a non-modal mobile dropdown.
+const menuButton = document.querySelector('.menu-toggle');
+const menuLayout = window.matchMedia('(max-width: 1050px)');
+function closeMenu(restoreFocus = false) {
+  topbar.classList.remove('menu-open');
+  menuButton.setAttribute('aria-expanded', 'false');
+  menuButton.setAttribute('aria-label', 'Open menu');
+  if (restoreFocus) menuButton.focus();
+}
+menuButton.addEventListener('click', () => {
+  const open = topbar.classList.toggle('menu-open');
+  menuButton.setAttribute('aria-expanded', String(open));
+  menuButton.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+});
+navLinks.forEach(link => link.addEventListener('click', () => {
+  const wasOpen = topbar.classList.contains('menu-open');
+  closeMenu();
+  if (wasOpen) document.querySelector(link.hash)?.focus({ preventScroll: true });
+}));
+document.addEventListener('keydown', event => {
+  if (event.key === 'Escape' && topbar.classList.contains('menu-open')) closeMenu(true);
+});
+document.addEventListener('click', event => {
+  if (!topbar.contains(event.target)) closeMenu();
+});
+topbar.addEventListener('focusout', () => {
+  requestAnimationFrame(() => {
+    if (!topbar.contains(document.activeElement)) closeMenu();
+  });
+});
+menuLayout.addEventListener('change', () => closeMenu());
+
+// A single, short typographic reveal; the accessible name stays unchanged.
+const nameVisual = document.querySelector('.name-visual');
+if (nameVisual && !reducedMotion) {
+  const name = nameVisual.textContent;
+  const glyphs = 'abcdefghijklmnopqrstuvwxyz';
+  const start = performance.now();
+  let previousFrame = 0;
+  const revealName = now => {
+    const progress = Math.min(1, (now - start) / 850);
+    if (progress === 1) { nameVisual.textContent = name; return; }
+    if (now - previousFrame > 55) {
+      nameVisual.textContent = [...name].map((letter, index) => {
+        if (index < Math.floor(progress * name.length) || letter === '.') return letter;
+        const random = glyphs[Math.floor(Math.random() * glyphs.length)];
+        return index === 0 ? random.toUpperCase() : random;
+      }).join('');
+      previousFrame = now;
+    }
+    requestAnimationFrame(revealName);
+  };
+  requestAnimationFrame(revealName);
 }

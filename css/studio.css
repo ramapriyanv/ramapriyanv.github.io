@@ -1,0 +1,195 @@
+/* Studio direction: the original palette and atmosphere, with a bolder composition. */
+html{scroll-padding-top:13rem}
+a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:5px}
+img{max-width:100%}
+.topbar{
+  top:2.4rem;left:50%;right:auto;transform:translateX(-50%);
+  width:min(calc(100% - 4.8rem),128rem);height:auto;min-height:7.2rem;
+  padding:1rem 1.2rem;gap:2rem;border:1px solid var(--gold-line);border-radius:99px;
+  background:rgba(13,18,30,.94);box-shadow:0 8px 0 rgba(0,0,0,.25),0 16px 45px rgba(0,0,0,.25);
+}
+.logo{padding:0 1rem;flex-shrink:0}
+.logo img{width:36px;height:36px}
+.logo h1{font-size:1.6rem}
+.logo p{font-size:.85rem;letter-spacing:.12em}
+.nav-panel{display:flex;flex:1;align-items:center;gap:1.4rem;min-width:0}
+.top-links{gap:0}
+.top-links a{font-size:1.3rem;padding:1.1rem 1.2rem;letter-spacing:0}
+.top-links a::after{left:1.2rem;right:1.2rem}
+.top-actions{gap:.6rem;flex-shrink:0}
+.top-actions > a:not(.resume-btn){width:33px;height:33px;font-size:1.5rem}
+.resume-btn{white-space:nowrap;padding:1.2rem 1.6rem;font-size:1.2rem;box-shadow:none}
+.menu-toggle{display:none}
+.main{padding-top:13rem}
+.section{display:block;padding:9rem max(5%,calc((100% - 132rem)/2));}
+.section::after{height:1px;box-shadow:none;left:5%;right:5%;background:var(--gold-line)}
+.section-head{position:static;margin-bottom:4.5rem}
+.section-head h3{font-size:clamp(3.6rem,5.4vw,7.2rem);line-height:1.1;font-weight:500;letter-spacing:-.06em}
+.section-head h3::before{display:block;font:500 1.2rem/1 var(--sans);letter-spacing:.15em;color:var(--muted);-webkit-text-stroke:0;margin-bottom:1.8rem}
+.section-head h3::after{display:none}
+.accent{animation:none;background-size:100% auto}
+
+/* The headline provides the first-screen visual, instead of another panel. */
+.hero{min-height:calc(100svh - 13rem);padding-top:5rem;padding-bottom:8rem;overflow:visible;background:radial-gradient(ellipse at 85% 30%,rgba(242,206,123,.07),transparent 60%)}
+.hero-copy{max-width:none;display:grid;grid-template-columns:minmax(0,1fr) auto;column-gap:6rem;align-items:end}
+.hero h2{grid-column:1/-1;line-height:1;letter-spacing:-.075em;font-weight:500;font-size:clamp(5rem,8vw,11rem)}
+.hero-greeting{display:flex;align-items:center;gap:3.5rem}
+.hero-spark{display:inline-block;width:.6em;height:.6em;background:var(--accent);clip-path:polygon(50% 0,64% 34%,100% 50%,65% 65%,50% 100%,35% 65%,0 50%,35% 35%);animation:studio-spin 18s linear infinite}
+@keyframes studio-spin{to{transform:rotate(360deg)}}
+.hero-name{display:grid;font-size:clamp(5rem,11.8vw,17.6rem);letter-spacing:-.075em;line-height:1.15;padding-bottom:.04em;white-space:nowrap;margin-top:.03em}
+.hero-name::after{content:attr(aria-label);visibility:hidden;grid-area:1/1}
+.name-visual{grid-area:1/1}
+.hero h3.sub{grid-column:1/-1;font-size:clamp(2rem,2.4vw,3.4rem);line-height:1.5;letter-spacing:-.035em;max-width:99rem;margin:3.2rem 0 4.2rem}
+.hero p{max-width:78rem;font-size:1.7rem;line-height:1.85;margin:0;color:var(--body)}
+.hero p .accent{background:none;-webkit-text-fill-color:var(--body);color:var(--body)}
+.cta-row{padding-bottom:.4rem}
+.btn{border-radius:99px;padding:1.6rem 2.6rem;gap:3rem;font-size:1.5rem}
+.btn.primary{box-shadow:4px 5px 0 rgba(242,206,123,.2);border:1px solid var(--accent);}
+.button-arrow{font:400 2.5rem/1 var(--sans);transition:transform .25s}
+.btn:hover .button-arrow{transform:translate(3px,-3px)}
+
+.about .about-wrap{grid-template-columns:30rem minmax(0,1fr);gap:8rem;align-items:center}
+.about .about-img{width:29rem;height:32rem;border-radius:2.8rem;justify-self:start;transform:rotate(-3deg)}
+.about .about-img img{width:100%;height:100%;border-radius:2.8rem;border:2px solid var(--gold-line);box-shadow:9px 9px 0 var(--gold-soft);object-position:center 40%}
+.about .about-img::before,.about .circle-spin{display:none}
+.about .about-content{font-size:clamp(2.2rem,2.5vw,3.6rem);line-height:1.6;letter-spacing:-.035em}
+.about .about-content .lead{float:none;font-size:inherit;line-height:inherit;margin:0}
+
+/* Hard offset edges and soft corners echo the reference without changing palette. */
+.skills .skills-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:2.8rem}
+.skill-card{display:grid;grid-template-columns:5rem minmax(0,1fr);gap:2rem;padding:3.2rem;border:1px solid var(--gold-line);border-radius:2.8rem;background:var(--panel-solid);box-shadow:7px 7px 0 rgba(242,206,123,.09);align-items:start;will-change:auto}
+.skill-card::before,.skill-card::after{display:none}
+.skill-card:last-child{border-bottom:1px solid var(--gold-line)}
+.skill-card i{font-size:3.4rem;color:var(--accent)}
+.skill-card h4{font-size:2.6rem;line-height:1.25;font-weight:500;letter-spacing:-.04em}
+.skill-card p{grid-column:1/-1;font-size:1.6rem;color:var(--body);line-height:1.8}
+.skill-card:hover i,.skill-card.touch-glow i{transform:none}
+.flow-title{font-size:2.4rem;font-weight:500;margin-bottom:2rem}
+.timeline-flow .content{grid-template-columns:23rem minmax(0,1fr);column-gap:5rem;row-gap:1.8rem;padding:2.4rem;border:1px solid var(--gold-line);border-radius:2rem}
+.timeline-flow .item{padding:0;margin-bottom:2.8rem;border:0;border-radius:2rem;will-change:auto}
+.timeline-flow .item::after{display:none}
+.timeline-flow .content h4{font-size:3.2rem;font-weight:500;letter-spacing:-.04em}
+.timeline-flow .content p,.timeline-flow .content li{font-size:1.6rem}
+.timeline-flow .item:hover,.timeline-flow .item.touch-glow{transform:none}
+
+
+.certs .cert-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:2.6rem}
+.cert{display:flex;flex-direction:column;align-items:stretch;gap:0;padding:1.2rem;background:var(--panel-solid);border:1px solid var(--gold-line);border-radius:2.5rem;box-shadow:6px 6px 0 var(--gold-soft)}
+.cert img{border-radius:1.6rem;aspect-ratio:16/10;box-shadow:none}
+.cert:nth-child(even) img{order:0}
+.cert:hover img{transform:none;box-shadow:none}
+.cert-info{flex:1;padding:2.3rem 1.3rem 1.5rem;gap:2rem}
+.cert-info::before{display:none}
+.cert-info h4{font-size:2.2rem;line-height:1.3;font-weight:500;letter-spacing:-.035em}
+.cert-info .chip{margin-top:auto}
+.chip{min-height:4.4rem;font-size:1.4rem;border:1px solid var(--gold-line);background:transparent;box-shadow:none}
+.chip:hover{box-shadow:3px 3px 0 var(--gold-soft);transform:translate(-1px,-1px)}
+
+.projects .grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));grid-auto-rows:1fr;gap:2.8rem;align-items:stretch}
+.card{display:flex;flex-direction:column;align-items:stretch;gap:0;min-width:0;padding:1.5rem;border-radius:3.2rem;border:1px solid var(--gold-line);background:var(--bg-soft);box-shadow:9px 9px 0 rgba(242,206,123,.14);overflow:hidden;transition:transform .3s var(--ease),box-shadow .3s}
+.card img{border-radius:2rem;aspect-ratio:16/10;box-shadow:none;transition:transform .6s var(--ease)}
+.card:nth-child(even) img{order:0}
+.card-body{flex:1;padding:2.6rem 1.4rem 1.6rem;gap:1.8rem;min-width:0}
+.card-body::before{content:'0' counter(proj);font:500 1.2rem/1 var(--sans);color:var(--accent);-webkit-text-stroke:0;border:1px solid var(--gold-line);border-radius:99px;padding:.7rem 1.2rem;background:var(--gold-soft)}
+.card-body h4{font-size:3rem;line-height:1.2;letter-spacing:-.045em;font-weight:500}
+.card-body p{font-size:1.6rem;line-height:1.8}
+.card-body .chip{margin-top:auto}
+.card:hover img,.card:focus-within img,.card.touch-glow img{transform:none;box-shadow:none}
+.footer{padding:5rem 5%;border-top:1px solid var(--gold-line);border-image:none;background:none;display:flex;align-items:center;justify-content:space-between;gap:2.4rem;text-align:left}
+.footer-links{margin:0}
+.footer-links a{width:44px;height:44px;font-size:2rem}
+.back-to-top{visibility:hidden}
+.back-to-top.show{visibility:visible}
+
+@media(max-width:1200px){
+  .topbar{gap:1rem;width:calc(100% - 4rem)}
+  .logo{padding:0 .4rem}
+  .top-links a{padding:1rem .8rem;font-size:1.2rem}
+  .top-actions > a:not(.resume-btn){width:29px;height:29px}
+  .nav-panel{gap:.8rem}
+  .hero-copy{column-gap:3rem}
+}
+@media(max-width:1050px){
+  .topbar{top:1.6rem;width:calc(100% - 3.2rem);max-width:70rem;min-height:6.6rem;padding:1rem 1.4rem;flex-wrap:wrap;justify-content:space-between;background:var(--panel-solid);backdrop-filter:none;-webkit-backdrop-filter:none}
+  .topbar::before{display:none}
+  .topbar.hide{transform:translateX(-50%);opacity:1;visibility:visible}
+  .logo{order:0}
+  .logo h1{font-size:1.7rem}
+  .js .menu-toggle{display:flex;flex-direction:column;justify-content:center;align-items:center;gap:5px;width:44px;height:44px;padding:10px;border:1px solid var(--gold-line);border-radius:50%;background:var(--gold-soft);color:var(--accent);cursor:pointer}
+  .menu-toggle span{display:block;width:18px;height:1.5px;background:currentColor;transition:transform .2s}
+  .menu-toggle[aria-expanded=true] span:first-child{transform:translateY(3.25px) rotate(45deg)}
+  .menu-toggle[aria-expanded=true] span:last-child{transform:translateY(-3.25px) rotate(-45deg)}
+  .nav-panel{flex-basis:100%;display:block;padding:1rem}
+  .js .nav-panel{display:none;position:absolute;top:calc(100% + 1.2rem);left:0;right:0;max-height:calc(100dvh - 12rem);overflow-y:auto;padding:2rem;border:1px solid var(--gold-line);border-radius:2.6rem;background:var(--panel-solid);box-shadow:7px 7px 0 rgba(242,206,123,.13)}
+  .js .topbar.menu-open .nav-panel{display:block}
+  .top-links{display:grid;gap:.4rem;width:auto;padding:0;margin:0;overflow:visible}
+  .top-links a{font-size:1.7rem;padding:1rem 1.5rem;border-radius:1rem}
+  .top-links a.active{background:var(--gold-soft)}
+  .top-links a::after{display:none}
+  .top-actions{justify-content:flex-start;flex-wrap:wrap;gap:1rem;margin:1.5rem 0 0;padding:1.8rem 0 0;border-top:1px solid var(--gold-line)}
+  .top-actions > a:not(.resume-btn){display:flex;width:44px;height:44px;font-size:2rem}
+  .resume-btn{font-size:1.4rem;margin-left:auto;padding:1.4rem 2rem}
+  .main{padding-top:12rem}
+  .hero{min-height:0;padding-top:4rem}
+  .section{padding:7rem 6%}
+  .about .about-wrap{grid-template-columns:24rem minmax(0,1fr);gap:5rem}
+  .about .about-img{width:24rem;height:28rem;justify-self:start}
+  .about .about-content{font-size:2.6rem}
+  .timeline-flow .content{grid-template-columns:1fr}
+  .timeline-flow .when,.timeline-flow .content h4,.timeline-flow .placetitle,.timeline-flow .content p,.timeline-flow .coursework{grid-column:1;grid-row:auto}
+  .timeline-flow .content h4{order:0}
+  .projects .grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .certs .cert-grid{grid-template-columns:1fr}
+  .cert{display:grid;grid-template-columns:25rem minmax(0,1fr);align-items:center}
+  .cert-info{padding:2rem 3rem}
+}
+@media(max-width:700px){
+  .hero-copy{grid-template-columns:1fr}
+  .hero h2{font-size:clamp(4.8rem,11vw,7rem)}
+  .hero-name{font-size:clamp(4rem,11.3vw,8rem);letter-spacing:-.065em}
+  .hero h3.sub{font-size:2.3rem;margin:2.8rem 0}
+  .hero p{font-size:1.6rem;max-width:none}
+  .cta-row{margin-top:3rem}
+  .hero-spark{width:.5em;height:.5em}
+  .about .about-wrap{grid-template-columns:1fr;gap:4.5rem}
+  .about .about-img{justify-self:start;width:25rem;height:29rem;margin-left:.5rem}
+  .about .about-content{font-size:2.5rem}
+  .skills .skills-grid,.projects .grid{grid-template-columns:1fr;gap:2.8rem}
+  .skill-card{padding:2.6rem;grid-template-columns:3.6rem minmax(0,1fr);column-gap:1.6rem}
+  .skill-card h4{font-size:2.3rem}
+  .timeline-flow .item{padding:0}
+  .timeline-flow .content h4{font-size:2.6rem}
+  .cert{display:flex}
+  .cert-info{padding:2.4rem 1.4rem 1.5rem}
+  .cert-info h4{font-size:2.3rem}
+  .card{padding:1rem;border-radius:2.3rem}
+  .card-body{padding:2.4rem 1.4rem 1.6rem}
+  .card-body h4{font-size:2.7rem}
+  .card-body .chip{margin-top:auto}
+  .card img{border-radius:1.5rem}
+  .footer{flex-direction:column;align-items:flex-start;padding:4rem 6% 9rem}
+}
+@media(max-width:400px){
+  .resume-btn{margin-left:0;flex-basis:100%;justify-content:center}
+  .section-head h3{font-size:3.6rem}
+  .hero-name{font-size:11.3vw}
+}
+/* Shared card interaction: identical lift, gold wash, border and halo. */
+:is(.skill-card,.timeline-flow .content,.cert,.card,.about .about-img img){
+  background:var(--panel-solid);
+  border-color:var(--gold-line);
+  box-shadow:7px 7px 0 var(--gold-soft);
+  transition:transform .3s var(--ease),box-shadow .3s var(--ease),border-color .3s;
+}
+:is(.skill-card,.timeline-flow .content,.cert,.card,.about .about-img img):is(:hover,:focus-within,.touch-glow){
+  transform:translateY(-5px);
+  border-color:var(--accent);
+  background:linear-gradient(120deg,rgba(242,206,123,.07),transparent 70%),var(--panel-solid);
+  box-shadow:7px 12px 0 var(--gold-soft),0 0 32px -6px rgba(242,206,123,.4);
+}
+
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  :is(.skill-card,.timeline-flow .content,.cert,.card,.about .about-img img):is(:hover,:focus-within,.touch-glow){transform:none}
+  *,*::before,*::after{animation:none!important;transition:none!important}
+}
